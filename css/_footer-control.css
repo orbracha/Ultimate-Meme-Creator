@@ -1,0 +1,16 @@
+
+.footer-controls > button{
+border: none;
+background: transparent;
+cursor: pointer;
+}
+.footer-controls {
+    display: flex;
+    overflow:scroll;
+    background: darkgrey;
+    height: 70px;
+}
+
+.footer-controls > button:hover {
+    background: rgb(119, 119, 119);
+}

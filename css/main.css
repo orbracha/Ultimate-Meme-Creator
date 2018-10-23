@@ -1,3 +1,5 @@
 @import '_base.css';
 @import '_navbar.css';
 @import '_helpers.css';
+@import '_canvas-control.css';
+@import '_footer-control.css';

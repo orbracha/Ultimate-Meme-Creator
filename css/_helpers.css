@@ -8,3 +8,7 @@
 .display-none {
     display: none;
 }
+
+.col {
+    flex-direction: column;
+}
