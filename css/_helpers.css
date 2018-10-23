@@ -12,3 +12,10 @@
 .grid{
     display: grid;
 }
+.display-none {
+    display: none;
+}
+
+.col {
+    flex-direction: column;
+}
