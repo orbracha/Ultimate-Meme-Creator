@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body onload="init()">
     <header class="main-header">
         <nav class="navbar navbar-light light-blue lighten-4">
             <a class="navbar-brand logo" href="#">ULTIM<span>ATE</span> MEME</a>
@@ -24,7 +24,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">GALEERY </a>
+                        <a class="nav-link" href="#">CREATE </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GALERY </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ABOUT</a>
@@ -37,26 +40,31 @@
         </nav>
     </header>
 
+
     <nav class="gallery">
         <section class="images-items grid">
-            <div class="image-item image-item-1 rowOne"></div>
-            <div class="image-item image-item-2 rowOne"></div>
-            <div class="image-item image-item-3 rowTwo"></div>
-            <div class="image-item image-item-4 rowTwo"></div>
         </section>
     </nav>
 
 
+    <div class="editor-container">
+        <div class="canvas-container">
+            <canvas class="canvas"> </canvas>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-controls main-footer-controls">
             <button>Upload</button>
-            <button  onclick="openTextEditor()">Text</button>
+            <button onclick="openTextEditor()">Text</button>
             <button>Background</button>
         </div>
-        <div class="footer-controls main-text-controls">
-            <button onclick="backToMainControls()">Back </button>
-            <button>Add</button>
-            <button>Color</button>
+        <div class="all-controls">
+            <div class="footer-controls main-text-controls">
+                <button onclick="backToMainControls()">Back </button>
+                <button>Add</button>
+                <button>Color</button>
+            </div>
         </div>
     </footer>
 
