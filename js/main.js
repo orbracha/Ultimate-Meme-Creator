@@ -51,8 +51,4 @@ function createCanvas(idx) {
 }
 
 
-function changeTextColor() {
-    var ctx = getCtx()
-    // ctx.
-}
 

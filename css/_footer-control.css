@@ -1,11 +1,10 @@
 
 .footer-controls button{
-border: none;
-background: transparent;
-cursor: pointer;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 .footer-controls > *{
-    display: flex;
     overflow:scroll;
     background: darkgrey;
     height: 70px;
@@ -14,3 +13,18 @@ cursor: pointer;
 .footer-controls > button:hover {
     background: rgb(119, 119, 119);
 }
+
+#input-color-text[type="color"]{
+    background: unset;
+    height: 40px;
+    border: unset;
+}
+
+#input-color-text{
+    margin: 10px;
+}
+
+#size-font-text[type="number"]{
+    width: 40px;
+}
+

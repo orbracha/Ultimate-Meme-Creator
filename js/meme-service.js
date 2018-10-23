@@ -8,7 +8,7 @@ function createImgs() {
         createImg('img/banana.jpeg', ['happy']),
         createImg('img/banana.jpeg', ['happy']),
         createImg('img/banana.jpeg', ['happy']),
-        createImg('simg/banana.jpeg', ['happy'])]
+        createImg('img/banana.jpeg', ['happy'])]
 }
 
 function createImg(url, keywords) {
