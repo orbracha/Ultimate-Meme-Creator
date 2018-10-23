@@ -4,3 +4,7 @@
 .space-between{
     justify-content: space-between;
 }
+
+.display-none {
+    display: none;
+}

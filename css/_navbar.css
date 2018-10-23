@@ -1,6 +1,11 @@
 .main-header {
     background-color: darkgrey;
 }
+
+.navbar-web {
+    display: none;
+    }
+
 .fa-1x {
     font-size: 1.5rem;
 }
@@ -23,4 +28,15 @@
 .nav-item {
    text-align: right
 }
+/* Website Mode */
+@media (min-width: 660px) {
+    .main-header {
+        display: flex
+                    }
 
+    .navbar-toggler {display: none;}
+    .navbar-web {
+        display: flex;
+        flex-direction: row
+        }
+}
