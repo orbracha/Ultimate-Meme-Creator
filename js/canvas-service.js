@@ -18,3 +18,17 @@ function getCtx() {
 function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
 }
+
+function readImage(files) {
+    if (files && files[0]) {
+        var readFile = new FileReader();
+        readFile.onload = function(e) {
+            var img = new Image();
+            img.addEventListener("load", function() {
+                gCtx.drawImage(img, 0, 0);
+            })
+            img.src = e.target.result;
+        }
+        readFile.readAsDataURL(files[0]);
+    }
+}

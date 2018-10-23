@@ -93,14 +93,13 @@
     <footer>
         <div class="footer-controls ">
             <div class="main-footer-controls">
-                <button>Upload</button>
+                <input type="file" accept="image/*" id="UploadImage" class="normal-button" onchange="readImage(event.target.files)" />
                 <button onclick="openTextEditor()">Text</button>
                 <button>Background</button>
             </div>
             <div class="all-controls">
                 <div class="main-text-controls">
                     <button onclick="backToMainControls()">Back </button>
-
                     <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="14">
                     <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
                 </div>
