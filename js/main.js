@@ -3,8 +3,11 @@
 function init() {
     $('.all-controls').hide()
     $('.canvas-container').hide()
-    $('footer').hide()
+    $('.text-container').hide()
+    $('footer').show();
     $('.gallery').show()
+    clearCurrMeme();
+    createCanvas();
     createImgs();
     render();
 }
@@ -43,15 +46,23 @@ function render() {
     renderStyleImgs();
 }
 
-function createCanvas() {
+function renderCanvas() {
+    clearCanvas();
+    clearAllInputs();
+    clearCurrMeme();
+    $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide');
     $('.gallery').hide()
     $('footer').show()
-    getCanvas().style.border = '1px solid black';
 }
 
 function uploadImgToCanvas(idx) {
-    createCanvas();
+    // renderCanvas();
+    clearCanvas();
+    $('.canvas-container').show()
+    $('.navbar-collapse').collapse('hide');
+    $('.gallery').hide()
+    $('footer').show()
     var ctx = getCtx();
     var canvas = getCanvas();
     var img = new Image;
@@ -59,7 +70,20 @@ function uploadImgToCanvas(idx) {
     img.src = currImg.url;
     ctx.drawImage(img, 0, 0, img.width, img.height,     // source rectangle
         0, 0, canvas.width, canvas.height); // destination rectangle
+    upgradeBackCanvas(img);
+}
+
+function openImageOnCanvas(idx) {
+    var currImg = gImgs.filter(img => img.id === idx)
+    var img = new Image()
+    img.src = currImg[0].url
+    img.onload = () => gCtx.drawImage(img, 0, 0)
+    renderCanvas()
+    upgradeBackCanvas(img);
 }
 
 
-
+function changeTextColor() {
+    var ctx = getCtx()
+    // ctx.
+}

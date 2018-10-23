@@ -1,7 +1,14 @@
 'use strict'
 var gImgs;
 var gidx = 1;
-
+var gMeme = {
+    lineUp: '',
+    lineDown: '',
+    size: 30,
+    align: 'left',
+    color: 'black',
+    img: null
+}
 
 function createImgs() {
     gImgs = [
@@ -29,4 +36,22 @@ function getImgById(idx) {
         return img.id === idx;
     });
     return img;
+}
+
+function getCurrMeme() {
+    return gMeme;
+}
+
+function upgradeBackCanvas(img) {
+    if (img) gMeme.img = img;
+    else gMeme.img = null;
+
+}
+
+function clearCurrMeme() {
+    gMeme.img = null;
+    gMeme.lineDown = '';
+    gMeme.lineUp = '';
+    gMeme.color = 'black';
+    gMeme.size = 30;
 }
