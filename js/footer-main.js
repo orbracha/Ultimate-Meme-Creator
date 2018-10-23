@@ -1,32 +1,28 @@
 'use strict'
 
+var gColor = "#000000"
+var gFontSize = '36px'
+
 function openTextEditor() {
     $('.main-footer-controls').hide()
     $('.all-controls').show()
     $('.main-text-controls').show()
-    gCtx.fillText("Hello World", 10, 50);
+    $('.text-container').show()
 }
+
 function backToMainControls() {
     $('.main-footer-controls').show()
     $('.main-text-controls').hide()
+    $('.text-container').hide()
 }
 
 function onChangeTextColor(color) {
-    var canvas = getCanvas();
-    var ctx = getCtx();
-    var location=getLocation();
-    ctx.fillStyle = color;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillText("Hello World", 10, 50);
+    gColor = color
 }
 
 
 function onChangeFontSize(size) {
-    var canvas = getCanvas();
-    var ctx = getCtx();
-    ctx.font = `${size}px ${getCurrFont()}`;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    gCtx.fillText("Hello World", 10, 50);
+    gFontSize = size
 }
 
 function getCurrFont() {

@@ -14,7 +14,7 @@ function init() {
 function renderImages() {
     var imgs = getImgs();
     var strHtmls = imgs.map(function(img) {
-        return `<div class="image-item image-item-${img.id}" onclick="createCanvas(${img.id})"></div>`;
+        return `<div class="image-item image-item-${img.id}" onclick="openImageOnCanvas(${img.id})"></div>`;
     })
     $('.gallery section').html(strHtmls.join(''));
 }
@@ -44,12 +44,20 @@ function render() {
     renderStyleImgs();
 }
 
-function createCanvas(idx) {
+function createCanvas() {
+    clearCanvas()
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide');
     $('.gallery').hide()
     $('footer').show()
-    getCanvas().style.border = '1px solid black';
+}
+
+function openImageOnCanvas(idx) {
+    var currImg = gImgs.filter(img => img.id === idx)
+    var img = new Image()
+    img.src = currImg[0].url
+    img.onload = () => gCtx.drawImage(img, 0, 0)
+    createCanvas()
 }
 
 

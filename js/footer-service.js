@@ -10,4 +10,5 @@ function openTextEditor() {
 function backToMainControls() {
     $('.main-footer-controls').show()
     $('.main-text-controls').hide()
+    $('.text-controls').hide()
 }
