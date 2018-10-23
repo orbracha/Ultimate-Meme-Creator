@@ -13,7 +13,7 @@ function init() {
 function renderImages() {
     var imgs = getImgs();
     var strHtmls = imgs.map(function (img) {
-        return `<div class="image-item image-item-${img.id}" onclick="createCanvas(${img.id})"></div>`;
+        return `<div class="image-item image-item-${img.id}" onclick="uploadImgToCanvas(${img.id})"></div>`;
     })
     $('.gallery section').html(strHtmls.join(''));
 }
@@ -43,11 +43,22 @@ function render() {
     renderStyleImgs();
 }
 
-function createCanvas(idx) {
+function createCanvas() {
     $('.navbar-collapse').collapse('hide');
     $('.gallery').hide()
     $('footer').show()
     getCanvas().style.border = '1px solid black';
+}
+
+function uploadImgToCanvas(idx) {
+    createCanvas();
+    var ctx = getCtx();
+    var canvas = getCanvas();
+    var img = new Image;
+    var currImg = getImgById(idx);
+    img.src = currImg.url;
+    ctx.drawImage(img, 0, 0, img.width, img.height,     // source rectangle
+        0, 0, canvas.width, canvas.height); // destination rectangle
 }
 
 
