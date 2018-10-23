@@ -28,7 +28,6 @@
     grid-row-end: 3;
     background: url('../img/banana.jpeg') no-repeat center;
     background-size: cover;
-    background-position: -88px;
 }
 .image-item-2{
     grid-column-start: 2;
