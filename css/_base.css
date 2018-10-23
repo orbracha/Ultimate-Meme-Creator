@@ -11,9 +11,3 @@ body{
     margin: 0;
 }
 
-img{
-    max-height: 50%;
-    max-width: 50%;
-    margin: 10px auto;
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-}
