@@ -1,9 +1,8 @@
 'use strict'
 
 function createCanvas(idx) {
-
+    $('.navbar-collapse').collapse('hide');
     $('.gallery').hide()
-    $('.nav-item').hide()
     $('footer').show()
     var newCanvas =
         ` <div class="canvas-container">
