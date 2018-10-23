@@ -3,6 +3,8 @@
 function init() {
     $('.all-controls').hide()
     $('.canvas-container').hide()
+    $('footer').hide()
+    $('.gallery').show()
     createImgs();
     render();
 }
@@ -47,3 +49,5 @@ function render() {
 // function onUpload() {
 //     elImages =
 // }
+
+    

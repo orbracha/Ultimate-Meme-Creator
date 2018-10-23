@@ -1,10 +1,10 @@
 
-.footer-controls > button{
+.footer-controls button{
 border: none;
 background: transparent;
 cursor: pointer;
 }
-.footer-controls {
+.footer-controls > *{
     display: flex;
     overflow:scroll;
     background: darkgrey;

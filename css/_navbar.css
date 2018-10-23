@@ -1,8 +1,7 @@
 .main-header {
     background-color: darkgrey;
 }
-
-.navbar-web {
+.navbar-web-container {
     display: none;
     }
 
@@ -35,7 +34,7 @@
                     }
 
     .navbar-toggler {display: none;}
-    .navbar-web {
+    .navbar-web-container {
         display: flex;
         flex-direction: row
         }
