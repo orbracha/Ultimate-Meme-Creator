@@ -7,7 +7,7 @@
 }
 .images-items{
     grid-template-rows:repeat(16,1fr);
-    grid-template-columns:repeat(16,1fr);
+    grid-template-columns:repeat(8,2fr);
     margin: 5px;
     width: 100%;
     height: 100%;
