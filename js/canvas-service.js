@@ -14,5 +14,4 @@ function createCanvas(idx) {
     var canvas = document.querySelector('.canvas')
     var ctx = canvas.getContext('2d')
     canvas.style.border = '1px solid black'
-
 }
