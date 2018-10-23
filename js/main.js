@@ -4,6 +4,7 @@ function init() {
     $('.all-controls').hide()
     $('.canvas-container').hide()
     $('footer').hide()
+    $('.text-container').hide()
     $('.gallery').show()
     createImgs();
     render();
@@ -12,7 +13,7 @@ function init() {
 
 function renderImages() {
     var imgs = getImgs();
-    var strHtmls = imgs.map(function (img) {
+    var strHtmls = imgs.map(function(img) {
         return `<div class="image-item image-item-${img.id}" onclick="createCanvas(${img.id})"></div>`;
     })
     $('.gallery section').html(strHtmls.join(''));
@@ -22,7 +23,7 @@ function renderStyleImgs() {
     var imgs = getImgs();
     let positionGridColumn = 1;
     let positionGridRow = 1;
-    imgs.forEach(function (img, idx) {
+    imgs.forEach(function(img, idx) {
         let elImg = document.querySelector(`.image-item-${img.id}`);
         elImg.style.gridColumnStart = positionGridColumn;
         elImg.style.gridColumnEnd = 'span 3';
@@ -44,6 +45,7 @@ function render() {
 }
 
 function createCanvas(idx) {
+    $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide');
     $('.gallery').hide()
     $('footer').show()
@@ -53,6 +55,5 @@ function createCanvas(idx) {
 
 function changeTextColor() {
     var ctx = getCtx()
-    // ctx.
+        // ctx.
 }
-

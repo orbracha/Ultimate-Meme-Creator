@@ -1,11 +1,13 @@
 'use strict'
 
-function openTextEditor(){
+function openTextEditor() {
     $('.main-footer-controls').hide()
     $('.all-controls').show()
     $('.main-text-controls').show()
+    $('.text-container').show()
 }
-function backToMainControls(){
+
+function backToMainControls() {
     $('.main-footer-controls').show()
     $('.main-text-controls').hide()
 }

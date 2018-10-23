@@ -1,10 +1,26 @@
-
 .editor-container {
     min-height: calc(100vh - 126px);
-    }
+    display: flex;
+    justify-content: center;
+    background-color: gray
+}
 
 .canvas-container {
+    margin-top: 15vh;
+}
+
+.text-container {
     display: flex;
-     align-content: center;
-    align-items: center;
-    }
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.canvas {
+    background-color: whitesmoke;
+    border-radius: 4px;
+}
+
+.canvas>p {
+    text-align: center;
+}
