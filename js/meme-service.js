@@ -2,8 +2,11 @@
 var gImgs;
 var gidx = 0;
 var gMeme = {
-    lineUp: '',
-    lineDown: '',
+    lineUp: { txt: '', position: 'left' },
+    lineDown: { txt: '', position: 'left' },
+    font: 'Ariel',
+    isBold: false,
+    isShadow: false,
     size: 30,
     align: 'left',
     color: 'black',
@@ -56,8 +59,12 @@ function upgradeBackCanvas(img) {
 
 function clearCurrMeme() {
     gMeme.img = null;
-    gMeme.lineDown = '';
-    gMeme.lineUp = '';
+    gMeme.lineDown = { txt: '', position: 'left' };
+    gMeme.lineUp = { txt: '', position: 'left' };
     gMeme.color = 'black';
     gMeme.size = 30;
+    gMeme.isBold = false;
+    gMeme.isShadow = false;
+    gMeme.font = 'Ariel';
+
 }
