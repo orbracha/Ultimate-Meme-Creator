@@ -9,7 +9,7 @@ function onSearchInput(val) {
             idx.push(i)
         }
     }
-    if (val == '') renderImages()
+    if (val === '') renderImages()
     else getImgsFromSearch(idx)
 }
 

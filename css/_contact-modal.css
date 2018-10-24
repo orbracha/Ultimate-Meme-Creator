@@ -1,0 +1,9 @@
+.contact-modal-title {
+   display: block;
+   /* margin: 0 auto; */
+}
+
+.contact-click {
+    background-color: transparent;
+    border: none;
+}

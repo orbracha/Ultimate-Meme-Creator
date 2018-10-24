@@ -16,3 +16,6 @@ body {
 li {
     list-style: none
 }
+input[placeholder] {
+    text-align: center;
+}

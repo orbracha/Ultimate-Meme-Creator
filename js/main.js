@@ -12,7 +12,6 @@ function init() {
     render()
 }
 
-
 function renderImages(currImg) {
     if (!currImg) { var imgs = getImgs() }
     else var imgs = currImg
@@ -43,45 +42,54 @@ function renderStyleImgs(imgs) {
 }
 
 function render() {
-    renderImages();
-    // renderStyleImgs();
+    renderImages()
+    // renderStyleImgs()
 }
 
 function renderCanvas() {
-    clearCanvas();
-    clearAllInputs();
-    clearCurrMeme();
+    clearCanvas()
+    clearAllInputs()
+    clearCurrMeme()
     $('.canvas-container').show()
-    $('.navbar-collapse').collapse('hide');
+    $('.navbar-collapse').collapse('hide')
     $('.gallery').hide()
     $('footer').show()
-    $('.footer-controls').show();
+    $('.footer-controls').show()
     $('.search-bar').hide()
 }
 
 function uploadImgToCanvas(idx) {
-    renderCanvas();
-    var ctx = getCtx();
-    var canvas = getCanvas();
-    var img = new Image;
-    var currImg = getImgById(idx);
-    img.src = currImg.url;
+    renderCanvas()
+    var ctx = getCtx()
+    var canvas = getCanvas()
+    var img = new Image
+    var currImg = getImgById(idx)
+    img.src = currImg.url
     ctx.drawImage(img, 0, 0, img.width, img.height,     // source rectangle
         0, 0, canvas.width, canvas.height); // destination rectangle
     upgradeBackCanvas(img);
 }
 
-function openImageOnCanvas(idx) {
-    var currImg = gImgs.filter(img => img.id === idx)
-    var img = new Image()
-    img.src = currImg[0].url
-    img.onload = () => gCtx.drawImage(img, 0, 0)
-    renderCanvas()
-    upgradeBackCanvas(img);
-}
+// function openImageOnCanvas(idx) {
+//     var currImg = gImgs.filter(img => img.id === idx)
+//     var img = new Image()
+//     img.src = currImg[0].url
+//     img.onload = () => gCtx.drawImage(img, 0, 0)
+//     renderCanvas()
+//     upgradeBackCanvas(img);
+// }
 
 
 function changeTextColor() {
     var ctx = getCtx()
     // ctx.
+}
+
+
+function toggleContactModal() {
+    $('#myModal').modal('show')
+}
+
+function uploadImage() {
+    
 }
