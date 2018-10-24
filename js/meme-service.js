@@ -12,10 +12,10 @@ var gMeme = {
 
 function createImgs() {
     gImgs = [
-        createImg('img/banana.jpeg', ['happy']),
-        createImg('img/funny-baby.jpg', ['happy']),
-        createImg('img/doll-boy.jpeg', ['happy']),
-        createImg('img/dog-cerrot.jpg', ['happy'])]
+        createImg('img/1.jpg', ['happy']),
+        createImg('img/2.jpg', ['happy']),
+        createImg('img/3.jpg', ['happy']),
+        createImg('img/4.jpg', ['happy'])]
 }
 
 function createImg(url, keywords) {

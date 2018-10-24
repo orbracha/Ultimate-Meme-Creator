@@ -19,7 +19,7 @@
 }
 
 
-.image-item-1{
+/* .image-item-1{
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
@@ -48,7 +48,7 @@
     grid-row-start: 6;
     background: url('../img/funny-baby.jpg') no-repeat center;
     background-size: cover;
-}
+} */
 
 /* 
 .rowOne {
