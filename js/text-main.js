@@ -22,9 +22,6 @@ function rederText() {
         if (meme.isShadow) makeShadow();
         else ctx.shadowColor = "rgba(0, 0, 0, 0)";
         ctx.fillText(meme.txt, meme.align.x, meme.align.y)
-        // ctx.rect(meme.align.x, 20, meme.align.x, meme.align.y);
-        ctx.stroke();
-
     })
 
 }
@@ -91,6 +88,17 @@ function onClickPosition(elBtn) {
 }
 
 function changeCurrTxt(lineId) {
+    // debugger;
+    // rederInputsByLine(lineId);
     var memeLine = getLineById(+lineId);
     document.querySelector('#textInput').value = memeLine.txt;
+    var elColorInput = document.querySelector('#input-color-text');
+    elColorInput.value = memeLine.color;
+    var elTextInput = document.querySelector('#size-font-text');
+    elTextInput.value = memeLine.size;
+    if (memeLine.isBold) $('.border-btn').Text = 'bold-off';
+    else $('.border-btn').Text = 'bold-off';
+    if (memeLine.isShadow) $('.border-btn').Text = 'shadow-off';
+    else $('.border-btn').Text = 'shadow-on';
+
 }

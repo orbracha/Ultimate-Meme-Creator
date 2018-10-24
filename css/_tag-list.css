@@ -1,0 +1,16 @@
+.tags-container {
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+    background-color: yellow;
+    height:60px;
+
+}
+
+.tags-list {
+    display: flex;
+    flex-direction: row;
+    color: purple;
+    outline: 1px green;
+    
+}

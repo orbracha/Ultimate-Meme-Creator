@@ -2,8 +2,6 @@
 var gImgs;
 var gidxImg = 0;
 var gidxLine = 1;
-var gLocationX = 0;
-var gLocationY = 0;
 var gMemeLines;
 
 
@@ -55,8 +53,8 @@ function createMemeLine() {
         isBold: false,
         isShadow: false,
         size: 30,
-        align: { x: gLocationX = 50, y: gLocationY += 100 },
-        color: 'black',
+        align: { x: 50, y: 30 },
+        color: '#000000',
     }
 }
 

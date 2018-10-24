@@ -32,7 +32,7 @@
 @media (min-width: 660px) {
     .main-header {
         display: flex
-                    }
+   }
 
     .navbar-toggler {display: none;}
     .navbar-web-container {
@@ -46,7 +46,7 @@
 .search-bar {    
     display: block;
     border-radius: 40px;
-    margin: 0  auto;
+    margin: 0 auto 5vh  auto;
 }
 .search-bar:focus {
     outline: none;

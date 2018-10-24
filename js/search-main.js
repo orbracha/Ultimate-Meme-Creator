@@ -9,15 +9,22 @@ function onSearchInput(val) {
             idx.push(i)
         }
     }
-    if (val == '') renderImages()
+    if (val === '') renderImages()
     else getImgsFromSearch(idx)
 }
 
 function getImgsFromSearch(idx) {
     var currImg = []
     for (let i = 0; i < idx.length; i++) {
-        currImg.push(gImgs.filter(item => {return item.id === idx[i]}))
+        currImg.push(gImgs.filter(item => { return item.id === idx[i] }))
     }
     var imgArray = currImg.flat()
-    renderImages(imgArray)
+    try {
+        imgArray[0].id
+    }
+    catch (err) {
+        var error = true
+        renderImages()
+    }
+    if (!error) renderImages(imgArray)
 }

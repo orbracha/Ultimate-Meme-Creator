@@ -10,12 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
     <link rel="stylesheet" href="lib/bs4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
+    <title>Ultimate Meme</title>
 
 </head>
 
-<body onload="init()">
+<div class="loading"></div>
 
+<body onload="init()">
     <!-- Header -->
     <header class="main-header">
         <nav class="navbar navbar-light light-blue lighten-4">
@@ -26,16 +27,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="renderCanvas()">CREATE </a>
+                        <a class="nav-link" href="#" onclick="uploadImage()">UPLOAD </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">GALLERY</a>
+                        <a class="nav-link" href="#" onclick="init()">GALLERY</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">GET IN TOUCH</a>
+                        <a class="nav-link" href="#"><button class="contact-click" onclick="toggleContactModal()"> GET
+                                IN TOUCH</button>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -43,7 +46,7 @@
         <!-- Navbar for Desktop -->
         <div class="navbar-web-container">
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="createCanvas()">CREATE </a>
+                <a class="nav-link" href="#" onclick="uploadImage()">UPLOAD </a>
             </li>
 
             <li class="nav-item">
@@ -58,29 +61,32 @@
             </ul>
         </div>
     </header>
-    <div class="search-bar-container"> <input class="search-bar" type="text" placeholder="Search" aria-label="Search"
-            onkeyup="onSearchInput(this.value)"> </div>
+    <div class="search-bar-container">
+        <input class="search-bar" type="text" placeholder="Find Image" aria-label="Search" onkeyup="onSearchInput(this.value)">
+    </div>
 
     <!-- Gallery  -->
-    <nav class="gallery">
-        <section class="images-items grid">
-            <div class="image-item image-item-1 rowOne"></div>
-            <div class="image-item image-item-2 rowOne"></div>
-            <div class="image-item image-item-3 rowTwo"></div>
-            <div class="image-item image-item-4 rowTwo"></div>
-        </section>
-    </nav>
+    <section class="gallery">
+        <ul class="gallery-list">
+        </ul>
+    </section>
 
     <!-- CANVAS CONTAINER  -->
     <div class="canvas-container">
-        <canvas class="canvas" onclick="textClicked(event)">
+        <canvas class="canvas" onmousemove="chooseText(event)" onmousedown="onMouseDown(true)" onmouseup="onMouseDown(false)">
 
         </canvas>
     </div>
 
 
 
+    <!-- Tag Line -->
 
+    <section class="tags-container">
+        <ul class="tags-list">
+
+        </ul>
+    </section>
     <!-- FOOTER -->
     <footer>
         <div class="footer-controls ">
@@ -90,13 +96,17 @@
 
             <!-- Text -->
             <div>
-                <button class="position text-left" onclick="onClickPosition(this)">left </button>
-                <button class="position text-center" onclick="onClickPosition(this)">center</button>
-                <button class="position text-right" onclick="onClickPosition(this)">right</button>
+                <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
+                    <option value="1">line 1</option>
+                    <option value="2">line 2</option>
+                    <option value="3">line 3</option>
+                </select>
+                <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
             </div>
             <div class="all-controls flex">
-                <button onclick="backToMainControls()">Back </button>
-                <button onclick="openTextEditor()" data-toggle="modal" data-target="#editTextModal">Edit text </button>
+                <!-- <button onclick="openTextEditor()" data-toggle="modal" data-target="#editTextModal">Edit text </button> -->
+
+
                 <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30">
                 <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
                 <select class="fonts-types" onchange="onChangeFont(this.value)">
@@ -106,49 +116,70 @@
                     <option value="Verdana">Verdana</option>
                     <option value="serif">serif</option>
                 </select>
-                <button class="border-btn" onclick="onClickBold(this)">bold-on</button>
+                <button class="bold-btn" onclick="onClickBold(this)">bold-on</button>
                 <button class="shadow-btn" onclick="onClickShadow(this)">shadow-on</button>
             </div>
         </div>
         </div>
+
+        <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpeg">
+            Save Meme
+        </a>
     </footer>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="editTextModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Text Editor</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Text</span>
-                        </div>
-                        <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
+
+
+    <!-- Get In Touch Modal -->
+    <section class="get-in-touch">
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">Contact Us</h4>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Choose line</span>
+                    <div class="modal-body">
+
+                        <form role="form" method="post" id="reused_form">
+                            <p>
+                                Suggestions? Complaints? Life observataions?
+                                We want to know EVERYTHING
+                            </p>
+
+                            <div class="form-group">
+                                <label for="name">
+                                    Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" required maxlength="50">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">
+                                    Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" required maxlength="50">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">
+                                    Message:</label>
+                                <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message Here"
+                                    maxlength="600" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Send! →</button>
+                        </form>
+                        <div id="success_message" style="width:100%; height:100%; display:none; ">
+                            <h3>Sent your message successfully!</h3>
                         </div>
-                        <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
-                            <option value="1">Top</option>
-                            <option value="2">Middle</option>
-                            <option value="3">Bottom</option>
-                        </select>
+                        <div id="error_message" style="width:100%; height:100%; display:none; ">
+                            <h3>Error</h3>
+                            Sorry there was an error sending your form.
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <input id="uploadInupt" type="file" name="image" onchange="readImage(files)" style="display: none;" />
+
     <script src="lib/jquery/jquery-3.3.1.min.js"></script>
     <script src="lib/bs4/js/bootstrap.bundle.min.js"></script>
     <script src="js/meme-service.js"></script>
@@ -156,7 +187,6 @@
     <script src="js/text-service.js"></script>
     <script src="js/footer-service.js"></script>
     <script src="js/text-main.js"></script>
-    <script src="js/footer-main.js"></script>
     <script src="js/search-main.js"></script>
     <script src="js/main.js"></script>
 

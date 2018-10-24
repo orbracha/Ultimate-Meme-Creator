@@ -1,8 +1,14 @@
 'use strict'
 var gCanvas = document.querySelector('.canvas');
 var gCtx = gCanvas.getContext('2d');
+var gIsMouseDown = false;
 
-
+function onMouseDown(isDown) {
+    gIsMouseDown = isDown;
+}
+function isMouseDown() {
+    return gIsMouseDown;
+}
 
 function createCanvas() {
     gCtx.canvas.width = 380;
@@ -22,12 +28,13 @@ function clearCanvas() {
 }
 
 function readImage(files) {
+    hideControls()
     if (files && files[0]) {
         var readFile = new FileReader();
         readFile.onload = e => {
             var img = new Image();
             img.addEventListener("load", () => {
-                gCtx.drawImage(img, 0, 0);
+                gCtx.drawImage(img, 0, 0, gCanvas.height, gCanvas.width);
             })
             img.src = e.target.result;
         }
@@ -35,17 +42,14 @@ function readImage(files) {
     }
 }
 
-
-function textClicked(ev) {
-    console.log(ev)
-    var memeLine = gMemeLines.find(function (line) {
-        return (
-            ev.clientX > 0 &&
-            ev.clientX < line.align.x&&
-            ev.clientY > 0 &&
-            ev.clientY < line.align.y 
-        )
-    })
-    console.log(memeLine);
+function getMousePos(evt) {
+    var canvas = getCanvas();
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
 }
+
+
 

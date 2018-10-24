@@ -10,4 +10,6 @@ function clearAllInputs() {
     elColorInputs.value = '#000000';
     var elTextInputs = document.querySelector('#size-font-text');
     elTextInputs.value = 30;
+    $('.border-btn').Text = 'bold-on';
+    $('.shadow-btn').Text = 'shadow-on';
 }
