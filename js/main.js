@@ -9,7 +9,6 @@ function init() {
     clearCurrMeme()
     createMemeLines()
     clearAllInputs();
-    loadingDog()
     hideControls()
     showGallery()
     createCanvas()
@@ -108,9 +107,7 @@ function onTagClick(val) {
 }
 
 function loadingDog() {
-
     $('.loading').fadeTo('slow', 1, () => { $('.loading').hide() })
-
 }
 
 
