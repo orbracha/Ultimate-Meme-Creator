@@ -5,11 +5,7 @@ var gCtx = gCanvas.getContext('2d');
 
 
 function createCanvas() {
-<<<<<<< HEAD
-    gCtx.canvas.width = '400'
-=======
     gCtx.canvas.width = 375
->>>>>>> b089293879a7e79f28ef5c42e0c8cc693e5ef093
     gCtx.canvas.height = gCtx.canvas.width
 }
 
