@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
     <link rel="stylesheet" href="lib/bs4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -17,7 +18,8 @@
     <header class="main-header">
         <nav class="navbar navbar-light light-blue lighten-4">
             <a class="navbar-brand logo" href="#" onclick="init()">ULTIM<span>ATE</span> MEME</a>
-            <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
+            <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="dark-blue-text"><i class="fa fa-bars fa-1x"></i></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
@@ -67,8 +69,8 @@
     <!-- CANVAS CONTAINER  -->
     <div class="editor-container">
         <div class="canvas-container">
-            <canvas class="canvas"> 
-              
+            <canvas class="canvas">
+
             </canvas>
         </div>
     </div>
@@ -102,6 +104,13 @@
                     <button onclick="backToMainControls()">Back </button>
                     <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30">
                     <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
+                    <select class="fonts-types" onchange="onChangeFont(this.value)">
+                        <option value="Arial">Arial</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="serif">serif</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -114,6 +123,7 @@
     <script src="js/canvas-service.js"></script>
     <script src="js/text-service.js"></script>
     <script src="js/footer-service.js"></script>
+    <script src="js/text-main.js"></script>
     <script src="js/footer-main.js"></script>
     <script src="js/main.js"></script>
 

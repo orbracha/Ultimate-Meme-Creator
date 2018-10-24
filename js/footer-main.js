@@ -13,21 +13,6 @@ function backToMainControls() {
     $('.text-container').hide()
 }
 
-function onChangeTextColor(color) {
-    var meme = getCurrMeme();
-    meme.color = color;
-    onTextTop(meme.lineUp);
-    onTextBottom(meme.lineDown);
-
-}
-
-
-function onChangeFontSize(size) {
-    var meme = getCurrMeme();
-    meme.size = size;
-    onTextTop(meme.lineUp);
-    onTextBottom(meme.lineDown);
-}
 
 function getCurrFont() {
     return 'Ariel';
