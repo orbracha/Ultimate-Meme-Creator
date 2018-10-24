@@ -6,26 +6,28 @@ function init() {
     $('.text-container').hide()
     $('.gallery').show()
     $('.search-bar').show()
-    clearCurrMeme();
-    createCanvas();
-    createImgs();
-    render();
+    clearCurrMeme()
+    createCanvas()
+    createImgs()
+    render()
 }
 
 
-function renderImages() {
-    var imgs = getImgs();
-    var strHtmls = imgs.map(function (img) {
+function renderImages(currImg) {
+    if(!currImg) {var imgs = getImgs()}
+    else var imgs = currImg
+    // console.log(currImg)
+        var strHtmls = imgs.map(img => {
         return `<div class="image-item image-item-${img.id}" onclick="uploadImgToCanvas(${img.id})"></div>`;
     })
     $('.gallery section').html(strHtmls.join(''));
+    renderStyleImgs(imgs) 
 }
 
-function renderStyleImgs() {
-    var imgs = getImgs();
+function renderStyleImgs(imgs) {
     let positionGridColumn = 1;
     let positionGridRow = 1;
-    imgs.forEach(function (img, idx) {
+    imgs.forEach((img, idx) => {
         let elImg = document.querySelector(`.image-item-${img.id}`);
         elImg.style.gridColumnStart = positionGridColumn;
         elImg.style.gridColumnEnd = 'span 3';
@@ -43,8 +45,7 @@ function renderStyleImgs() {
 
 function render() {
     renderImages();
-    renderStyleImgs();
-    
+    // renderStyleImgs();
 }
 
 function renderCanvas() {

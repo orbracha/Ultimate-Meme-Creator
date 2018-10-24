@@ -1,6 +1,6 @@
 'use strict'
 var gImgs;
-var gidx = 1;
+var gidx = 0;
 var gMeme = {
     lineUp: '',
     lineDown: '',
@@ -12,10 +12,16 @@ var gMeme = {
 
 function createImgs() {
     gImgs = [
-        createImg('img/1.jpg', ['happy']),
-        createImg('img/2.jpg', ['happy']),
-        createImg('img/3.jpg', ['happy']),
-        createImg('img/4.jpg', ['happy'])]
+        createImg('img/1.jpg', ['dance']),
+        createImg('img/2.jpg', ['trump']),
+        createImg('img/3.jpg', ['dog']),
+        createImg('img/4.jpg', ['baby','dog']),
+        createImg('img/5.jpg', ['baby']),
+        createImg('img/6.jpg', ['cat']),
+        createImg('img/7.jpg', ['hat']),
+        createImg('img/8.jpg', ['baby','fat']),
+        createImg('img/9.jpg', ['walla']),
+    ]
 }
 
 function createImg(url, keywords) {

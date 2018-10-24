@@ -7,8 +7,7 @@ var gCtx = gCanvas.getContext('2d');
 function createCanvas() {
     gCtx.canvas.width = 375
     gCtx.canvas.height = gCtx.canvas.width
-   
-}
+   }
 
 function getCanvas() {
     return gCanvas;
@@ -35,3 +34,4 @@ function readImage(files) {
         readFile.readAsDataURL(files[0]);
     }
 }
+
