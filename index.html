@@ -81,10 +81,16 @@
     <section class="text-container">
         <div>
             <p>Top Text</p>
+            <button class="position text-left" onclick="onClickUpPosition(this)">left </button>
+            <button class="position text-middel" onclick="onClickUpPosition(this)">middel</button>
+            <button class="position text-right" onclick="onClickUpPosition(this)">right</button>
             <input id="textTop" type="text" class="block" placeholder="Top text" onkeyup="onTextTop(this.value)" />
         </div>
         <div>
             <p>Bottom Text</p>
+            <button class="position text-left" onclick="onClickDownPosition(this)">left</button>
+            <button class="position text-middel" onclick="onClickDownPosition(this)">middel</button>
+            <button class="position text-right"onclick="onClickDownPosition(this)" >right</button>
             <input id="textBottom" type="text" class="block" placeholder="Bottom text" onkeyup="onTextBottom(this.value)" />
         </div>
     </section>
@@ -111,6 +117,8 @@
                         <option value="Verdana">Verdana</option>
                         <option value="serif">serif</option>
                     </select>
+                    <button class="border-btn" onclick="onClickBorder(this)">border-on</button>
+                    <button class="shadow-btn" onclick="onClickShadow(this)">shadow-on</button>
                 </div>
             </div>
         </div>
