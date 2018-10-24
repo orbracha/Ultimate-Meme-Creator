@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quantico&effect=canvas-print" rel="stylesheet">
     <link rel="stylesheet" href="lib/bs4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <title>Ultimate Meme</title>
@@ -20,9 +20,8 @@
     <!-- Header -->
     <header class="main-header">
         <nav class="navbar navbar-light light-blue lighten-4">
-            <a class="navbar-brand logo" href="#" onclick="init()">ULTIM<span>ATE</span> MEME</a>
-            <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
-                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
+            <a class="navbar-brand logo font-effect-canvas-print" href="#" onclick="init()">ULTIM<span>ATE</span> MEME</a>
+            <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="dark-blue-text"><i class="fa fa-bars fa-1x"></i></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
@@ -80,18 +79,19 @@
 
 
 
-    <!-- Tag Line -->
 
+    <!-- FOOTER -->
+    <!-- Tag Line -->
     <section class="tags-container">
         <ul class="tags-list">
-
         </ul>
     </section>
-    <!-- FOOTER -->
+
+
     <footer>
         <div class="footer-controls ">
             <div class="main-footer-controls">
-                <!-- <input type="file" accept="image/*" id="UploadImage" class="normal-button" onchange="readImage(event.target.files)" /> -->
+
             </div>
 
             <!-- Text -->
@@ -122,11 +122,12 @@
         </div>
         </div>
 
-        <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpeg">
-            Save Meme
-        </a>
     </footer>
 
+    <!-- SAVE MEME
+<a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpeg">
+    Save Meme
+</a> -->
 
 
 
@@ -143,8 +144,7 @@
 
                         <form role="form" method="post" id="reused_form">
                             <p>
-                                Suggestions? Complaints? Life observataions?
-                                We want to know EVERYTHING
+                                Suggestions? Complaints? Life observataions? We want to know EVERYTHING
                             </p>
 
                             <div class="form-group">
@@ -160,8 +160,7 @@
                             <div class="form-group">
                                 <label for="name">
                                     Message:</label>
-                                <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message Here"
-                                    maxlength="600" rows="4"></textarea>
+                                <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message Here" maxlength="600" rows="4"></textarea>
                             </div>
                             <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Send! →</button>
                         </form>

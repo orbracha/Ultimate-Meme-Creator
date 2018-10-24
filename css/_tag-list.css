@@ -1,16 +1,31 @@
-.tags-container {
-    overflow: scroll;
-    display: flex;
-    flex-direction: row;
-    background-color: yellow;
-    height:60px;
-
-}
-
-.tags-list {
-    display: flex;
-    flex-direction: row;
-    color: purple;
-    outline: 1px green;
-    
-}
+      .tags-container {
+          overflow: scroll;
+          display: flex;
+          flex-direction: row;
+          background-image: linear-gradient(260deg, #2376ae 0%, #78a7a0 100%);
+          height: 60px;
+      }
+      
+      .tags-list {
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+          color: whitesmoke;
+          outline: 1px green;
+      }
+      
+      .tags-list li:hover {
+          color: #e9b2cc;
+      }
+      
+      @media (min-width: 680px) {
+          .tags-container {
+              overflow: hidden;
+              display: block;
+              /* position: absolute; */
+          }
+          .tags-list {
+              display: flex;
+              justify-content: center
+          }
+      }

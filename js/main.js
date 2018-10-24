@@ -3,7 +3,7 @@
 function init() {
     $('.footer-controls').hide()
     $('.canvas-container').hide()
-    // $('.text-container').hide()
+        // $('.text-container').hide()
     $('.gallery').show()
     $('.search-bar').show()
     clearCurrMeme()
@@ -19,8 +19,7 @@ function init() {
 }
 
 function renderImages(currImg) {
-    if (!currImg) { var imgs = getImgs() }
-    else var imgs = currImg
+    if (!currImg) { var imgs = getImgs() } else var imgs = currImg
     var strHtmls = imgs.map(img => {
         return `<li class="hex">
                     <div class="image-container">      
@@ -65,7 +64,7 @@ function uploadImgToCanvas(id) {
     var img = new Image
     var currImg = getImgById(id)
     img.src = currImg.url
-    ctx.drawImage(img, 0, 0, img.width, img.height,     // source rectangle
+    ctx.drawImage(img, 0, 0, img.width, img.height, // source rectangle
         0, 0, canvas.width, canvas.height); // destination rectangle
     saveCurrImg(id)
 }
@@ -88,7 +87,7 @@ function downloadImg(elLink) {
 
 function renderTags() {
     var idx = 0;
-    var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Sky', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }]
+    var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Tough', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }]
     var strHtmls = tags.map(tag => {
         return `
         <li onclick="onTagClick('${tag.key}')"
@@ -120,7 +119,7 @@ function chooseText(ev) {
     if (isMouseDown()) {
         var muousePos = getMousePos(ev)
         var ctx = getCtx();
-        var memeLine = gMemeLines.find(function (line) {
+        var memeLine = gMemeLines.find(function(line) {
             var textWidth = ctx.measureText(line.txt).width;
             return (
                 muousePos.x > textWidth &&

@@ -1,5 +1,4 @@
-
-  .gallery-list {
+.gallery-list {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
@@ -8,96 +7,92 @@
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
     list-style-type: none;
-  }
-  
-  .hex {
+}
+
+.hex {
     position: relative;
-    visibility:hidden;
-    outline:1px solid transparent; 
-  }
-  .hex::after{
-    content:'';
-    display:block;
-    padding-bottom: 90%;  
-  }
-  .image-container{
+    visibility: hidden;
+    outline: 1px solid transparent;
+}
+
+.hex::after {
+    content: '';
+    display: block;
+    padding-bottom: 90%;
+}
+
+.image-container {
     position: absolute;
-    width:96%;
-    padding-bottom: 110%; 
-    margin:0 2%;
+    width: 96%;
+    padding-bottom: 110%;
+    margin: 0 2%;
     overflow: hidden;
     visibility: hidden;
-    outline:1px solid transparent; 
- 
-  }
-  .image-container * {
+}
+
+.image-container * {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     position: absolute;
     visibility: visible;
-    outline:1px solid transparent;
-  }
+}
 
-  
-  .image-item {
+.image-item {
+    cursor: pointer;
     left: -100%;
     right: -100%;
     width: auto;
     height: 100%;
     margin: 0 auto;
-   
-  }
-  
-  @media (min-width:1201px) { /* <- 5-4  hexagons per row */
-    .gallery-list{
-      padding-bottom: 4.4%
+}
+
+.image-item:hover {
+    border: solid 100px transparent;
+}
+
+@media (min-width:1201px) {
+    .gallery-list {
+        padding-bottom: 5%
     }
     .hex {
-      width: 20%; /* = 100 / 5 */
+        width: 20%;
     }
-    .hex:nth-child(9n+6){ /* first hexagon of even rows */
-      margin-left:10%;  /* = width of .hex / 2  to indent even rows */
+    .hex:nth-child(9n+6) {
+        margin-left: 10%;
     }
-  }
-  
-  @media (max-width: 1200px) and (min-width:901px) { /* <- 4-3  hexagons per row */
-    .gallery-list{
-      padding-bottom: 5.5%
-    }
-    .hex {
-      width: 25%; /* = 100 / 4 */
-    }
-    .hex:nth-child(7n+5){ /* first hexagon of even rows */
-      margin-left:12.5%;  /* = width of .hex / 2  to indent even rows */
-    }
-  }
-  
-  @media (max-width: 900px) and (min-width:601px) { /* <- 3-2  hexagons per row */
-    .gallery-list{
-      padding-bottom: 7.4%
+}
+
+@media (max-width: 1200px) and (min-width:901px) {
+    .gallery-list {
+        padding-bottom: 5.5%
     }
     .hex {
-      width: 33.333%; /* = 100 / 3 */
+        width: 25%;
     }
-    .hex:nth-child(5n+4){ /* first hexagon of even rows */
-      margin-left:16.666%;  /* = width of .hex / 2  to indent even rows */
+    .hex:nth-child(7n+5) {
+        margin-left: 10%;
     }
-  }
-  
-  @media (max-width: 600px) { /* <- 2-1  hexagons per row */
-    .gallery-list{
-      padding-bottom: 11.2%
+}
+
+@media (max-width: 900px) and (min-width:601px) {
+    .gallery-list {
+        padding-bottom: 7.4%
     }
     .hex {
-      width: 50%; /* = 100 / 3 */
+        width: 33.333%;
     }
-    .hex:nth-child(3n+3){ /* first hexagon of even rows */
-      margin-left:25%;  /* = width of .hex / 2  to indent even rows */
+    .hex:nth-child(5n+4) {
+        margin-left: 12%;
     }
-  }
-  
-  @media (max-width: 400px) {
-      .gallery-list {
-          font-size: 13px;
-      }
-  }
-  
+}
+
+@media (max-width: 600px) {
+    .gallery-list {
+        padding-bottom: 11.2%
+    }
+    .hex {
+        width: 40%;
+    }
+    .hex:nth-child(3n+3) {
+        margin-left: 25%;
+    }
+}
