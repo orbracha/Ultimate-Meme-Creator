@@ -1,7 +1,7 @@
 'use strict'
 
 function init() {
-    $('.all-controls').hide()
+    $('.footer-controls').hide()
     $('.canvas-container').hide()
     $('.text-container').hide()
     $('.gallery').show()
