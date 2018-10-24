@@ -26,17 +26,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="uploadImage()">CREATE </a>
+                        <a class="nav-link" href="#" onclick="uploadImage()">UPLOAD </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">GALLERY</a>
+                        <a class="nav-link" href="#" onclick="init()">GALLERY</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><button class="contact-click" onclick="toggleContactModal()"> GET
-                                IN TOUCH</button></a>
+                                IN TOUCH</button>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +45,7 @@
         <!-- Navbar for Desktop -->
         <div class="navbar-web-container">
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="createCanvas()">CREATE </a>
+                <a class="nav-link" href="#" onclick="uploadImage()">UPLOAD </a>
             </li>
 
             <li class="nav-item">
@@ -132,6 +133,9 @@
                 </div>
             </div>
         </div>
+        <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpg">
+            Save Meme
+        </a>
     </footer>
 
 
@@ -184,6 +188,8 @@
             </div>
         </div>
     </section>
+
+    <input id="uploadInupt" type="file" name="image" onchange="readImage(files)" style="display: none;" />
 
     <script src="lib/jquery/jquery-3.3.1.min.js"></script>
     <script src="lib/bs4/js/bootstrap.bundle.min.js"></script>

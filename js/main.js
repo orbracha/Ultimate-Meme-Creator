@@ -1,11 +1,8 @@
 'use strict'
 
 function init() {
-    $('.footer-controls').hide()
-    $('.canvas-container').hide()
-    $('.text-container').hide()
-    $('.gallery').show()
-    $('.search-bar').show()
+    hideControls()
+    showGallery()
     clearCurrMeme()
     createCanvas()
     createImgs()
@@ -43,20 +40,13 @@ function renderStyleImgs(imgs) {
 
 function render() {
     renderImages()
-    // renderStyleImgs()
 }
 
 function renderCanvas() {
     clearCanvas()
     clearAllInputs()
     clearCurrMeme()
-    $('.all-controls').hide()   
-    $('.canvas-container').show()
-    $('.navbar-collapse').collapse('hide')
-    $('.gallery').hide()
-    $('footer').show()
-    $('.footer-controls').show()
-    $('.search-bar').hide()
+    hideControls()
 }
 
 function uploadImgToCanvas(idx) {
@@ -71,16 +61,6 @@ function uploadImgToCanvas(idx) {
     upgradeBackCanvas(img);
 }
 
-// function openImageOnCanvas(idx) {
-//     var currImg = gImgs.filter(img => img.id === idx)
-//     var img = new Image()
-//     img.src = currImg[0].url
-//     img.onload = () => gCtx.drawImage(img, 0, 0)
-//     renderCanvas()
-//     upgradeBackCanvas(img);
-// }
-
-
 function changeTextColor() {
     var ctx = getCtx()
     // ctx.
@@ -89,8 +69,10 @@ function changeTextColor() {
 
 function toggleContactModal() {
     $('#myModal').modal('show')
+    $('.navbar-collapse').collapse('hide')
 }
 
 function uploadImage() {
-    
+    $('#uploadInupt').trigger("click")
+
 }

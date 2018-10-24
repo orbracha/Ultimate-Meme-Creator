@@ -21,13 +21,13 @@ function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
 }
 
-function readImage(files) {
+function readImage(files) {hideControls()
     if (files && files[0]) {
         var readFile = new FileReader();
         readFile.onload = e => {
             var img = new Image();
             img.addEventListener("load", () => {
-                gCtx.drawImage(img, 0, 0);
+                gCtx.drawImage(img, 0, 0, gCanvas.height, gCanvas.width);
             })
             img.src = e.target.result;
         }
@@ -35,3 +35,21 @@ function readImage(files) {
     }
 }
 
+
+function hideControls() {
+    $('.all-controls').hide()
+    $('.canvas-container').show()
+    $('.navbar-collapse').collapse('hide')
+    $('.gallery').hide()
+    $('footer').show()
+    $('.footer-controls').show()
+    $('.search-bar').hide()
+}
+
+function showGallery() {
+    $('.footer-controls').hide()
+    $('.canvas-container').hide()
+    $('.text-container').hide()
+    $('.gallery').show()
+    $('.search-bar').show()
+}
