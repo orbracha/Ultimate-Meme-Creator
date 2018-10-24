@@ -86,8 +86,8 @@ function onClickBorder(elBorder) {
         elBorder.innerText = 'border-off';
         isBold(true);
     }
-    onTextTop(meme.lineUp);
-    onTextBottom(meme.lineDown);
+    onTextTop(meme.lineUp.txt);
+    onTextBottom(meme.lineDown.txt);
 }
 
 
@@ -103,8 +103,8 @@ function onClickShadow(elShadow) {
         elShadow.innerText = 'shadow-off';
         isShadow(true);
     }
-    onTextTop(meme.lineUp);
-    onTextBottom(meme.lineDown);
+    onTextTop(meme.lineUp.txt);
+    onTextBottom(meme.lineDown.txt);
 }
 
 function makeShadow() {
