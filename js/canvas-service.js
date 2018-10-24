@@ -5,8 +5,8 @@ var gCtx = gCanvas.getContext('2d');
 
 
 function createCanvas() {
-    gCtx.canvas.width = 375
-    gCtx.canvas.height = gCtx.canvas.width
+    gCtx.canvas.width = 380;
+    gCtx.canvas.height = gCtx.canvas.width;
 }
 
 function getCanvas() {
@@ -33,5 +33,19 @@ function readImage(files) {
         }
         readFile.readAsDataURL(files[0]);
     }
+}
+
+
+function textClicked(ev) {
+    console.log(ev)
+    var memeLine = gMemeLines.find(function (line) {
+        return (
+            ev.clientX > 0 &&
+            ev.clientX < line.align.x&&
+            ev.clientY > 0 &&
+            ev.clientY < line.align.y 
+        )
+    })
+    console.log(memeLine);
 }
 

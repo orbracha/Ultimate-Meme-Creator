@@ -73,29 +73,12 @@
 
     <!-- CANVAS CONTAINER  -->
     <div class="canvas-container">
-        <canvas class="canvas">
+        <canvas class="canvas" onclick="textClicked(event)">
 
         </canvas>
     </div>
 
-    <!-- Text -->
-    <section class="text-container">
-        <div>
-            <p>Top Text</p>
-            <button class="position text-left" onclick="onClickUpPosition(this)">left </button>
-            <button class="position text-middel" onclick="onClickUpPosition(this)">middel</button>
-            <button class="position text-right" onclick="onClickUpPosition(this)">right</button>
-            <input id="textTop" type="text" class="block" placeholder="Top text" onkeyup="onTextTop(this.value)" />
-        </div>
-        <div>
-            <p>Bottom Text</p>
-            <button class="position text-left" onclick="onClickDownPosition(this)">left</button>
-            <button class="position text-middel" onclick="onClickDownPosition(this)">middel</button>
-            <button class="position text-right"onclick="onClickDownPosition(this)" >right</button>
-            <input id="textBottom" type="text" class="block" placeholder="Bottom text" onkeyup="onTextBottom(this.value)" />
-        </div>
-    </section>
-    </div>
+
 
 
     <!-- FOOTER -->
@@ -103,29 +86,69 @@
         <div class="footer-controls ">
             <div class="main-footer-controls">
                 <!-- <input type="file" accept="image/*" id="UploadImage" class="normal-button" onchange="readImage(event.target.files)" /> -->
-                <button onclick="openTextEditor()">Text</button>
-                <button>Background</button>
             </div>
-            <div class="all-controls">
-                <div class="main-text-controls">
-                    <button onclick="backToMainControls()">Back </button>
-                    <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30">
-                    <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
-                    <select class="fonts-types" onchange="onChangeFont(this.value)">
-                        <option value="Arial">Arial</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="serif">serif</option>
-                    </select>
-                    <button class="border-btn" onclick="onClickBorder(this)">border-on</button>
-                    <button class="shadow-btn" onclick="onClickShadow(this)">shadow-on</button>
-                </div>
+
+            <!-- Text -->
+            <div>
+                <button class="position text-left" onclick="onClickPosition(this)">left </button>
+                <button class="position text-center" onclick="onClickPosition(this)">center</button>
+                <button class="position text-right" onclick="onClickPosition(this)">right</button>
             </div>
+            <div class="all-controls flex">
+                <button onclick="backToMainControls()">Back </button>
+                <button onclick="openTextEditor()" data-toggle="modal" data-target="#editTextModal">Edit text </button>
+                <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30">
+                <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
+                <select class="fonts-types" onchange="onChangeFont(this.value)">
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="serif">serif</option>
+                </select>
+                <button class="border-btn" onclick="onClickBold(this)">bold-on</button>
+                <button class="shadow-btn" onclick="onClickShadow(this)">shadow-on</button>
+            </div>
+        </div>
         </div>
     </footer>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="editTextModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Text Editor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Text</span>
+                        </div>
+                        <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Choose line</span>
+                        </div>
+                        <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
+                            <option value="1">Top</option>
+                            <option value="2">Middle</option>
+                            <option value="3">Bottom</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="lib/jquery/jquery-3.3.1.min.js"></script>
     <script src="lib/bs4/js/bootstrap.bundle.min.js"></script>
     <script src="js/meme-service.js"></script>

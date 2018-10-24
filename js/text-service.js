@@ -3,52 +3,45 @@
 
 
 
-function isBold(boldBool) {
-    var meme = getCurrMeme()
-    meme.isBold = boldBool;
+
+
+function getLineById(lineId) {
+    return gMemeLines.find(meme => {
+        return meme.lineId === lineId;
+    })
 }
 
-function isShadow(shadowBool) {
-    var meme = getCurrMeme();
-    meme.isShadow = shadowBool;
+function changeTxtLine(txt, lineId) {
+    var currMeme = getLineById(lineId)
+    currMeme.txt = txt;
 }
 
-function changeTxtLine(txt, line) {
-    var meme = getCurrMeme();
-    if (line === 'up') meme.lineUp.txt = txt;
-    else meme.lineDown.txt = txt;
+function changeFontTxt(font, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.font = font;
 }
 
-function changeFontTxt(font) {
-    var meme = getCurrMeme();
-    meme.font = font;
+function changeSizeTxt(size, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.size = size;
+}
+function changeColorTxt(color, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.color = color;
 }
 
-function changeSizeTxt(size) {
-    var meme = getCurrMeme();
-    meme.size = size;
+function setPositionLine(position, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.position = position;
 }
 
-function setPositionLineUp(position) {
-    var meme = getCurrMeme();
-    meme.lineUp.position = position;
-}
-function setPositionLineDown(position) {
-    var meme = getCurrMeme();
-    meme.lineDown.position = position;
+function isBold(boldBool, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.isBold = boldBool;
 }
 
-function getUpPostion(position) {
-    var meme = getCurrMeme();
-    meme.lineUp.position = position;
-    if (position === 'left') return [50, 100];
-    if (position === 'middel') return [150, 100];
-    if (position === 'right') return [250, 100];
+function isShadow(shadowBool, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.isShadow = shadowBool;
 }
-function getDownPostion(position) {
-    var meme = getCurrMeme();
-    meme.lineDown.position = position;
-    if (position === 'left') return [50, 300];
-    if (position === 'middel') return [150, 300];
-    if (position === 'right') return [250, 300];
-}
+

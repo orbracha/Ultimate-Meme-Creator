@@ -6,9 +6,11 @@ function init() {
     $('.text-container').hide()
     $('.gallery').show()
     $('.search-bar').show()
-    clearCurrMeme()
+    clearCurrMeme() 
+    createMemeLines()
     createCanvas()
     createImgs()
+    clearAllInputs();
     render()
 }
 
@@ -49,8 +51,6 @@ function render() {
 
 function renderCanvas() {
     clearCanvas();
-    clearAllInputs();
-    clearCurrMeme();
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide');
     $('.gallery').hide()
@@ -59,29 +59,14 @@ function renderCanvas() {
     $('.search-bar').hide()
 }
 
-function uploadImgToCanvas(idx) {
+function uploadImgToCanvas(id) {
     renderCanvas();
     var ctx = getCtx();
     var canvas = getCanvas();
     var img = new Image;
-    var currImg = getImgById(idx);
+    var currImg = getImgById(id);
     img.src = currImg.url;
     ctx.drawImage(img, 0, 0, img.width, img.height,     // source rectangle
         0, 0, canvas.width, canvas.height); // destination rectangle
-    upgradeBackCanvas(img);
-}
-
-function openImageOnCanvas(idx) {
-    var currImg = gImgs.filter(img => img.id === idx)
-    var img = new Image()
-    img.src = currImg[0].url
-    img.onload = () => gCtx.drawImage(img, 0, 0)
-    renderCanvas()
-    upgradeBackCanvas(img);
-}
-
-
-function changeTextColor() {
-    var ctx = getCtx()
-    // ctx.
+    saveCurrImg(id);
 }

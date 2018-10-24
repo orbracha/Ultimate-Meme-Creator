@@ -2,109 +2,78 @@
 
 
 
-function onTextTop(txt) {
-    var currMeme = getCurrMeme();
-    var ctx = getCtx();
-    var canvas = getCanvas();
-    var x, y;
-    //change txt up
-    changeTxtLine(txt, 'up');
-    //bold
-    if (currMeme.isBold) ctx.font = `bold ${currMeme.size}px ${currMeme.font}`
-    else ctx.font = `${currMeme.size}px ${currMeme.font}`
-    //color
-    ctx.fillStyle = currMeme.color;
-    //clear img or empty
-    if (!currMeme.img) ctx.clearRect(0, 0, gCanvas.width, gCanvas.height / 2);
-    else ctx.drawImage(currMeme.img, 0, 0, currMeme.img.width, currMeme.img.height,     // source rectangle
-        0, 0, canvas.width, canvas.height); // destination rectangle
-    //shdow
-    if (currMeme.isShadow) makeShadow();
-    [x, y] = getUpPostion(currMeme.lineUp.position);
-    ctx.fillText(txt, x, y)
-    [x, y] = getDownPostion(currMeme.lineDown.position);
-    ctx.fillText(currMeme.lineDown.txt, x, y)
-
+function onTextChange(txt) {
+    changeTxtLine(txt, getNumLineEdit());
+    rederText();
 }
 
 
-function onTextBottom(txt) {
+function rederText() {
+    var memeLines = getCurrMemeLines();
     var ctx = getCtx();
-    var canvas = getCanvas();
-    var currMeme = getCurrMeme();
-    var x, y;
-    //change txt down
-    changeTxtLine(txt, 'down');
-    //bold
-    if (currMeme.isBold) ctx.font = `bold ${currMeme.size}px ${currMeme.font}`
-    else ctx.font = `${currMeme.size}px ${currMeme.font}`
-    //color
-    ctx.fillStyle = currMeme.color;
-    //clear img or empty
-    if (!currMeme.img) ctx.clearRect(0, gCanvas.height / 2, gCanvas.width, gCanvas.height);
-    else ctx.drawImage(currMeme.img, 0, 0, currMeme.img.width, currMeme.img.height,     // source rectangle
-        0, 0, canvas.width, canvas.height); // destination rectangle
-    //shdow
-    if (currMeme.isShadow) makeShadow();
-    [x, y] = getDownPostion(currMeme.lineDown.position);
-    ctx.fillText(txt, x, y)
-    [x, y] = getUpPostion(currMeme.lineUp.position);
-    ctx.fillText(currMeme.lineUp.txt, x, y)
+    uploadImgToCanvas(memeLines.imgId);
+    memeLines.forEach(meme => {
+        //bold
+        if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
+        else ctx.font = `${meme.size}px ${meme.font}`
+        //color
+        ctx.fillStyle = meme.color;
+        //shadow
+        if (meme.isShadow) makeShadow();
+        else ctx.shadowColor = "rgba(0, 0, 0, 0)";
+        ctx.fillText(meme.txt, meme.align.x, meme.align.y)
+        // ctx.rect(meme.align.x, 20, meme.align.x, meme.align.y);
+        ctx.stroke();
+
+    })
+
 }
 
 
 function onChangeFont(font) {
-    var meme = getCurrMeme();
-    changeFontTxt(font)
-    onTextTop(meme.lineUp.txt);
-    onTextBottom(meme.lineDown.txt);
+    changeFontTxt(font, getNumLineEdit())
+    rederText()
 }
 
 function onChangeTextColor(color) {
-    var meme = getCurrMeme();
-    meme.color = color;
-    onTextTop(meme.lineUp.txt);
-    onTextBottom(meme.lineDown.txt);
+    changeColorTxt(color, getNumLineEdit())
+    rederText()
 }
 
+function getNumLineEdit() {
+    var elLine = document.querySelector('#edit-line-list');
+    return +elLine.value;
+}
 
 function onChangeFontSize(size) {
-    var meme = getCurrMeme();
-    changeSizeTxt(size);
-    onTextTop(meme.lineUp.txt);
-    onTextBottom(meme.lineDown.txt);
+    changeSizeTxt(size, getNumLineEdit())
+    rederText()
 }
 
 
-function onClickBorder(elBorder) {
-    var meme = getCurrMeme();
-    if (elBorder.innerText === 'border-off') {
-        elBorder.innerText = 'border-on';
-        isBold(false);
+function onClickBold(elBold) {
+    if (elBold.innerText === 'bold-off') {
+        elBold.innerText = 'bold-on';
+        isBold(false, getNumLineEdit());
     }
     else {
-        elBorder.innerText = 'border-off';
-        isBold(true);
+        elBold.innerText = 'bold-off';
+        isBold(true, getNumLineEdit());
     }
-    onTextTop(meme.lineUp.txt);
-    onTextBottom(meme.lineDown.txt);
+    rederText()
 }
 
 
 function onClickShadow(elShadow) {
-    var meme = getCurrMeme();
-    var ctx = getCtx();
     if (elShadow.innerText === 'shadow-off') {
         elShadow.innerText = 'shadow-on';
-        isShadow(false);
-        ctx.shadowColor = "rgba(0, 0, 0, 0)";
+        isShadow(false, getNumLineEdit());
     }
     else {
         elShadow.innerText = 'shadow-off';
-        isShadow(true);
+        isShadow(true, getNumLineEdit());
     }
-    onTextTop(meme.lineUp.txt);
-    onTextBottom(meme.lineDown.txt);
+    rederText()
 }
 
 function makeShadow() {
@@ -116,18 +85,12 @@ function makeShadow() {
 }
 
 
-function onClickUpPosition(elBtn) {
-    var meme = getCurrMeme();
-    setPositionLineUp(elBtn.innerText);
-    onTextTop(meme.lineUp.txt);
-}
-function onClickDownPosition(elBtn) {
-    var meme = getCurrMeme();
-    setPositionLineDown(elBtn.innerText);
-    onTextBottom(meme.lineDown.txt);
+function onClickPosition(elBtn) {
+    setPositionLine(elBtn.innerText, getNumLineEdit());
+    render();
 }
 
-function onClickDownPosition(elBtn) {
-    setPositionLineDown(elBtn.innerText);
+function changeCurrTxt(lineId) {
+    var memeLine = getLineById(+lineId);
+    document.querySelector('#textInput').value = memeLine.txt;
 }
-
