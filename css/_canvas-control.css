@@ -1,12 +1,11 @@
-.editor-container {
-    min-height: calc(100vh - 126px);
-    display: flex;
-    justify-content: center;
-    background-color: gray
-}
+
 
 .canvas-container {
-    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 1vh;
+    background-color: gainsboro;
 }
 
 .text-container {

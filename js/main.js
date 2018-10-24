@@ -5,6 +5,7 @@ function init() {
     $('.canvas-container').hide()
     $('.text-container').hide()
     $('.gallery').show()
+    $('.search-bar').show()
     clearCurrMeme();
     createCanvas();
     createImgs();
@@ -43,6 +44,7 @@ function renderStyleImgs() {
 function render() {
     renderImages();
     renderStyleImgs();
+    
 }
 
 function renderCanvas() {
@@ -54,6 +56,7 @@ function renderCanvas() {
     $('.gallery').hide()
     $('footer').show()
     $('.footer-controls').show();
+    $('.search-bar').hide()
 }
 
 function uploadImgToCanvas(idx) {
