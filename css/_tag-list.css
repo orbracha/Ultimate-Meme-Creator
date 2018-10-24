@@ -1,5 +1,5 @@
 .tags-container {
-    
+    overflow: scroll;
     display: flex;
     flex-direction: row;
     background-color: yellow;
@@ -10,10 +10,7 @@
 .tags-list {
     display: flex;
     flex-direction: row;
-    font-size: 25px;
     color: purple;
     outline: 1px green;
-    justify-content: space-between;
-    align-content: space-between;
-    overflow: scroll;
+    
 }

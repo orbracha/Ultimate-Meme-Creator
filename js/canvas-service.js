@@ -37,6 +37,7 @@ function readImage(files) {hideControls()
 
 
 function hideControls() {
+    $('.tags-container').hide()
     $('.all-controls').hide()
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide')
@@ -47,6 +48,7 @@ function hideControls() {
 }
 
 function showGallery() {
+    $('.tags-container').show()
     $('.footer-controls').hide()
     $('.canvas-container').hide()
     $('.text-container').hide()
