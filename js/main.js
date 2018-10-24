@@ -25,13 +25,13 @@ function renderStyleImgs(imgs) {
     imgs.forEach((img, idx) => {
         let elImg = document.querySelector(`.image-item-${img.id}`);
         elImg.style.gridColumnStart = positionGridColumn;
-        elImg.style.gridColumnEnd = 'span 3';
+        elImg.style.gridColumnEnd = 'span 4';
         elImg.style.gridRowStart = positionGridRow;
-        elImg.style.gridRowEnd = 'span 3'
-        positionGridColumn += 3
-        if (idx % 2) {
-            positionGridRow += 4;
-            positionGridColumn = 3;
+        elImg.style.gridRowEnd = 'span 4'
+        positionGridColumn += 4
+        if ((idx % 2)) {
+            positionGridRow += 4    ;
+            positionGridColumn = 1;
         }
         elImg.style.background = `url(${img.url}) no-repeat center`;
         elImg.style.backgroundSize = `cover`;
@@ -75,4 +75,9 @@ function toggleContactModal() {
 function uploadImage() {
     $('#uploadInupt').trigger("click")
 
+}
+
+function downloadImg(elLink) {
+    var imgContent = canvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
 }
