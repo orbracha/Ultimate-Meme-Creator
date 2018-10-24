@@ -8,17 +8,17 @@ function onSearchInput(val) {
         if (img[i] === 0) {
             idx.push(i)
         }
-
     }
     if (val == '') renderImages()
     else getImgsFromSearch(idx)
 }
 
 function getImgsFromSearch(idx) {
-    var currImg=[]
-    for (let i = 0; i < idx.length; i++) {
-        currImg = gImgs.filter(id => { return id.id === idx[i] })
-    }
 
-    renderImages(currImg)
+    var currImg = []
+    for (let i = 0; i < idx.length; i++) {
+        currImg.push(gImgs.filter(id => { return id.id === idx[i] }))
+    }
+    var imgArray = currImg.flat()
+    renderImages(imgArray)
 }
