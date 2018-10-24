@@ -4,7 +4,6 @@ function init() {
     $('.all-controls').hide()
     $('.canvas-container').hide()
     $('.text-container').hide()
-    $('footer').show();
     $('.gallery').show()
     clearCurrMeme();
     createCanvas();
@@ -54,15 +53,11 @@ function renderCanvas() {
     $('.navbar-collapse').collapse('hide');
     $('.gallery').hide()
     $('footer').show()
+    $('.footer-controls').show();
 }
 
 function uploadImgToCanvas(idx) {
-    // renderCanvas();
-    clearCanvas();
-    $('.canvas-container').show()
-    $('.navbar-collapse').collapse('hide');
-    $('.gallery').hide()
-    $('footer').show()
+    renderCanvas();
     var ctx = getCtx();
     var canvas = getCanvas();
     var img = new Image;
