@@ -14,14 +14,13 @@ function init() {
 
 
 function renderImages(currImg) {
-    if(!currImg) {var imgs = getImgs()}
+    if (!currImg) { var imgs = getImgs() }
     else var imgs = currImg
-    // console.log(currImg)
-        var strHtmls = imgs.map(img => {
+    var strHtmls = imgs.map(img => {
         return `<div class="image-item image-item-${img.id}" onclick="uploadImgToCanvas(${img.id})"></div>`;
     })
     $('.gallery section').html(strHtmls.join(''));
-    renderStyleImgs(imgs) 
+    renderStyleImgs(imgs)
 }
 
 function renderStyleImgs(imgs) {
