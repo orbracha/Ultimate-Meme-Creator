@@ -7,7 +7,7 @@ var gCtx = gCanvas.getContext('2d');
 function createCanvas() {
     gCtx.canvas.width = 375
     gCtx.canvas.height = gCtx.canvas.width
-   }
+}
 
 function getCanvas() {
     return gCanvas;
@@ -24,9 +24,9 @@ function clearCanvas() {
 function readImage(files) {
     if (files && files[0]) {
         var readFile = new FileReader();
-        readFile.onload = function(e) {
+        readFile.onload = e => {
             var img = new Image();
-            img.addEventListener("load", function() {
+            img.addEventListener("load", () => {
                 gCtx.drawImage(img, 0, 0);
             })
             img.src = e.target.result;

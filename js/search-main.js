@@ -14,10 +14,9 @@ function onSearchInput(val) {
 }
 
 function getImgsFromSearch(idx) {
-
     var currImg = []
     for (let i = 0; i < idx.length; i++) {
-        currImg.push(gImgs.filter(id => { return id.id === idx[i] }))
+        currImg.push(gImgs.filter(item => {return item.id === idx[i]}))
     }
     var imgArray = currImg.flat()
     renderImages(imgArray)
