@@ -50,6 +50,7 @@ function renderCanvas() {
     clearCanvas()
     clearAllInputs()
     clearCurrMeme()
+    $('.all-controls').hide()   
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide')
     $('.gallery').hide()
