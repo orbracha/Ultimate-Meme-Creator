@@ -6,6 +6,7 @@ function init() {
     clearCurrMeme()
     createCanvas()
     createImgs()
+    renderTags()
     render()
 }
 
@@ -24,15 +25,15 @@ function renderStyleImgs(imgs) {
     let positionGridRow = 1;
     imgs.forEach((img, idx) => {
         let elImg = document.querySelector(`.image-item-${img.id}`);
-        elImg.style.gridColumnStart = positionGridColumn;
-        elImg.style.gridColumnEnd = 'span 4';
-        elImg.style.gridRowStart = positionGridRow;
-        elImg.style.gridRowEnd = 'span 4'
-        positionGridColumn += 4
-        if ((idx % 2)) {
-            positionGridRow += 4    ;
-            positionGridColumn = 1;
-        }
+        // elImg.style.gridColumnStart = positionGridColumn;
+        // elImg.style.gridColumnEnd = 'span 1';
+        // elImg.style.gridRowStart = positionGridRow;
+        // elImg.style.gridRowEnd = 'span 2'
+        // positionGridColumn += 4
+        // if ((idx % 2)) {
+        //     positionGridRow += 4;
+        //     positionGridColumn = 2;
+        // }
         elImg.style.background = `url(${img.url}) no-repeat center`;
         elImg.style.backgroundSize = `cover`;
     })
@@ -80,4 +81,26 @@ function uploadImage() {
 function downloadImg(elLink) {
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent
+}
+
+function renderTags() {
+    var idx = 0;
+    var tags = [{ key: 'Trump', id:idx++ }, { key: 'Dog', id:idx++ }, { key: 'Baby', id:idx++ }, { key: 'Cat', id:idx++ }, { key: 'Monkey', id:idx++ }, { key: 'Salt', id:idx++ }, { key: 'Java', id:idx++ }, { key: 'Dance', id:idx++ }, { key: 'Music', id:idx++ }, { key: 'Sky', id:idx++ }, { key: 'Code', id:idx++ }, { key: 'Nope', id:idx++ }]
+    var strHtmls = tags.map(tag => {
+        return `
+        <li onclick="onTagClick('${tag.key}')" 
+                    style="font-size:${randomTextSize()}px;">  ${tag.key}  
+                </li>
+        `
+    })
+        $('.tags-list').html(strHtmls.join(''))
+}
+
+function randomTextSize() {
+    return Math.floor(Math.random() * (35 - 15 + 1)) + 15;
+}
+
+function onTagClick(val) {
+var tag = val.toLowerCase()
+onSearchInput(tag)    
 }
