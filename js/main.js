@@ -1,7 +1,7 @@
 'use strict'
 
 function init() {
-    $('.about-us').hide()
+        $('.about-section').hide()
     $('.footer-controls').hide()
     $('.canvas-container').hide()
     // $('.text-container').hide()
@@ -182,6 +182,7 @@ function aboutPage() {
     $('.tags-container').hide()
     $('.navbar-collapse').collapse('hide')
     $('.about-us').show()
+    $('.about-section').show()
 }
 
 
