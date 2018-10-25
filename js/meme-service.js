@@ -104,8 +104,6 @@ function getImgById(idx) {
 
 function saveCurrImg(id) {
     gMemeLines.imgId = id;
-    showMainControls()
-
 }
 
 

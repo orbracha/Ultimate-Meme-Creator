@@ -1,6 +1,7 @@
 'use strict'
 
 function init() {
+    setFooter('false')
     clearMemeLines()
     createMemeLines()
     clearAllInputs();
@@ -18,8 +19,8 @@ function loadingDog() {
 }
 
 function hideControls() {
-    $('.tags-container').hide()
     $('footer').show()
+    $('.tags-container').hide()
     $('.footer-controls').show()
     $('.all-controls').hide()
     $('.canvas-container').show()
@@ -64,11 +65,12 @@ function toggleContactModal() {
 
 //////////////////////////////////Images//////////////////////////////////////////////////
 function renderImages(currImg) {
+    var isTrue = true
     if (!currImg) { var imgs = getImgs() } else var imgs = currImg
     var strHtmls = imgs.map(img => {
         return `<li class='hex'>
                     <div class='image-container'>      
-                        <div class='image-item image-item-${img.id}' onclick='uploadImgToCanvas(${img.id})'>
+                        <div class='image-item image-item-${img.id}' onclick='uploadImgToCanvas(${img.id})' onmouseup='setFooter(${isTrue})'>
                         </div>
                     </div>
                 </li>`
@@ -111,10 +113,11 @@ function downloadImg(elLink) {
 }
 
 function showGallery() {
+    $('footer').hide()
+    $('.footer-controls').hide()
     $('.about-section').hide()
     $('.navbar-collapse').collapse('hide')
     $('.tags-container').show()
-    $('.footer-controls').hide()
     $('.all-controls').hide()
     $('.canvas-container').hide()
     $('.text-container').hide()
@@ -124,19 +127,30 @@ function showGallery() {
 /////////////////////////////////////Canvas//////////////////////////////////////////////////
 
 function renderCanvas() {
-    clearCanvas();
-    $('.canvas-container').show()
     hideRenderCanvas()
+    clearCanvas();
 }
 
 function hideRenderCanvas() {
     $('.tags-container').hide()
-    $('footer').show()
-    $('.footer-controls').show()
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide')
     $('.gallery').hide()
     $('.search-bar').hide()
+}
+
+function setFooter(val) {
+    isFooterOn(val)
+}
+
+function isFooterOn(isGallery) {
+    if (isGallery) {
+        console.log(isGallery);
+        $('footer').show()
+        $('.footer-controls').show()
+        $('.main-footer-nav').show()
+    } else showGallery()
+
 }
 
 /////////////////////////////////////search////////////////////////////////////////////////
