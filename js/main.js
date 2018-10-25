@@ -230,9 +230,9 @@ function setLanguage(lang) {
 
 function showMainControls() {
     $('.main-footer-nav').show()
-    $('.all-controls').hide()
-    
-    
+    // $('.all-controls').hide()
+
+
 }
 function showTextAdd() {
     $('.all-controls').show()
