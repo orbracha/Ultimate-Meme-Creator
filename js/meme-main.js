@@ -176,11 +176,13 @@ function onSearchInput(val, key) {
 }
 ////////////////////////////////////////Text/////////////////////////////////////
 
+
+
 function createNewInput(width, height) {
     var canvas = getCanvas();
     var elContainer = document.querySelector('.container-input-text')
-    $('.container-input-text').append(`<span id='line-${getNumLineEdit()}' type='text' 
-    onclick='onTextChose(this,event)'></span>`);
+    $('.container-input-text').append(`<span id="line-${getNumLineEdit()}" type="text" 
+    onclick="onTextChose(this,event)" ontouchstart="dragElementByFinger(this,event)" ></span>`);
     elContainer.style.width = canvas.width;
     elContainer.style.height = canvas.height;
     var elChoseInput = document.querySelector(`#line-${getNumLineEdit()}`)
@@ -190,19 +192,21 @@ function createNewInput(width, height) {
     elChoseInput.style.top = height * 2 + 'px';
 }
 
-
-function dragElement(elInputTxt, ev) {
+function dragElementByMouse(elInputTxt, ev) {
     var lineId = (elInputTxt.id.split('-'))[1];
     var memeLine = getLineById(getNumLineEdit(lineId))
     var currPositionX = 0, currPositionY = 0, prevPositionX = 0, prevPositionY = 0;
     elInputTxt.onmousedown = dragMouseDown;
     function dragMouseDown(e) {
+        console.log(e)
         e = e || window.event;
         e.preventDefault();
         // get the mouse cursor position at startup:
+        //mouse
         prevPositionX = e.clientX;
         prevPositionY = e.clientY;
         document.onmouseup = closeDragElement;
+
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
@@ -211,6 +215,7 @@ function dragElement(elInputTxt, ev) {
         e = e || window.event;
         e.preventDefault();
         // calculate the new cursor position:
+        //mouse
         currPositionX = prevPositionX - e.clientX;
         currPositionY = prevPositionY - e.clientY;
         prevPositionX = e.clientX;
@@ -222,16 +227,62 @@ function dragElement(elInputTxt, ev) {
         memeLine.align.x = elInputTxt.offsetLeft;
         rederText();
     }
-
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
     }
+
+}
+
+
+function dragElementByFinger(elInputTxt, ev) {
+    var lineId = (elInputTxt.id.split('-'))[1];
+    var memeLine = getLineById(getNumLineEdit(lineId))
+    var currPositionX = 0, currPositionY = 0, prevPositionX = 0, prevPositionY = 0;
+    elInputTxt.ontouchmove = dragMouseDown(ev);
+    function dragMouseDown(e) {
+        console.log(e)
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        prevPositionX = e.targetTouches[0].clientX;
+        prevPositionY = e.targetTouches[0].clientY;
+        document.touchend = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.touchmove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        debugger
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        //touch
+        currPositionX = prevPositionX - e.targetTouches[0].clientX;
+        currPositionY = prevPositionY - e.targetTouches[0].clientY;
+        prevPositionX = e.targetTouches[0].clientX;
+        prevPositionY = e.targetTouches[0].clientY;
+        // set the element's new position:
+        elInputTxt.style.top = (elInputTxt.offsetTop - currPositionY) + "px";
+        elInputTxt.style.left = (elInputTxt.offsetLeft - currPositionX) + "px";
+        memeLine.align.y = elInputTxt.offsetTop - memeLine.size / 2;
+        memeLine.align.x = elInputTxt.offsetLeft;
+        rederText();
+    }
+
+
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+        document.touchend = null;
+        document.touchmove = null;
+    }
 }
 
 function onTextChose(elText, ev) {
-    console.log(elText)
-    dragElement(elText, ev);
+
+    // debugger
+    dragElementByMouse(elText, ev);
     var lineId = (elText.id.split('-'))[1];
     changeCurrTxt(lineId);
 
@@ -273,11 +324,6 @@ function onTextChange(txt) {
     if (textWidth + memeLine.size < 320) {
         changeTxtLine(txt, getNumLineEdit());
         createNewInput(textWidth + memeLine.size - 10, 30);
-
-        // // var inputText = document.getElementById(`line-${getNumLineEdit()}`)
-        // // inputText.value = txt;
-        // memeLine.align.x = memeLine.size;
-        // memeLine.align.y = parseInt(inputText.style.height);
     }
     rederText();
 }
@@ -428,3 +474,6 @@ function onAddLineText() {
     clearAllInputs();
     document.querySelector('#edit-line-list').value = memeLines.length;
 }
+
+
+
