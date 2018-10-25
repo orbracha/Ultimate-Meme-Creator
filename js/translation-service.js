@@ -72,6 +72,30 @@ var gTrans = {
         en: `Suggestions? Complaints? Life observataions? We want to know EVERYTHING`,
         he: `הצעות? תלונות? הבחנות מעניינות על החיים? אנחנו רוצים לדעת ה-כ-ל`,
     },
+    addtext: {
+        en: `Add Text`,
+        he: `הוסף טקסט`,
+    },
+    textcolor: {
+        en: `Text Color`,
+        he: `שנה צבע`,
+    },
+    save: {
+        en: `Save and Publish`,
+        he: `שמור ופרסם`,
+    },
+    back: {
+        en: `Back`,
+        he: `אחורה`,
+    },
+    textoutline: {
+        en: `Outline Color`,
+        he: `צבע היקף`,
+    },
+    download: {
+        en: `Download`,
+        he: `הורד `,
+    },
 }
 
 function doTrans() {

@@ -41,7 +41,7 @@ function render() {
 function renderCanvas() {
     clearCanvas();
     $('.canvas-container').show()
-    hideControls()
+    hideRenderCanvas()
 }
 
 
@@ -82,8 +82,8 @@ function renderTags(val, enter) {
 
     var strHtmls = tags.map(tag => {
         return `
-        <li onclick='onTagClick('${tag.key}')'
-        style='font-size:${randomTextSize()}px;'>  ${tag.key}
+        <li onclick="onTagClick('${tag.key}')"
+        style="font-size:${randomTextSize()}px;">  ${tag.key}
         </li>
         `
     })
@@ -179,6 +179,15 @@ function onTextChose(elText, ev) {
 }
 
 
+function hideRenderCanvas() {
+    $('.tags-container').hide()
+    $('footer').show()
+    $('.footer-controls').show()
+    $('.canvas-container').show()
+    $('.navbar-collapse').collapse('hide')
+    $('.gallery').hide()
+    $('.search-bar').hide()
+}
 function hideControls() {
     $('.tags-container').hide()
     $('footer').show()
@@ -237,7 +246,7 @@ function setLanguage(lang) {
 
 function showMainControls() {
     $('.main-footer-nav').show()
-    // $('.all-controls').hide()
+    $('.all-controls').hide()
 
 
 }
