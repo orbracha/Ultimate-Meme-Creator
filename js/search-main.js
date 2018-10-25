@@ -1,30 +1,10 @@
-function onSearchInput(val) {
-    var idx = []
-    var img = gImgs.map((el) => {
-        var imgString = el.keywords.toString()
-        return imgString.indexOf((val))
+
+function onSearchInput(val, key) {
+    var enter = key.key
+    var img = gImgs.filter((el) => {
+        return el.keywords[0].includes(val)
     })
-    for (let i = 0; i < gImgs.length; i++) {
-        if (img[i] === 0) {
-            idx.push(i)
-        }
-    }
-    if (val === '') renderImages()
-    else getImgsFromSearch(idx)
+    renderImages(img)
+    renderTags(val, enter)
 }
 
-function getImgsFromSearch(idx) {
-    var currImg = []
-    for (let i = 0; i < idx.length; i++) {
-        currImg.push(gImgs.filter(item => { return item.id === idx[i] }))
-    }
-    var imgArray = currImg.flat()
-    try {
-        imgArray[0].id
-    }
-    catch (err) {
-        var error = true
-        renderImages()
-    }
-    if (!error) renderImages(imgArray)
-}

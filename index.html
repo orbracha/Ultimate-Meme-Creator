@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#" onclick="init()">GALLERY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
+                        <a class="nav-link" href="#" onclick="aboutPage()">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><button class="contact-click" onclick="toggleContactModal()"> GET
@@ -52,19 +52,19 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">GALLERY</a>
+                <a class="nav-link" href="#" onclick="init()">GALLERY</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">ABOUT</a>
+                <a class="nav-link" href="#" onclick="aboutPage()">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">GET IN TOUCH</a>
+                <a class="nav-link" href="#"><button class="contact-click" onclick="toggleContactModal()">GET IN TOUCH</a>
             </li>
             </ul>
         </div>
     </header>
     <div class="search-bar-container">
-        <input class="search-bar" type="text" placeholder="Find Image" aria-label="Search" onkeyup="onSearchInput(this.value)">
+        <input class="search-bar" type="text" placeholder="Find Image" aria-label="Search" onkeyup="onSearchInput(this.value,event)">
     </div>
 
     <!-- Gallery  -->
@@ -81,7 +81,23 @@
     </div>
 
 
-
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-item">
+                <div class="box">
+                        <div class="inner">
+                          <span>ULTIMATE MEME CREATOR</span>
+                        </div>
+                        <div class="inner">
+                          <span>ULTIMATE MEME CREATOR</span>
+                        </div>
+                      </div>
+            <h1 class="about-title">What Is is this?</h1>
+            <p class="about-text">It's a meme app to create Meme. </p>
+            <h3 class="about-text">What is a 'Meme'? </h3>
+            <p class="about-text">A milenial way of comunicating emotions </p>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <!-- Tag Line -->
