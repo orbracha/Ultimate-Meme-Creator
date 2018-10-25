@@ -16,7 +16,23 @@ function createImgs() {
         createImg('img/6.jpg', ['cat']),
         createImg('img/7.jpg', ['hat']),
         createImg('img/8.jpg', ['baby', 'fat']),
-        createImg('img/9.jpg', ['walla']),
+        createImg('img/9.jpg', ['salt']),
+        createImg('img/10.jpg', ['dance']),
+        createImg('img/11.jpg', ['code']),
+        createImg('img/12.jpg', ['nope']),
+        createImg('img/13.jpg', ['salt']),
+        createImg('img/14.jpg', ['monkey']),
+        createImg('img/15.jpg', ['nope']),
+        createImg('img/16.jpg', ['java']),
+        createImg('img/17.jpg', ['dog']),
+        createImg('img/18.jpg', ['tough']),
+        createImg('img/19.jpg', ['dog']),
+        createImg('img/20.jpg', ['baby']),
+        createImg('img/21.jpg', ['monkey']),
+        createImg('img/22.jpg', ['music']),
+        createImg('img/23.jpg', ['nope']),
+        createImg('img/24.jpg', ['dog']),
+        createImg('img/25.jpg', ['nope']),
     ]
 }
 
@@ -34,14 +50,14 @@ function getImgs() {
 
 
 function getImgById(idx) {
-    var img = gImgs.find(function (img) {
+    var img = gImgs.find(function(img) {
         return img.id === idx;
     });
     return img;
 }
 
 function createMemeLines() {
-    gMemeLines = [createMemeLine(), createMemeLine(), createMemeLine()];
+    gMemeLines = [createMemeLine()];
 }
 
 
@@ -52,7 +68,7 @@ function createMemeLine() {
         font: 'Ariel',
         isBold: false,
         isShadow: false,
-        size: 30,
+        size: 20,
         align: { x: 50, y: 30 },
         color: '#000000',
     }

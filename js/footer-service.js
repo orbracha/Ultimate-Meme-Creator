@@ -9,7 +9,7 @@ function clearAllInputs() {
     var elColorInputs = document.querySelector('#input-color-text');
     elColorInputs.value = '#000000';
     var elTextInputs = document.querySelector('#size-font-text');
-    elTextInputs.value = 30;
-    $('.border-btn').Text = 'bold-on';
-    $('.shadow-btn').Text = 'shadow-on';
+    elTextInputs.value = 20;
+    document.querySelector('.bold-btn').innerText = 'bold-on';
+    document.querySelector('.shadow-btn').innerText = 'shadow-on';
 }

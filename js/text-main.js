@@ -42,11 +42,6 @@ function getNumLineEdit() {
     return +elLine.value;
 }
 
-function onChangeFontSize(size) {
-    changeSizeTxt(size, getNumLineEdit())
-    rederText()
-}
-
 
 function onClickBold(elBold) {
     if (elBold.innerText === 'bold-off') {
@@ -88,17 +83,50 @@ function onClickPosition(elBtn) {
 }
 
 function changeCurrTxt(lineId) {
-    // debugger;
-    // rederInputsByLine(lineId);
     var memeLine = getLineById(+lineId);
-    document.querySelector('#textInput').value = memeLine.txt;
     var elColorInput = document.querySelector('#input-color-text');
-    elColorInput.value = memeLine.color;
-    var elTextInput = document.querySelector('#size-font-text');
-    elTextInput.value = memeLine.size;
-    if (memeLine.isBold) $('.border-btn').Text = 'bold-off';
-    else $('.border-btn').Text = 'bold-off';
-    if (memeLine.isShadow) $('.border-btn').Text = 'shadow-off';
-    else $('.border-btn').Text = 'shadow-on';
+    var elTextInput = document.querySelector('#textInput')
+    var elSizeInput = document.querySelector('#size-font-text');
+    var elBoldBtn = document.querySelector('.bold-btn')
+    var elShadowBtn = document.querySelector('.shadow-btn')
 
+    elTextInput.value = memeLine.txt;
+    elColorInput.value = memeLine.color;
+    elSizeInput.innerText = memeLine.size;
+    if (memeLine.isBold) elBoldBtn.innerText = 'bold-off';
+    else elBoldBtn.innerText = 'bold-on';
+    if (memeLine.isShadow) elShadowBtn.innerText = 'shadow-off';
+    else elShadowBtn.innerText = 'shadow-on';
+}
+
+
+function onDeceaseText() {
+    var elFontSize = document.getElementById('size-font-text');
+    var memeLine = getLineById(getNumLineEdit());
+    var fontSize = +elFontSize.innerText;
+    if (fontSize < 40) elFontSize.innerText = fontSize + 1;
+    memeLine.size = fontSize;
+    rederText();
+}
+
+function onInceaseText() {
+    var elFontSize = document.getElementById('size-font-text');
+    var memeLine = getLineById(getNumLineEdit());
+    var fontSize = +elFontSize.innerText;
+    if (fontSize > 10) elFontSize.innerText = fontSize - 1;
+    memeLine.size = fontSize;
+    rederText();
+}
+
+
+function onAddLineText() {
+    var memeLines = getCurrMemeLines();
+    memeLines.push(createMemeLine());
+    var elLine = document.querySelector('#edit-line-list');
+    var strHtmls = memeLines.map(line => {
+        return `<option value="${line.lineId}">line ${line.lineId}</option>`
+    })
+    elLine.innerHTML = strHtmls.join('');
+    clearAllInputs();
+    document.querySelector('#edit-line-list').value = memeLines.length;
 }

@@ -8,19 +8,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quantico&effect=canvas-print" rel="stylesheet">
     <link rel="stylesheet" href="lib/bs4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="img/LOGO_DOG.png">
     <title>Ultimate Meme</title>
 
 </head>
 
 <div class="loading"></div>
 
-<body onload="init()">
+<body onload="init(), loadingDog()">
     <!-- Header -->
     <header class="main-header">
         <nav class="navbar navbar-light light-blue lighten-4">
-            <a class="navbar-brand logo" href="#" onclick="init()">ULTIM<span>ATE</span> MEME</a>
+            <a class="navbar-brand logo font-effect-canvas-print" href="#" onclick="init()">ULTIM<span>ATE</span> MEME</a>
             <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
                 aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="dark-blue-text"><i class="fa fa-bars fa-1x"></i></span></button>
@@ -80,38 +82,35 @@
 
 
 
-    <!-- Tag Line -->
 
+    <!-- FOOTER -->
+    <!-- Tag Line -->
     <section class="tags-container">
         <ul class="tags-list">
-
         </ul>
     </section>
-    <!-- FOOTER -->
+
+
     <footer>
         <div class="footer-controls ">
             <div class="main-footer-controls">
-                <!-- <input type="file" accept="image/*" id="UploadImage" class="normal-button" onchange="readImage(event.target.files)" /> -->
+
             </div>
 
             <!-- Text -->
             <div>
                 <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
                     <option value="1">line 1</option>
-                    <option value="2">line 2</option>
-                    <option value="3">line 3</option>
+                    <!-- <option value="2">line 2</option> -->
                 </select>
                 <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
+                <button class="add-line-btn" onclick="onAddLineText()">Add Line</button>
             </div>
             <div class="all-controls flex">
-                <!-- <button onclick="openTextEditor()" data-toggle="modal" data-target="#editTextModal">Edit text </button> -->
-
-
-                <!-- <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30"> -->
                 <div class="font-size-container">
-                    <button class="font-size-btn plus">	🗛</button>
-                    <span id="size-font-text" onchange="onChangeFontSize(this.value)">20</span>
-                    <button class="font-size-btn minous">🗚</button>
+                    <button class="font-size-btn minous" onclick="onDeceaseText()"> 🗚</button>
+                    <span id="size-font-text">20</span>
+                    <button class="font-size-btn plus" onclick="onInceaseText()">🗛</button>
                 </div>
                 <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
                 <select class="fonts-types" onchange="onChangeFont(this.value)">
@@ -127,11 +126,12 @@
         </div>
         </div>
 
-        <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpeg">
-            Save Meme
-        </a>
     </footer>
 
+    <!-- SAVE MEME
+<a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpeg">
+    Save Meme
+</a> -->
 
 
 
@@ -148,8 +148,7 @@
 
                         <form role="form" method="post" id="reused_form">
                             <p>
-                                Suggestions? Complaints? Life observataions?
-                                We want to know EVERYTHING
+                                Suggestions? Complaints? Life observataions? We want to know EVERYTHING
                             </p>
 
                             <div class="form-group">
