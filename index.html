@@ -117,16 +117,17 @@
             <div>
                 <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
                     <option value="1">line 1</option>
-                    <option value="2">line 2</option>
-                    <option value="3">line 3</option>
+                    <!-- <option value="2">line 2</option> -->
                 </select>
                 <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
+                <button class="add-line-btn" onclick="onAddLineText()">Add Line</button>
             </div>
             <div class="all-controls flex">
-                <!-- <button onclick="openTextEditor()" data-toggle="modal" data-target="#editTextModal">Edit text </button> -->
-
-
-                <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30">
+                <div class="font-size-container">
+                    <button class="font-size-btn minous" onclick="onDeceaseText()"> 🗚</button>
+                    <span id="size-font-text">20</span>
+                    <button class="font-size-btn plus" onclick="onInceaseText()">🗛</button>
+                </div>
                 <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
                 <select class="fonts-types" onchange="onChangeFont(this.value)">
                     <option value="Arial">Arial</option>

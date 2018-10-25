@@ -82,6 +82,7 @@ function uploadImage() {
 }
 
 function downloadImg(elLink) {
+    var canvas = getCanvas();
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent
 }

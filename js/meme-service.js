@@ -57,7 +57,7 @@ function getImgById(idx) {
 }
 
 function createMemeLines() {
-    gMemeLines = [createMemeLine(), createMemeLine(), createMemeLine()];
+    gMemeLines = [createMemeLine()];
 }
 
 
@@ -68,7 +68,7 @@ function createMemeLine() {
         font: 'Ariel',
         isBold: false,
         isShadow: false,
-        size: 30,
+        size: 20,
         align: { x: 50, y: 30 },
         color: '#000000',
     }
