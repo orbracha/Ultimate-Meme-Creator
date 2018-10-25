@@ -125,15 +125,15 @@
     <footer class="footer">
         <div class="footer-controls">
             <div class="main-footer-nav">
-                <button class="footer-controls-button" onclick="showTextAdd()">Add Text</button>
-                <button class="footer-controls-button" onclick="showTextColor()">Text Color</button>
-                <button class="footer-controls-button" onclick="showSocialMedia()">Save and Publish</button>
+                <button class="footer-controls-button" onclick="showTextAdd()" data-trans="addtext"></button>
+                <button class="footer-controls-button" onclick="showTextColor()"data-trans="textcolor"></button>
+                <button class="footer-controls-button" onclick="showSocialMedia()" data-trans="save"></button>
             </div>
             <!-- Text Manipulation Containers -->
             <div class="all-controls">
                 <!-- Text -->
                 <div class="text-line-edit">
-                    <button class="footer-controls-button" onclick="showMainControls()">Back</button>
+                    <button class="footer-controls-button" onclick="showMainControls()" data-trans="back"></button>
                     <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
                         <option value="1">line 1</option>
                     </select>
@@ -156,13 +156,13 @@
                 </div>
                 <!-- Text Color Select -->
                 <div class="font-color-container">
-                    <button class="footer-controls-button" onclick="showMainControls()">Back</button>
-                    <p>Text Color:</p>
+                    <button class="footer-controls-button" onclick="showMainControls()" data-trans="back"></button>
+                    <p data-trans="textcolor"></p>
                     <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
                     
                     <!-- Text Stroke and Bold -->
                     <!-- <div class="outline-container"> -->
-                        <p>Outline Color:</p>
+                        <p data-trans="textoutline"></p>
                         <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
                     <!-- </div> -->
                     <div class="stroke-btns">
@@ -172,10 +172,10 @@
                     </div>
                 </div>
                 <div class="social-media-container">
-                    <button class="footer-controls-button" onclick="showMainControls()">Back</button>
+                    <button class="footer-controls-button" onclick="showMainControls()" data-trans="back"></button>
                     <!-- SAVE MEME -->
-                    <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpg">
-                        Download</a>
+                    <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpg" data-trans="download">
+                        </a>
                     <!-- Share To Facebook -->
                     <div class="publish-form-container"></div>
                 </div>
