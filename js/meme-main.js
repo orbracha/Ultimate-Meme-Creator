@@ -150,7 +150,6 @@ function isFooterOn(isGallery) {
         $('.footer-controls').show()
         $('.main-footer-nav').show()
     } else showGallery()
-
 }
 
 /////////////////////////////////////search////////////////////////////////////////////////
