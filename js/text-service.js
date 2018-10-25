@@ -25,9 +25,14 @@ function changeSizeTxt(size, lineId) {
     var currLine = getLineById(lineId)
     currLine.size = size;
 }
-function changeColorTxt(color, lineId) {
+function changeColorTxt(colorTxt, lineId) {
     var currLine = getLineById(lineId)
-    currLine.color = color;
+    currLine.color = colorTxt;
+}
+
+function changeColorStroke(colorStroke, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.stroke.color = colorStroke;
 }
 
 function setPositionLine(position, lineId) {
@@ -43,5 +48,9 @@ function isBold(boldBool, lineId) {
 function isShadow(shadowBool, lineId) {
     var currLine = getLineById(lineId)
     currLine.isShadow = shadowBool;
+}
+function isStroke(strokeBool, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.stroke.isStroke = strokeBool;
 }
 

@@ -21,6 +21,13 @@ function rederText() {
         //shadow
         if (meme.isShadow) makeShadow();
         else ctx.shadowColor = "rgba(0, 0, 0, 0)";
+        // debugger
+        if (meme.stroke.isStroke) {
+            ctx.strokeStyle = meme.stroke.color;
+            ctx.lineWidth = 5;
+            ctx.strokeText(meme.txt, meme.align.x, meme.align.y);
+        }
+        ctx.lineWidth = 1;
         ctx.fillText(meme.txt, meme.align.x, meme.align.y)
     })
 
@@ -32,9 +39,16 @@ function onChangeFont(font) {
     rederText()
 }
 
-function onChangeTextColor(color) {
-    changeColorTxt(color, getNumLineEdit())
+function onChangeTextColor(colorTxt) {
+    changeColorTxt(colorTxt, getNumLineEdit())
     rederText()
+}
+
+
+function onChangeStrokeColor(colorStroke){
+    changeColorStroke(colorStroke, getNumLineEdit())
+    rederText()
+    
 }
 
 function getNumLineEdit() {
@@ -44,12 +58,12 @@ function getNumLineEdit() {
 
 
 function onClickBold(elBold) {
-    if (elBold.innerText === 'bold-off') {
-        elBold.innerText = 'bold-on';
+    if (elBold.innerText === 'B') {
+        elBold.innerText = '𝐁';
         isBold(false, getNumLineEdit());
     }
     else {
-        elBold.innerText = 'bold-off';
+        elBold.innerText = 'B';
         isBold(true, getNumLineEdit());
     }
     rederText()
@@ -57,13 +71,25 @@ function onClickBold(elBold) {
 
 
 function onClickShadow(elShadow) {
-    if (elShadow.innerText === 'shadow-off') {
-        elShadow.innerText = 'shadow-on';
+    if (elShadow.innerText === '□') {
+        elShadow.innerText = '❏';
         isShadow(false, getNumLineEdit());
     }
     else {
-        elShadow.innerText = 'shadow-off';
+        elShadow.innerText = '□';
         isShadow(true, getNumLineEdit());
+    }
+    rederText()
+}
+
+function onClickStroke(elStroke) {
+    if (elStroke.innerText === 's') {
+        elStroke.innerText = 'S';
+        isStroke(false, getNumLineEdit());
+    }
+    else {
+        elStroke.innerText = 's';
+        isStroke(true, getNumLineEdit());
     }
     rederText()
 }
@@ -95,8 +121,8 @@ function changeCurrTxt(lineId) {
     elSizeInput.innerText = memeLine.size;
     if (memeLine.isBold) elBoldBtn.innerText = 'bold-off';
     else elBoldBtn.innerText = 'bold-on';
-    if (memeLine.isShadow) elShadowBtn.innerText = 'shadow-off';
-    else elShadowBtn.innerText = 'shadow-on';
+    if (memeLine.isShadow) elShadowBtn.innerText = '❏';
+    else elShadowBtn.innerText = '□';
 }
 
 
@@ -104,7 +130,7 @@ function onDeceaseText() {
     var elFontSize = document.getElementById('size-font-text');
     var memeLine = getLineById(getNumLineEdit());
     var fontSize = +elFontSize.innerText;
-    if (fontSize < 40) elFontSize.innerText = fontSize + 1;
+    if (fontSize < 60) elFontSize.innerText = fontSize + 1;
     memeLine.size = fontSize;
     rederText();
 }
