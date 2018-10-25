@@ -85,7 +85,7 @@ function doTrans() {
         } else {
             el.innerText = txt;
         }
-    }
+    }$('.navbar-collapse').collapse('hide')
 }
 
 function getTrans(transKey) {

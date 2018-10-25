@@ -89,9 +89,9 @@
     <!-- CANVAS CONTAINER  -->
     <div class="canvas-container">
         <div class="container-input-text">
-        <canvas class="canvas" onclick="onAddTextCanvas(event)">
-        </canvas>
-    </div>
+            <canvas class="canvas" onclick="onAddTextCanvas(event)">
+            </canvas>
+        </div>
 
 
     </div>
@@ -115,60 +115,78 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+
     <!-- Tag Line -->
     <section class="tags-container">
         <ul class="tags-list">
         </ul>
     </section>
-
-
-    <footer>
-        <div class="footer-controls ">
-            <div class="main-footer-controls">
-
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-controls">
+            <div class="main-footer-nav">
+                <button class="footer-controls-button" onclick="showTextAdd()">Add Text</button>
+                <button class="footer-controls-button" onclick="showTextColor()">Text Color</button>
+                <button class="footer-controls-button" onclick="showSocialMedia()">Save and Publish</button>
             </div>
-
-            <!-- Text -->
-            <div>
-                <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
-                    <option value="1">line 1</option>
-                    <!-- <option value="2">line 2</option> -->
-                </select>
-                <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
-                <button class="add-line-btn" onclick="onAddLineText()" data-trans="add-line">Add Line</button>
-            </div>
-            <div class="all-controls flex">
-                <div class="font-size-container">
-                    <button class="font-size-btn minous" onclick="onDeceaseText()"> 🗚</button>
+            <!-- Text Manipulation Containers -->
+            <div class="all-controls">
+                <!-- Text -->
+                <div class="text-line-edit">
+                    <button class="footer-controls-button" onclick="showMainControls()">Back</button>
+                    <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
+                        <option value="1">line 1</option>
+                    </select>
+                    <!-- Text SIze Select -->
+                    <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
+                    <button class="add-line-btn" onclick="onAddLineText()" data-trans="add-line">Add Line</button>
+                    <button type="button" class="font-size-btn minous btn btn-secondary" onclick="onDeceaseText()"> 🗚</button>
                     <span id="size-font-text">40</span>
-                    <button class="font-size-btn plus" onclick="onInceaseText()">🗛</button>
+                    <button type="button" class="font-size-btn plus btn btn-secondary" onclick="onInceaseText()">🗛</button>
+                    <!-- Change Font -->
+
+                    <select class="fonts-types" onchange="onChangeFont(this.value)">
+                        <option value="Arial">Arial</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="serif">serif</option>
+                    </select>
+
                 </div>
-                <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
-                <select class="fonts-types" onchange="onChangeFont(this.value)">
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Courier New">Courier New</option>
-                    <option value="Verdana">Verdana</option>
-                    <option value="serif">serif</option>
-                </select>
-                <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
-                <button class="stroke-btn" onclick="onClickStroke(this)">S</button>
-                <button class="bold-btn" onclick="onClickBold(this)">B</button>
-                <button class="shadow-btn" onclick="onClickShadow(this)">❏</button>
+                <!-- Text Color Select -->
+                <div class="font-color-container">
+                    <button class="footer-controls-button" onclick="showMainControls()">Back</button>
+                    <p>Text Color:</p>
+                    <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
+                    
+                    <!-- Text Stroke and Bold -->
+                    <!-- <div class="outline-container"> -->
+                        <p>Outline Color:</p>
+                        <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
+                    <!-- </div> -->
+                    <div class="stroke-btns">
+                        <button class="stroke-btn" onclick="onClickStroke(this)">S</button>
+                        <button class="bold-btn" onclick="onClickBold(this)">B</button>
+                        <button class="shadow-btn" onclick="onClickShadow(this)">❏</button>
+                    </div>
+                </div>
+                <div class="social-media-container">
+                    <button class="footer-controls-button" onclick="showMainControls()">Back</button>
+                    <!-- SAVE MEME -->
+                    <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpg">
+                        Download</a>
+                    <!-- Share To Facebook -->
+                    <div class="publish-form-container"></div>
+                </div>
             </div>
+
+
         </div>
         </div>
 
     </footer>
 
-    <!-- SAVE MEME -->
-    <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpg">
-        Save Meme
-    </a>
-
-    <!-- Share To Facebook -->
-    <div class="publish-form-container"></div>
 
 
     <!-- Get In Touch Modal -->
@@ -184,26 +202,27 @@
 
                         <form role="form" method="post" id="reused_form">
                             <p data-trans="suggestions">
-                                
+
                             </p>
 
                             <div class="form-group">
                                 <label for="name" data-trans="name">
-                                    </label>
+                                </label>
                                 <input type="text" class="form-control" id="name" name="name" required maxlength="50">
                             </div>
                             <div class="form-group">
                                 <label for="email" data-trans="mail">
-                                    </label>
+                                </label>
                                 <input type="email" class="form-control" id="email" name="email" required maxlength="50">
                             </div>
                             <div class="form-group">
                                 <label for="name" data-trans="massage">
-                                    </label>
+                                </label>
                                 <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message Here"
                                     maxlength="600" rows="4"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs" data-trans="send">Send! →</button>
+                            <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs" data-trans="send">Send!
+                                →</button>
                         </form>
                         <div id="success_message" style="width:100%; height:100%; display:none; ">
                             <h3>Sent your message successfully!</h3>

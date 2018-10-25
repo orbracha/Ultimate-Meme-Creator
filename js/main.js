@@ -1,16 +1,9 @@
 'use strict'
 
 function init() {
-    $('.about-section').hide()
-    $('.footer-controls').hide()
-    $('.canvas-container').hide()
-    // $('.text-container').hide()
-    $('.gallery').show()
-    $('.search-bar').show()
     clearCurrMeme()
     createMemeLines()
     clearAllInputs();
-    hideControls()
     showGallery()
     createCanvas()
     createImgs()
@@ -48,13 +41,7 @@ function render() {
 function renderCanvas() {
     clearCanvas();
     $('.canvas-container').show()
-    $('.navbar-collapse').collapse('hide');
-    $('.gallery').hide()
-    $('footer').show()
-    $('.footer-controls').show();
-    $('.all-controls').show();
-    $('.search-bar').hide()
-    $('.tags-container').hide()
+    hideControls()
 }
 
 
@@ -159,18 +146,21 @@ function onTextChose(elText, ev) {
 
 function hideControls() {
     $('.tags-container').hide()
+    $('footer').show()
+    $('.footer-controls').show()
     $('.all-controls').hide()
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide')
     $('.gallery').hide()
-    $('footer').show()
-    $('.footer-controls').show()
     $('.search-bar').hide()
 }
 
 function showGallery() {
+    $('.about-section').hide()
+    $('.navbar-collapse').collapse('hide')
     $('.tags-container').show()
     $('.footer-controls').hide()
+    $('.all-controls').hide()
     $('.canvas-container').hide()
     $('.text-container').hide()
     $('.gallery').show()
@@ -203,10 +193,39 @@ function aboutPage() {
 
 function setLanguage(lang) {
     if (!localStorage.lang) gLang = 'en'
-    else if(lang) gLang = lang
+    else if (lang) gLang = lang
     localStorage.lang = JSON.stringify(gLang)
 
     doTrans()
+}
+
+
+function showMainControls() {
+    $('.main-footer-nav').show()
+    $('.all-controls').hide()
+    
+    
+}
+function showTextAdd() {
+    $('.all-controls').show()
+    $('.text-line-edit').show()
+    $('.main-footer-nav').hide()
+    $('.font-color-container').hide()
+    $('.social-media-container').hide()
+}
+function showTextColor() {
+    $('.all-controls').show()
+    $('.font-color-container').show()
+    $('.social-media-container').hide()
+    $('.text-line-edit').hide()
+    $('.main-footer-nav').hide()
+}
+function showSocialMedia() {
+    $('.all-controls').show()
+    $('.social-media-container').show()
+    $('.text-line-edit').hide()
+    $('.font-color-container').hide()
+    $('.main-footer-nav').hide()
 }
 
 

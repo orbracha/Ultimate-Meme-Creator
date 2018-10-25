@@ -16,6 +16,7 @@
 }
 
 .canvas {
+    margin-top: 10vh;
     background-color: whitesmoke;
     border-radius: 4px;
 }
