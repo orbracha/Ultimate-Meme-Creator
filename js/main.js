@@ -82,8 +82,8 @@ function renderTags(val, enter) {
 
     var strHtmls = tags.map(tag => {
         return `
-        <li onclick='onTagClick('${tag.key}')'
-        style='font-size:${randomTextSize()}px;'>  ${tag.key}
+        <li onclick="onTagClick('${tag.key}')"
+        style="font-size:${randomTextSize()}px;">  ${tag.key}
         </li>
         `
     })
