@@ -96,7 +96,7 @@ function getImgs() {
 
 
 function getImgById(idx) {
-    var img = gImgs.find(function (img) {
+    var img = gImgs.find(function(img) {
         return img.id === idx;
     });
     return img;
@@ -180,6 +180,7 @@ function changeSizeTxt(size, lineId) {
     var currLine = getLineById(lineId)
     currLine.size = size;
 }
+
 function changeColorTxt(colorTxt, lineId) {
     var currLine = getLineById(lineId)
     currLine.color = colorTxt;
@@ -204,9 +205,8 @@ function isShadow(shadowBool, lineId) {
     var currLine = getLineById(lineId)
     currLine.isShadow = shadowBool;
 }
+
 function isStroke(strokeBool, lineId) {
     var currLine = getLineById(lineId)
     currLine.stroke.isStroke = strokeBool;
 }
-
-

@@ -1,6 +1,7 @@
 'use strict'
 
 function init() {
+    setFooter('false')
     clearMemeLines()
     createMemeLines()
     clearAllInputs();
@@ -16,9 +17,10 @@ function init() {
 function loadingDog() {
     $('.loading').fadeTo('slow', 1, () => { $('.loading').hide() })
 }
+
 function hideControls() {
-    $('.tags-container').hide()
     $('footer').show()
+    $('.tags-container').hide()
     $('.footer-controls').show()
     $('.all-controls').hide()
     $('.canvas-container').show()
@@ -63,11 +65,12 @@ function toggleContactModal() {
 
 //////////////////////////////////Images//////////////////////////////////////////////////
 function renderImages(currImg) {
+    var isTrue = true
     if (!currImg) { var imgs = getImgs() } else var imgs = currImg
     var strHtmls = imgs.map(img => {
         return `<li class='hex'>
                     <div class='image-container'>      
-                        <div class='image-item image-item-${img.id}' onclick='uploadImgToCanvas(${img.id})'>
+                        <div class='image-item image-item-${img.id}' onclick='uploadImgToCanvas(${img.id})' onmouseup='setFooter(${isTrue})'>
                         </div>
                     </div>
                 </li>`
@@ -110,10 +113,11 @@ function downloadImg(elLink) {
 }
 
 function showGallery() {
+    $('footer').hide()
+    $('.footer-controls').hide()
     $('.about-section').hide()
     $('.navbar-collapse').collapse('hide')
     $('.tags-container').show()
-    $('.footer-controls').hide()
     $('.all-controls').hide()
     $('.canvas-container').hide()
     $('.text-container').hide()
@@ -123,27 +127,36 @@ function showGallery() {
 /////////////////////////////////////Canvas//////////////////////////////////////////////////
 
 function renderCanvas() {
-    clearCanvas();
-    $('.canvas-container').show()
     hideRenderCanvas()
+    clearCanvas();
 }
 
 function hideRenderCanvas() {
     $('.tags-container').hide()
-    $('footer').show()
-    $('.footer-controls').show()
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide')
     $('.gallery').hide()
     $('.search-bar').hide()
 }
 
+function setFooter(val) {
+    isFooterOn(val)
+}
+
+function isFooterOn(isGallery) {
+    if (isGallery) {
+        console.log(isGallery);
+        $('footer').show()
+        $('.footer-controls').show()
+        $('.main-footer-nav').show()
+    } else showGallery()
+}
+
 /////////////////////////////////////search////////////////////////////////////////////////
 
 function renderTags(val, enter) {
     var idx = 0;
-    if (!localStorage.tags) { var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Tough', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }] }
-    else { var tags = JSON.parse(localStorage.getItem('tags')) }
+    if (!localStorage.tags) { var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Tough', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }] } else { var tags = JSON.parse(localStorage.getItem('tags')) }
 
     var strHtmls = tags.map(tag => {
         return `
@@ -195,8 +208,12 @@ function createNewInput(width, height) {
 function dragElementByMouse(elInputTxt, ev) {
     var lineId = (elInputTxt.id.split('-'))[1];
     var memeLine = getLineById(getNumLineEdit(lineId))
-    var currPositionX = 0, currPositionY = 0, prevPositionX = 0, prevPositionY = 0;
+    var currPositionX = 0,
+        currPositionY = 0,
+        prevPositionX = 0,
+        prevPositionY = 0;
     elInputTxt.onmousedown = dragMouseDown;
+
     function dragMouseDown(e) {
         console.log(e)
         e = e || window.event;
@@ -295,6 +312,7 @@ function showTextAdd() {
     $('.font-color-container').hide()
     $('.social-media-container').hide()
 }
+
 function showTextColor() {
     $('.all-controls').show()
     $('.font-color-container').show()
@@ -337,7 +355,7 @@ function rederText() {
         //bold
         if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
         else ctx.font = `${meme.size}px ${meme.font}`
-        //color
+            //color
         ctx.fillStyle = meme.color;
         //shadow
         if (meme.isShadow) makeShadow();
@@ -381,8 +399,7 @@ function onClickBold(elBold) {
     if (elBold.innerText === 'B') {
         elBold.innerText = '𝐁';
         isBold(false, getNumLineEdit());
-    }
-    else {
+    } else {
         elBold.innerText = 'B';
         isBold(true, getNumLineEdit());
     }
@@ -394,8 +411,7 @@ function onClickShadow(elShadow) {
     if (elShadow.innerText === '□') {
         elShadow.innerText = '❏';
         isShadow(false, getNumLineEdit());
-    }
-    else {
+    } else {
         elShadow.innerText = '□';
         isShadow(true, getNumLineEdit());
     }
@@ -406,8 +422,7 @@ function onClickStroke(elStroke) {
     if (elStroke.innerText === 's') {
         elStroke.innerText = 'S';
         isStroke(false, getNumLineEdit());
-    }
-    else {
+    } else {
         elStroke.innerText = 's';
         isStroke(true, getNumLineEdit());
     }
