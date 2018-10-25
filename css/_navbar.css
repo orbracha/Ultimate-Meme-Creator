@@ -58,7 +58,7 @@
         height: 70px;
         align-items: center;
     }
-    .navbar-toggler {
+    .navbar-toggler, .navbar-collapse >*{
         display: none;
     }
     .navbar-web-container {
@@ -66,6 +66,9 @@
         margin-right: 30px;
         flex-direction: row;
         justify-content: flex-end;
+    }
+    .nav-link, .contact-click {
+        padding: 0 16px;    
     }
     .logo {
         grid-column: (5/6)

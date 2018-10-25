@@ -1,9 +1,10 @@
 'use strict'
 
 function init() {
+    $('.about-us').hide()
     $('.footer-controls').hide()
     $('.canvas-container').hide()
-        // $('.text-container').hide()
+    // $('.text-container').hide()
     $('.gallery').show()
     $('.search-bar').show()
     clearCurrMeme()
@@ -76,6 +77,7 @@ function toggleContactModal() {
 
 function uploadImage() {
     $('#uploadInupt').trigger("click")
+    $('.navbar-collapse').collapse('hide');
 
 }
 
@@ -84,17 +86,23 @@ function downloadImg(elLink) {
     elLink.href = imgContent
 }
 
-function renderTags() {
+function renderTags(val, enter) {
     var idx = 0;
-    var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Tough', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }]
+    if (!localStorage.tags) { var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Tough', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }] }
+    else { var tags = JSON.parse(localStorage.getItem('tags')) }
+
     var strHtmls = tags.map(tag => {
         return `
         <li onclick="onTagClick('${tag.key}')"
-                    style="font-size:${randomTextSize()}px;">  ${tag.key}
-                </li>
+        style="font-size:${randomTextSize()}px;">  ${tag.key}
+        </li>
         `
     })
     $('.tags-list').html(strHtmls.join(''))
+    if (val) {
+        tags.push({ key: val, id: idx++ })
+        if (enter === 'Enter') localStorage.setItem('tags', JSON.stringify(tags))
+    }
 }
 
 function randomTextSize() {
@@ -116,7 +124,7 @@ function chooseText(ev) {
     if (isMouseDown()) {
         var muousePos = getMousePos(ev)
         var ctx = getCtx();
-        var memeLine = gMemeLines.find(function(line) {
+        var memeLine = gMemeLines.find(function (line) {
             var textWidth = ctx.measureText(line.txt).width;
             return (
                 muousePos.x > textWidth &&
@@ -165,3 +173,15 @@ function rederInputsByLine(lineId) {
     if (memeLine.isShadow) $('.border-btn').Text = 'shadow-off';
     else $('.border-btn').Text = 'shadow-on';
 }
+
+function aboutPage() {
+    $('footer').hide()
+    $('.gallery').hide()
+    $('.canvas-container').hide()
+    $('.search-bar').hide()
+    $('.tags-container').hide()
+    $('.navbar-collapse').collapse('hide')
+    $('.about-us').show()
+}
+
+
