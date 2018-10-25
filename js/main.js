@@ -1,7 +1,7 @@
 'use strict'
 
 function init() {
-        $('.about-section').hide()
+    $('.about-section').hide()
     $('.footer-controls').hide()
     $('.canvas-container').hide()
     // $('.text-container').hide()
@@ -16,6 +16,7 @@ function init() {
     createImgs()
     renderTags()
     render()
+    setLanguage()
 }
 
 function renderImages(currImg) {
@@ -185,5 +186,14 @@ function aboutPage() {
     $('.about-us').show()
     $('.about-section').show()
 }
+
+
+function setLanguage(lang) {
+    if (!localStorage.lang) gLang = 'en'
+    else if(lang) gLang = lang
+    localStorage.lang = JSON.stringify(gLang)
+    doTrans()
+}
+
 
 

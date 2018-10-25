@@ -48,3 +48,7 @@
 #size-font-text{
     font-size: 30px;
 }
+.publish-btn {
+background: none;
+border: none;
+}

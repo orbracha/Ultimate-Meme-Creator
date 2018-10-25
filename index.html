@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quantico&effect=canvas-print" rel="stylesheet">
     <link rel="stylesheet" href="lib/bs4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/flags/css/flag-icon.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="img/LOGO_DOG.png">
     <title>Ultimate Meme</title>
@@ -28,43 +29,50 @@
                     class="dark-blue-text"><i class="fa fa-bars fa-1x"></i></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="uploadImage()">UPLOAD </a>
+                    <li class="nav-item lang-selector">
+                        <a class="nav-link" href="#"> <span class="flag-icon flag-icon-au" onclick="setLanguage('en')"></span>
+                            / <span class="flag-icon flag-icon-il" onclick="setLanguage('he')"></span> </a>
+
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="init()">GALLERY</a>
+                        <a class="nav-link" href="#" data-trans="upload" onclick="uploadImage()"> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="aboutPage()">ABOUT</a>
+                        <a class="nav-link" href="#" data-trans="gallery" onclick="init()"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><button class="contact-click" onclick="toggleContactModal()"> GET
-                                IN TOUCH</button>
+                        <a class="nav-link" href="#" data-trans="about" onclick="aboutPage()"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><button data-trans="get-in-touch" class="contact-click" onclick="toggleContactModal()">
+                            </button>
                         </a>
-                    </li>
                 </ul>
             </div>
         </nav>
+
+
         <!-- Navbar for Desktop -->
         <div class="navbar-web-container">
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="uploadImage()">UPLOAD </a>
+                <a class="nav-link" href="#" data-trans="upload" onclick="uploadImage()"> </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="init()">GALLERY</a>
+                <a class="nav-link" href="#" data-trans="gallery" onclick="init()"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="aboutPage()">ABOUT</a>
+                <a class="nav-link" href="#" data-trans="about" onclick="aboutPage()"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><button class="contact-click" onclick="toggleContactModal()">GET IN TOUCH</a>
+                <a class="nav-link" href="#"><button data-trans="get-in-touch" class="contact-click" onclick="toggleContactModal()"></a>
             </li>
             </ul>
         </div>
     </header>
     <div class="search-bar-container">
-        <input class="search-bar" type="text" placeholder="Find Image" aria-label="Search" onkeyup="onSearchInput(this.value,event)">
+        <input class="search-bar" data-trans="search" type="text" placeholder="" aria-label="Search" data-trans="placeholder"
+            onkeyup="onSearchInput(this.value,event)">
     </div>
 
     <!-- Gallery  -->
@@ -84,14 +92,14 @@
     <!-- About Section -->
     <section class="about-section">
         <div class="about-item">
-                <div class="box">
-                        <div class="inner">
-                          <span>ULTIMATE MEME CREATOR</span>
-                        </div>
-                        <div class="inner">
-                          <span>ULTIMATE MEME CREATOR</span>
-                        </div>
-                      </div>
+            <div class="box">
+                <div class="inner">
+                    <span>ULTIMATE MEME CREATOR</span>
+                </div>
+                <div class="inner">
+                    <span>ULTIMATE MEME CREATOR</span>
+                </div>
+            </div>
             <h1 class="about-title">What Is is this?</h1>
             <p class="about-text">It's a meme app to create Meme. </p>
             <h3 class="about-text">What is a 'Meme'? </h3>
@@ -120,7 +128,7 @@
                     <!-- <option value="2">line 2</option> -->
                 </select>
                 <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
-                <button class="add-line-btn" onclick="onAddLineText()">Add Line</button>
+                <button class="add-line-btn" onclick="onAddLineText()" data-trans="add-line">Add Line</button>
             </div>
             <div class="all-controls flex">
                 <div class="font-size-container">
@@ -136,19 +144,21 @@
                     <option value="Verdana">Verdana</option>
                     <option value="serif">serif</option>
                 </select>
-                <button class="bold-btn" onclick="onClickBold(this)">bold-on</button>
-                <button class="shadow-btn" onclick="onClickShadow(this)">shadow-on</button>
+                <button class="bold-btn" onclick="onClickBold(this)" data-trans="bold">bold-on</button>
+                <button class="shadow-btn" onclick="onClickShadow(this)" data-trans="shadow">shadow-on</button>
             </div>
         </div>
         </div>
 
     </footer>
 
-    <!-- SAVE MEME
-<a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpeg">
-    Save Meme
-</a> -->
+    <!-- SAVE MEME -->
+    <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpg">
+        Save Meme
+    </a>
 
+    <!-- Share To Facebook -->
+    <div class="publish-form-container"></div>
 
 
     <!-- Get In Touch Modal -->
@@ -208,9 +218,11 @@
     <script src="js/footer-service.js"></script>
     <script src="js/text-main.js"></script>
     <script src="js/search-main.js"></script>
+    <script src="js/translation-service.js"></script>
+    <script src="js/upload-service.js"></script>
     <script src="js/main.js"></script>
 
-
+    
 </body>
 
 </html>
