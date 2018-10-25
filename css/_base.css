@@ -21,7 +21,7 @@ input[placeholder] {
 }
 
 .loading {
-    background-image: url('/img/LOGO_DOG.png')    ;
+    background-image: url('../img/LOGO_DOG.png')    ;
     background-repeat: no-repeat;
     background-size: contain; 
     height: 100%;

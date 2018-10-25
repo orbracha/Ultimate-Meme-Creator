@@ -107,7 +107,12 @@
                 <!-- <button onclick="openTextEditor()" data-toggle="modal" data-target="#editTextModal">Edit text </button> -->
 
 
-                <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30">
+                <!-- <input type="number" onchange="onChangeFontSize(this.value)" id="size-font-text" value="30"> -->
+                <div class="font-size-container">
+                    <button class="font-size-btn plus">	🗛</button>
+                    <span id="size-font-text" onchange="onChangeFontSize(this.value)">20</span>
+                    <button class="font-size-btn minous">🗚</button>
+                </div>
                 <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
                 <select class="fonts-types" onchange="onChangeFont(this.value)">
                     <option value="Arial">Arial</option>

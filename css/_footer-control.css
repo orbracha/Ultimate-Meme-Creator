@@ -2,7 +2,7 @@
 .footer-controls button{
     background: transparent;
     cursor: pointer;
-    width: 30%;
+    /* width: 30%; */
 }
 .footer-controls > *{
     /* overflow:scroll; */
@@ -33,3 +33,18 @@
     width: 120px;
 }
 
+.font-size-container{
+    height: fit-content;
+    padding: 5px;
+    margin: 5px;
+}
+
+.font-size-btn{
+    font-size: 30px;
+    width: fit-content;
+    text-align: center;
+}
+
+#size-font-text{
+    font-size: 30px;
+}
