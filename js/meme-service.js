@@ -5,7 +5,53 @@ var gidxLine = 1;
 var gMemeLines;
 
 
+////////////////////////////////////canvas//////////////////////////////////////////
 
+var gCanvas = document.querySelector('.canvas');
+var gCtx = gCanvas.getContext('2d');
+
+
+function createCanvas() {
+    gCtx.canvas.width = 380;
+    gCtx.canvas.height = gCtx.canvas.width;
+}
+
+function getCanvas() {
+    return gCanvas;
+}
+
+function getCtx() {
+    return gCtx;
+}
+
+function clearCanvas() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+}
+
+function readImage(files) {
+    hideControls()
+    if (files && files[0]) {
+        var readFile = new FileReader();
+        readFile.onload = e => {
+            var img = new Image();
+            img.addEventListener("load", () => {
+                gCtx.drawImage(img, 0, 0, gCanvas.height, gCanvas.width);
+            })
+            img.src = e.target.result;
+        }
+        readFile.readAsDataURL(files[0]);
+    }
+}
+
+function getMousePos(evt) {
+    var canvas = getCanvas();
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
+////////////////////////////////////images//////////////////////////////////////////
 function createImgs() {
     gImgs = [
         createImg('img/1.jpg', ['dance']),
@@ -56,6 +102,12 @@ function getImgById(idx) {
     return img;
 }
 
+function saveCurrImg(id) {
+    gMemeLines.imgId = id;
+}
+
+
+//////////////////////////////////////////Meme Lines////////////////////////////////////
 function createMemeLines() {
     gMemeLines = [createMemeLine()];
 }
@@ -77,16 +129,90 @@ function createMemeLine() {
 
 
 
-
-function getCurrMemeLines() {
+function getMemeLines() {
     return gMemeLines;
 }
 
+<<<<<<< HEAD
 function saveCurrImg(id) {
     gMemeLines.imgId = id;
     showMainControls()
+=======
+function clearMemeLines() {
+    gidxLine = 1;
+>>>>>>> b2bc9306bcccf2a70c54a09ca1fde29361e0fff8
 }
 
-function clearCurrMeme() {
-    gidxLine = 1;
+
+////////////////////////////////////////Tags and Search////////////////////////////////////////////
+function randomTextSize() {
+    return Math.floor(Math.random() * (35 - 15 + 1)) + 15;
 }
+
+
+
+
+
+//////////////////////////////////////Language//////////////////////////////////////////////////
+function setLanguage(lang) {
+    if (!localStorage.lang) gLang = 'en'
+    else if (lang) gLang = lang
+    localStorage.lang = JSON.stringify(gLang)
+    doTrans()
+}
+
+
+
+///////////////////////////////////Text//////////////////////////////////////////////////////
+
+
+function getLineById(lineId) {
+    return gMemeLines.find(meme => {
+        return meme.lineId === lineId;
+    })
+}
+
+function changeTxtLine(txt, lineId) {
+    var currMeme = getLineById(lineId)
+    currMeme.txt = txt;
+}
+
+function changeFontTxt(font, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.font = font;
+}
+
+function changeSizeTxt(size, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.size = size;
+}
+function changeColorTxt(colorTxt, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.color = colorTxt;
+}
+
+function changeColorStroke(colorStroke, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.stroke.color = colorStroke;
+}
+
+function setPositionLine(position, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.position = position;
+}
+
+function isBold(boldBool, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.isBold = boldBool;
+}
+
+function isShadow(shadowBool, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.isShadow = shadowBool;
+}
+function isStroke(strokeBool, lineId) {
+    var currLine = getLineById(lineId)
+    currLine.stroke.isStroke = strokeBool;
+}
+
+
