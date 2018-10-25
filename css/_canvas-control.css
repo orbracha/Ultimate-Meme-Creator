@@ -25,10 +25,12 @@
 }
 
 .container-input-text{
-    position: absolute;
+    position: relative;
 }
 
 .container-input-text input{
     border: 1px dotted wheat;
     position: absolute;
+    cursor: pointer;
+    background:unset;
 }

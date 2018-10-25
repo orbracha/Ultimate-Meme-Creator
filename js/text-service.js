@@ -3,8 +3,6 @@
 
 
 
-
-
 function getLineById(lineId) {
     return gMemeLines.find(meme => {
         return meme.lineId === lineId;
