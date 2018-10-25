@@ -119,14 +119,15 @@ function onClickPosition(elBtn) {
 }
 
 function changeCurrTxt(lineId) {
-    var memeLine = getLineById(+lineId);
-    // debugger
+    var elListLines = document.querySelector('#edit-line-list')
     var elColorInput = document.querySelector('#input-color-text');
     var elTextInput = document.querySelector('#textInput')
     var elSizeInput = document.querySelector('#size-font-text');
     var elBoldBtn = document.querySelector('.bold-btn')
     var elShadowBtn = document.querySelector('.shadow-btn')
 
+    elListLines.value = lineId;
+    var memeLine = getLineById(+lineId);
     elTextInput.value = memeLine.txt;
     elColorInput.value = memeLine.color;
     elSizeInput.innerText = memeLine.size;

@@ -113,7 +113,7 @@ function createNewInput(width, height) {
     // var muousePos = getMousePos(ev)
     var elContainer = document.querySelector('.container-input-text')
     $('.container-input-text').append(`<span id='line-${getNumLineEdit()}' type='text' 
-    onclick='onTextChose(this,event)' onmouseup='onMouseDown(false)'></span>`);
+    onclick='onTextChose(this,event)'></span>`);
     elContainer.style.width = canvas.width;
     elContainer.style.height = canvas.height;
     var elChoseInput = document.querySelector(`#line-${getNumLineEdit()}`)
@@ -158,7 +158,7 @@ function dragElement(elInputTxt, ev) {
 
     function closeDragElement() {
         /* stop moving when mouse button is released:*/
-        document.onmouseup = null;
+        document.onclick = null;
         document.onmousemove = null;
     }
 }
@@ -173,9 +173,12 @@ function getMousePos(canvas, evt) {
 }
 
 function onTextChose(elText, ev) {
-    // console.log(elText)
+    console.log(elText)
     dragElement(elText, ev);
-    changeCurrTxt(parseInt(elText.id))
+    // debugger
+    var lineId = (elText.id.split('-'))[1];
+    changeCurrTxt(lineId);
+    
 }
 
 

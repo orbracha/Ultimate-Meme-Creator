@@ -33,6 +33,6 @@
     cursor: move;
     border: 1px dotted wheat;
     position: absolute;
-    cursor: pointer;
+    /* cursor: pointer; */
     background:unset;
 }
