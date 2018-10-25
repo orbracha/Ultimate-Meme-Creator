@@ -5,15 +5,16 @@
 h1{
     font-size: 50px;
     text-decoration:overline;
+    color: #2e2e31
     
 }
 .about-text {
-    
-    font-size: 30px
+        font-size: 30px;
 }
 
 .box {
-	display: flex;
+  display: flex;
+  justify-content: center
 }
 
 .box .inner {
@@ -29,7 +30,7 @@ h1{
 
 .box .inner:first-child {
 	background-color: indianred;
-	color: darkred;
+	color: rgb(117, 58, 58);
 	transform-origin: right;
 	transform: perspective(100px) rotateY(-15deg);
 }
@@ -63,26 +64,25 @@ h1{
 
 
 .about-title {
-    color: #fffbf1;
+    color: #0f0b01;
     text-shadow: 0 20px 25px #2e2e31, 0 40px 60px #2e2e31;
     /* font-size: 80px; */
     font-weight: bold;
     text-decoration: none;
     letter-spacing: -3px;
-    margin: 0;
+    margin: 20px;
     position: relative;
-    /* top: 50%;
-    left: 50%; */
-    /* transform: translateX(-50%) translateY(-50%); */
+  
   }
   
   .about-title:before,
   .about-title:after {
+    
     content: '';
-    padding: .5em .4em;
+    padding: .9em .4em;
     position: absolute;
     left: 50%;
-    width: 50%;
+    width: 70%;
     top: 50%;
     border: 5px solid purple;
     transform: translateX(-50%) translateY(-50%) rotate(0deg);
@@ -97,13 +97,4 @@ h1{
   .about-title:after {
     border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #d9524a #d9524a;
     box-shadow: 25px 25px 25px rgba(46, 46, 49, .8);
-  }
-
-  @keyframes tipsy {
-    0 {
-      transform: translateX(-50%) translateY(-50%) rotate(0deg);
-    }
-    100% {
-      transform: translateX(-50%) translateY(-50%) rotate(360deg);
-    }
   }

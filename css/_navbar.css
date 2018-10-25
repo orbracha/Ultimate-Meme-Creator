@@ -44,7 +44,7 @@
 }
 
 .nav-item {
-    text-align: right
+    text-align: center
 }
 
 
@@ -79,6 +79,7 @@
     display: block;
     border-radius: 40px;
     margin: 0 auto 5vh auto;
+    width: 40%;
 }
 
 .search-bar:focus {

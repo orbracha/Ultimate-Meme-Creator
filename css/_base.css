@@ -21,7 +21,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    /* height: 50px */
+    height: 50px
 }
 
 li {
@@ -33,13 +33,13 @@ input[placeholder] {
 }
 
 .loading {
-<<<<<<< HEAD
-    background-image: url('../img/LOGO_DOG.png')    ;
-=======
     background-image: url('../img/LOGO_DOG.png');
->>>>>>> 96d0c311c98f8bc9d7a44097d2011a021114cd91
     background-repeat: no-repeat;
     background-size: contain;
     height: 100%;
     background-position: center;
+}
+
+button:hover {
+    cursor: pointer;
 }

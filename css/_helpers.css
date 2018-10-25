@@ -19,3 +19,7 @@
 .col {
     flex-direction: column;
 }
+
+.rtl {
+    direction: rtl
+}
