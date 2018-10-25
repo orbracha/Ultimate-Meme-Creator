@@ -50,14 +50,14 @@ function getImgs() {
 
 
 function getImgById(idx) {
-    var img = gImgs.find(function(img) {
+    var img = gImgs.find(function (img) {
         return img.id === idx;
     });
     return img;
 }
 
 function createMemeLines() {
-    gMemeLines = [createMemeLine()];
+    gMemeLines = [];
 }
 
 
@@ -68,7 +68,8 @@ function createMemeLine() {
         font: 'Ariel',
         isBold: false,
         isShadow: false,
-        size: 20,
+        stroke: { isStroke: false, color: '#ffffff' },
+        size: 40,
         align: { x: 50, y: 30 },
         color: '#000000',
     }

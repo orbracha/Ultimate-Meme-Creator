@@ -10,6 +10,6 @@ function clearAllInputs() {
     elColorInputs.value = '#000000';
     var elTextInputs = document.querySelector('#size-font-text');
     elTextInputs.value = 20;
-    document.querySelector('.bold-btn').innerText = 'bold-on';
-    document.querySelector('.shadow-btn').innerText = 'shadow-on';
+    document.querySelector('.bold-btn').innerText = '𝐁';
+    document.querySelector('.shadow-btn').innerText = '	❏';
 }

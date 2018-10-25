@@ -75,23 +75,26 @@
 
     <!-- CANVAS CONTAINER  -->
     <div class="canvas-container">
-        <canvas class="canvas" onmousemove="chooseText(event)" onmousedown="onMouseDown(true)" onmouseup="onMouseDown(false)">
-
+        <div class="container-input-text">
+        <canvas class="canvas" onclick="onAddTextCanvas(event)">
         </canvas>
+    </div>
+
+
     </div>
 
 
     <!-- About Section -->
     <section class="about-section">
         <div class="about-item">
-                <div class="box">
-                        <div class="inner">
-                          <span>ULTIMATE MEME CREATOR</span>
-                        </div>
-                        <div class="inner">
-                          <span>ULTIMATE MEME CREATOR</span>
-                        </div>
-                      </div>
+            <div class="box">
+                <div class="inner">
+                    <span>ULTIMATE MEME CREATOR</span>
+                </div>
+                <div class="inner">
+                    <span>ULTIMATE MEME CREATOR</span>
+                </div>
+            </div>
             <h1 class="about-title">What Is is this?</h1>
             <p class="about-text">It's a meme app to create Meme. </p>
             <h3 class="about-text">What is a 'Meme'? </h3>
@@ -125,7 +128,7 @@
             <div class="all-controls flex">
                 <div class="font-size-container">
                     <button class="font-size-btn minous" onclick="onDeceaseText()"> 🗚</button>
-                    <span id="size-font-text">20</span>
+                    <span id="size-font-text">40</span>
                     <button class="font-size-btn plus" onclick="onInceaseText()">🗛</button>
                 </div>
                 <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
@@ -136,8 +139,10 @@
                     <option value="Verdana">Verdana</option>
                     <option value="serif">serif</option>
                 </select>
-                <button class="bold-btn" onclick="onClickBold(this)">bold-on</button>
-                <button class="shadow-btn" onclick="onClickShadow(this)">shadow-on</button>
+                <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
+                <button class="stroke-btn" onclick="onClickStroke(this)">S</button>
+                <button class="bold-btn" onclick="onClickBold(this)">B</button>
+                <button class="shadow-btn" onclick="onClickShadow(this)">❏</button>
             </div>
         </div>
         </div>

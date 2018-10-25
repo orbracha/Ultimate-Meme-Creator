@@ -23,3 +23,12 @@
 .canvas>p {
     text-align: center;
 }
+
+.container-input-text{
+    position: absolute;
+}
+
+.container-input-text input{
+    border: 1px dotted wheat;
+    position: absolute;
+}
