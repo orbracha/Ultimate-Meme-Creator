@@ -32,6 +32,46 @@ var gTrans = {
         en: 'Find Image',
         he: 'חפש תמונה',
     },
+    abouth1: {
+        en: 'What Is is this?',
+        he: 'מה הולך פה?',
+    },
+    abouth2: {
+        en: `What is a 'Meme'? `,
+        he: `מה זה מים?`,
+    },
+    aboutp1: {
+        en: `It's a 'Meme' making App for you soul`,
+        he: `זאת אפליקצייה להכנת מימים`,
+    },
+    aboutp2: {
+        en: `A millennial way of communicating emotions visually`,
+        he: 'זאת הדרך של הכי אפקטיבית לתקשר רגשות בצורה ויזואלית',
+    },
+    contact: {
+        en: `Contact Us`,
+        he: `צור קשר`,
+    },
+    send: {
+        en: `Send`,
+        he: `שלח`,
+    },
+    massage: {
+        en: `Massage:`,
+        he: `:הודעה`,
+    },
+    mail: {
+        en: `Mail:`,
+        he: `:מייל`,
+    },
+    name: {
+        en: `Name:`,
+        he: `:שם`,
+    },
+    suggestions: {
+        en: `Suggestions? Complaints? Life observataions? We want to know EVERYTHING`,
+        he: `הצעות? תלונות? הבחנות מעניינות על החיים? אנחנו רוצים לדעת ה-כ-ל`,
+    },
 }
 
 function doTrans() {

@@ -192,6 +192,7 @@ function setLanguage(lang) {
     if (!localStorage.lang) gLang = 'en'
     else if(lang) gLang = lang
     localStorage.lang = JSON.stringify(gLang)
+
     doTrans()
 }
 
