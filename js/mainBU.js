@@ -15,9 +15,9 @@ function init() {
 function renderImages(currImg) {
     if (!currImg) { var imgs = getImgs() } else var imgs = currImg
     var strHtmls = imgs.map(img => {
-        return `<li class='hex'>
-                    <div class='image-container'>      
-                        <div class='image-item image-item-${img.id}' onclick='uploadImgToCanvas(${img.id})'>
+        return `<li class="hex">
+                    <div class="image-container">      
+                        <div class="image-item image-item-${img.id}" onclick="uploadImgToCanvas(${img.id})">
                         </div>
                     </div>
                 </li>`
@@ -41,7 +41,7 @@ function render() {
 function renderCanvas() {
     clearCanvas();
     $('.canvas-container').show()
-    hideRenderCanvas()
+    hideControls()
 }
 
 
@@ -64,7 +64,7 @@ function toggleContactModal() {
 }
 
 function uploadImage() {
-    $('#uploadInupt').trigger('click')
+    $('#uploadInupt').trigger("click")
     $('.navbar-collapse').collapse('hide');
 
 }
@@ -82,8 +82,8 @@ function renderTags(val, enter) {
 
     var strHtmls = tags.map(tag => {
         return `
-        <li onclick='onTagClick('${tag.key}')'
-        style='font-size:${randomTextSize()}px;'>  ${tag.key}
+        <li onclick="onTagClick('${tag.key}')"
+        style="font-size:${randomTextSize()}px;">  ${tag.key}
         </li>
         `
     })
@@ -107,14 +107,14 @@ function loadingDog() {
     $('.loading').fadeTo('slow', 1, () => { $('.loading').hide() })
 }
 
-
-function createNewInput(ev) {
+function onAddTextCanvas(ev) {
+    onAddLineText();
     var canvas = getCanvas();
     var muousePos = getMousePos(ev)
     var elContainer = document.querySelector('.container-input-text')
-    $('.container-input-text').append(`<input id='line-${getNumLineEdit()}' type='text' 
-    onmousemove='onTextChose(this,event)' onmousedown='dragMouseDown(event)'
-            onmouseup='onMouseDown(false)'>`);
+    $(".container-input-text").append(`<input id="line-${getNumLineEdit()}" type="text" 
+    onmousemove="onTextChose(this,event)" onmousedown="onMouseDown(true)"
+            onmouseup="onMouseDown(false)">`);
     elContainer.style.width = canvas.width;
     elContainer.style.height = canvas.height;
     var elChoseInput = document.querySelector(`#line-${getNumLineEdit()}`)
@@ -122,65 +122,28 @@ function createNewInput(ev) {
     elChoseInput.style.height = '30px';
     elChoseInput.style.left = muousePos.x + 'px';
     elChoseInput.style.top = muousePos.y + 'px';
+    elChoseInput.style.background = 'unset';
 }
 
-function onAddTextCanvas(ev) {
-    onAddLineText();
-    createNewInput(ev);
-
-}
-
-
-function dragElement(elInputTxt) {
-    var currPositionX = 0, currPositionY = 0, prevPositionX = 0, prevPositionY = 0;
-    elInputTxt.onmousedown = dragMouseDown;
-
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        prevPositionX = e.clientX;
-        prevPositionY = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        currPositionX = prevPositionX - e.clientX;
-        currPositionY = prevPositionY - e.clientY;
-        prevPositionX = e.clientX;
-        prevPositionY = e.clientY;
-        // set the element's new position:
-        elInputTxt.style.top = (elInputTxt.offsetTop - currPositionY) + "px";
-        elInputTxt.style.left = (elInputTxt.offsetLeft - currPositionX) + "px";
-    }
-
-    function closeDragElement() {
-        /* stop moving when mouse button is released:*/
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-}
 
 function onTextChose(elText, ev) {
-    console.log(elText)
-    dragElement(elText, ev);
+    if (isMouseDown()) {
+        var muousePos = getMousePos(ev);
+        var direction = ""
+        var oldx = 0
+        if (muousePos.x < oldx) {
+            direction = "left"
+        } else if (muousePos.x > oldx) {
+            direction = "right"
+        }
+        debugger
+        elText.style[direction] = muousePos.x + 'px';
+        oldx = muousePos.x;
+        // elText.style.top = muousePos.y + 'px';
+    }
 }
 
 
-function hideRenderCanvas() {
-    $('.tags-container').hide()
-    $('footer').show()
-    $('.footer-controls').show()
-    $('.canvas-container').show()
-    $('.navbar-collapse').collapse('hide')
-    $('.gallery').hide()
-    $('.search-bar').hide()
-}
 function hideControls() {
     $('.tags-container').hide()
     $('footer').show()
@@ -240,8 +203,8 @@ function setLanguage(lang) {
 function showMainControls() {
     $('.main-footer-nav').show()
     $('.all-controls').hide()
-
-
+    
+    
 }
 function showTextAdd() {
     $('.all-controls').show()
