@@ -77,8 +77,7 @@ function downloadImg(elLink) {
 
 function renderTags(val, enter) {
     var idx = 0;
-    if (!localStorage.tags) { var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Tough', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }] }
-    else { var tags = JSON.parse(localStorage.getItem('tags')) }
+    if (!localStorage.tags) { var tags = [{ key: 'Trump', id: idx++ }, { key: 'Dog', id: idx++ }, { key: 'Baby', id: idx++ }, { key: 'Cat', id: idx++ }, { key: 'Monkey', id: idx++ }, { key: 'Salt', id: idx++ }, { key: 'Java', id: idx++ }, { key: 'Dance', id: idx++ }, { key: 'Music', id: idx++ }, { key: 'Tough', id: idx++ }, { key: 'Code', id: idx++ }, { key: 'Nope', id: idx++ }] } else { var tags = JSON.parse(localStorage.getItem('tags')) }
 
     var strHtmls = tags.map(tag => {
         return `
@@ -126,7 +125,10 @@ function createNewInput(width, height) {
 
 function dragElement(elInputTxt, ev) {
     var memeLine = getLineById(getNumLineEdit(parseInt(elInputTxt.id)))
-    var currPositionX = 0, currPositionY = 0, prevPositionX = 0, prevPositionY = 0;
+    var currPositionX = 0,
+        currPositionY = 0,
+        prevPositionX = 0,
+        prevPositionY = 0;
     elInputTxt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
@@ -178,7 +180,7 @@ function onTextChose(elText, ev) {
     // debugger
     var lineId = (elText.id.split('-'))[1];
     changeCurrTxt(lineId);
-    
+
 }
 
 
@@ -191,11 +193,12 @@ function hideRenderCanvas() {
     $('.gallery').hide()
     $('.search-bar').hide()
 }
+
 function hideControls() {
     $('.tags-container').hide()
     $('footer').show()
     $('.footer-controls').show()
-    // $('.all-controls').hide()
+        // $('.all-controls').hide()
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide')
     $('.gallery').hide()
@@ -253,6 +256,7 @@ function showMainControls() {
 
 
 }
+
 function showTextAdd() {
     $('.all-controls').show()
     $('.text-line-edit').show()
@@ -260,6 +264,7 @@ function showTextAdd() {
     $('.font-color-container').hide()
     $('.social-media-container').hide()
 }
+
 function showTextColor() {
     $('.all-controls').show()
     $('.font-color-container').show()
@@ -267,6 +272,7 @@ function showTextColor() {
     $('.text-line-edit').hide()
     $('.main-footer-nav').hide()
 }
+
 function showSocialMedia() {
     $('.all-controls').show()
     $('.social-media-container').show()
@@ -274,6 +280,3 @@ function showSocialMedia() {
     $('.font-color-container').hide()
     $('.main-footer-nav').hide()
 }
-
-
-
