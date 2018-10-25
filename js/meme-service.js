@@ -104,6 +104,8 @@ function getImgById(idx) {
 
 function saveCurrImg(id) {
     gMemeLines.imgId = id;
+    showMainControls()
+
 }
 
 
@@ -133,14 +135,8 @@ function getMemeLines() {
     return gMemeLines;
 }
 
-<<<<<<< HEAD
-function saveCurrImg(id) {
-    gMemeLines.imgId = id;
-    showMainControls()
-=======
 function clearMemeLines() {
     gidxLine = 1;
->>>>>>> b2bc9306bcccf2a70c54a09ca1fde29361e0fff8
 }
 
 
@@ -186,6 +182,7 @@ function changeSizeTxt(size, lineId) {
     var currLine = getLineById(lineId)
     currLine.size = size;
 }
+
 function changeColorTxt(colorTxt, lineId) {
     var currLine = getLineById(lineId)
     currLine.color = colorTxt;
@@ -210,9 +207,8 @@ function isShadow(shadowBool, lineId) {
     var currLine = getLineById(lineId)
     currLine.isShadow = shadowBool;
 }
+
 function isStroke(strokeBool, lineId) {
     var currLine = getLineById(lineId)
     currLine.stroke.isStroke = strokeBool;
 }
-
-
