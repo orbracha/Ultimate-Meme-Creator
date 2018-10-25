@@ -89,7 +89,7 @@
     <!-- CANVAS CONTAINER  -->
     <div class="canvas-container">
         <div class="container-input-text">
-            <canvas class="canvas" onclick="onAddTextCanvas(event)">
+            <canvas class="canvas" >
             </canvas>
         </div>
 
@@ -140,9 +140,9 @@
                     <!-- Text SIze Select -->
                     <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
                     <button class="add-line-btn" onclick="onAddLineText()" data-trans="add-line">Add Line</button>
-                    <button type="button" class="font-size-btn minous btn btn-secondary" onclick="onDeceaseText()"> 🗚</button>
-                    <span id="size-font-text">40</span>
                     <button type="button" class="font-size-btn plus btn btn-secondary" onclick="onInceaseText()">🗛</button>
+                    <span id="size-font-text">40</span>
+                    <button type="button" class="font-size-btn minous btn btn-secondary" onclick="onDeceaseText()"> 🗚</button>
                     <!-- Change Font -->
 
                     <select class="fonts-types" onchange="onChangeFont(this.value)">

@@ -108,30 +108,24 @@ function loadingDog() {
 }
 
 
-function createNewInput(ev) {
+function createNewInput(width, height) {
     var canvas = getCanvas();
-    var muousePos = getMousePos(ev)
+    // var muousePos = getMousePos(ev)
     var elContainer = document.querySelector('.container-input-text')
-    $('.container-input-text').append(`<input id='line-${getNumLineEdit()}' type='text' 
-    onmousemove='onTextChose(this,event)' onmousedown='dragMouseDown(event)'
-            onmouseup='onMouseDown(false)'>`);
+    $('.container-input-text').append(`<span id='line-${getNumLineEdit()}' type='text' 
+    onclick='onTextChose(this,event)' onmouseup='onMouseDown(false)'></span>`);
     elContainer.style.width = canvas.width;
     elContainer.style.height = canvas.height;
     var elChoseInput = document.querySelector(`#line-${getNumLineEdit()}`)
-    elChoseInput.style.width = '50px';
-    elChoseInput.style.height = '30px';
-    elChoseInput.style.left = muousePos.x + 'px';
-    elChoseInput.style.top = muousePos.y + 'px';
-}
-
-function onAddTextCanvas(ev) {
-    onAddLineText();
-    createNewInput(ev);
-
+    elChoseInput.style.width = width + 'px';
+    elChoseInput.style.height = height + 'px';
+    elChoseInput.style.left = '50px';
+    elChoseInput.style.top = height * 2 + 'px';
 }
 
 
-function dragElement(elInputTxt) {
+function dragElement(elInputTxt, ev) {
+    var memeLine = getLineById(getNumLineEdit(parseInt(elInputTxt.id)))
     var currPositionX = 0, currPositionY = 0, prevPositionX = 0, prevPositionY = 0;
     elInputTxt.onmousedown = dragMouseDown;
 
@@ -157,6 +151,9 @@ function dragElement(elInputTxt) {
         // set the element's new position:
         elInputTxt.style.top = (elInputTxt.offsetTop - currPositionY) + "px";
         elInputTxt.style.left = (elInputTxt.offsetLeft - currPositionX) + "px";
+        memeLine.align.y = elInputTxt.offsetTop - memeLine.size / 2 - currPositionY;
+        memeLine.align.x = elInputTxt.offsetLeft;
+        rederText();
     }
 
     function closeDragElement() {
@@ -166,9 +163,19 @@ function dragElement(elInputTxt) {
     }
 }
 
+
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
+
 function onTextChose(elText, ev) {
-    console.log(elText)
+    // console.log(elText)
     dragElement(elText, ev);
+    changeCurrTxt(parseInt(elText.id))
 }
 
 
@@ -176,7 +183,7 @@ function hideControls() {
     $('.tags-container').hide()
     $('footer').show()
     $('.footer-controls').show()
-    $('.all-controls').hide()
+    // $('.all-controls').hide()
     $('.canvas-container').show()
     $('.navbar-collapse').collapse('hide')
     $('.gallery').hide()

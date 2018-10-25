@@ -3,10 +3,18 @@
 
 
 function onTextChange(txt) {
-    changeTxtLine(txt, getNumLineEdit());
-    // debugger
-    // var inputText = document.getElementById(`line-${getNumLineEdit()}`)
-    // inputText.value = txt;
+    var memeLine = getLineById(getNumLineEdit());
+    var ctx = getCtx();
+    var textWidth = ctx.measureText(memeLine.txt).width;
+    if (textWidth + memeLine.size < 320) {
+        changeTxtLine(txt, getNumLineEdit());
+        createNewInput(textWidth + memeLine.size - 10, 30);
+
+        // // var inputText = document.getElementById(`line-${getNumLineEdit()}`)
+        // // inputText.value = txt;
+        // memeLine.align.x = memeLine.size;
+        // memeLine.align.y = parseInt(inputText.style.height);
+    }
     rederText();
 }
 
@@ -16,8 +24,6 @@ function rederText() {
     var ctx = getCtx();
     uploadImgToCanvas(memeLines.imgId);
     memeLines.forEach(meme => {
-        // meme.align.x = x;
-        // meme.align.y = y;
         //bold
         if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
         else ctx.font = `${meme.size}px ${meme.font}`
@@ -26,7 +32,6 @@ function rederText() {
         //shadow
         if (meme.isShadow) makeShadow();
         else ctx.shadowColor = "rgba(0, 0, 0, 0)";
-        // debugger
         if (meme.stroke.isStroke) {
             ctx.strokeStyle = meme.stroke.color;
             ctx.lineWidth = 5;
@@ -115,6 +120,7 @@ function onClickPosition(elBtn) {
 
 function changeCurrTxt(lineId) {
     var memeLine = getLineById(+lineId);
+    // debugger
     var elColorInput = document.querySelector('#input-color-text');
     var elTextInput = document.querySelector('#textInput')
     var elSizeInput = document.querySelector('#size-font-text');

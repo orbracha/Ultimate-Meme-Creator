@@ -29,7 +29,8 @@
     position: relative;
 }
 
-.container-input-text input{
+.container-input-text span{
+    cursor: move;
     border: 1px dotted wheat;
     position: absolute;
     cursor: pointer;
