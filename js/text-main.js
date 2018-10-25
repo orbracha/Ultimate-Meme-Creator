@@ -4,6 +4,9 @@
 
 function onTextChange(txt) {
     changeTxtLine(txt, getNumLineEdit());
+    // debugger
+    // var inputText = document.getElementById(`line-${getNumLineEdit()}`)
+    // inputText.value = txt;
     rederText();
 }
 
@@ -13,6 +16,8 @@ function rederText() {
     var ctx = getCtx();
     uploadImgToCanvas(memeLines.imgId);
     memeLines.forEach(meme => {
+        // meme.align.x = x;
+        // meme.align.y = y;
         //bold
         if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
         else ctx.font = `${meme.size}px ${meme.font}`
@@ -45,10 +50,10 @@ function onChangeTextColor(colorTxt) {
 }
 
 
-function onChangeStrokeColor(colorStroke){
+function onChangeStrokeColor(colorStroke) {
     changeColorStroke(colorStroke, getNumLineEdit())
     rederText()
-    
+
 }
 
 function getNumLineEdit() {

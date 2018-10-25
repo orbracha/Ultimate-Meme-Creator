@@ -57,7 +57,7 @@ function getImgById(idx) {
 }
 
 function createMemeLines() {
-    gMemeLines = [];
+    gMemeLines = [createMemeLine()];
 }
 
 
