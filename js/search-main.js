@@ -1,6 +1,6 @@
 
 function onSearchInput(val, key) {
-    var enter = key.key
+    if (key) var enter = key.key
     var img = gImgs.filter((el) => {
         return el.keywords[0].includes(val)
     })
