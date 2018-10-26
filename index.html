@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quantico&effect=canvas-print" rel="stylesheet">
-    <link rel="stylesheet" href="lib/bs4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/flags/css/flag-icon.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="Ultimate-Meme-Creator/lib/bs4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Ultimate-Meme-Creator/lib/flags/css/flag-icon.min.css">
+    <link rel="stylesheet" href="Ultimate-Meme-Creator/css/main.css">
     <link rel="icon" href="img/LOGO_DOG.png">
     <title>Ultimate Meme</title>
 
@@ -24,14 +23,12 @@
     <header class="main-header">
         <nav class="navbar navbar-light light-blue lighten-4">
             <a class="navbar-brand logo font-effect-canvas-print" href="#" onclick="init()">ULTIM<span>ATE</span> MEME</a>
-            <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
-                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
+            <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="dark-blue-text"><i class="fa fa-bars fa-1x"></i></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item lang-selector">
-                        <a class="nav-link" href="#"> <span class="flag-icon flag-icon-au" onclick="setLanguage('en')"></span>
-                            / <span class="flag-icon flag-icon-il" onclick="setLanguage('he')"></span> </a>
+                        <a class="nav-link" href="#"> <span class="flag-icon flag-icon-au" onclick="setLanguage('en')"></span> / <span class="flag-icon flag-icon-il" onclick="setLanguage('he')"></span> </a>
 
                     </li>
                     <li class="nav-item">
@@ -68,16 +65,14 @@
                 <a class="nav-link" href="#"><button data-trans="get-in-touch" class="contact-click" onclick="toggleContactModal()"></a>
             </li>
             <li class="nav-item lang-selector">
-                <a class="nav-link" href="#"> <span class="flag-icon flag-icon-au" onclick="setLanguage('en')"></span>
-                    / <span class="flag-icon flag-icon-il" onclick="setLanguage('he')"></span> </a>
+                <a class="nav-link" href="#"> <span class="flag-icon flag-icon-au" onclick="setLanguage('en')"></span> / <span class="flag-icon flag-icon-il" onclick="setLanguage('he')"></span> </a>
 
             </li>
             </ul>
         </div>
     </header>
     <div class="search-bar-container">
-        <input class="search-bar" data-trans="search" type="text" placeholder="" aria-label="Search" data-trans="placeholder"
-            onkeyup="onSearchInput(this.value,event)">
+        <input class="search-bar" data-trans="search" type="text" placeholder="" aria-label="Search" data-trans="placeholder" onkeyup="onSearchInput(this.value,event)">
     </div>
 
     <!-- Gallery  -->
@@ -89,7 +84,7 @@
     <!-- CANVAS CONTAINER  -->
     <div class="canvas-container">
         <div class="container-input-text">
-            <canvas class="canvas" >
+            <canvas class="canvas">
             </canvas>
         </div>
 
@@ -126,7 +121,7 @@
         <div class="footer-controls">
             <div class="main-footer-nav">
                 <button class="footer-controls-button" onclick="showTextAdd()" data-trans="addtext"></button>
-                <button class="footer-controls-button" onclick="showTextColor()"data-trans="textcolor"></button>
+                <button class="footer-controls-button" onclick="showTextColor()" data-trans="textcolor"></button>
                 <button class="footer-controls-button" onclick="showSocialMedia()" data-trans="save"></button>
             </div>
             <!-- Text Manipulation Containers -->
@@ -162,8 +157,8 @@
 
                     <!-- Text Stroke and Bold -->
                     <!-- <div class="outline-container"> -->
-                        <p data-trans="textoutline"></p>
-                        <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
+                    <p data-trans="textoutline"></p>
+                    <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
                     <!-- </div> -->
                     <div class="stroke-btns">
                         <button class="stroke-btn" onclick="onClickStroke(this)">S</button>
@@ -175,7 +170,7 @@
                     <button class="footer-controls-button" onclick="showMainControls()" data-trans="back"></button>
                     <!-- SAVE MEME -->
                     <a class="save-meme" href="#" onclick="downloadImg(this)" download="my-img.jpg" data-trans="download">
-                        </a>
+                    </a>
                     <!-- Share To Facebook -->
                     <div class="publish-form-container"></div>
                 </div>
@@ -214,8 +209,7 @@
                             <div class="form-group">
                                 <label for="name" data-trans="massage">
                                 </label>
-                                <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message Here"
-                                    maxlength="600" rows="4"></textarea>
+                                <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message Here" maxlength="600" rows="4"></textarea>
                             </div>
                             <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs" data-trans="send">Send!
                                 →</button>
