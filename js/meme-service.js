@@ -117,7 +117,7 @@ function createMemeLine() {
     return {
         lineId: gidxLine++,
         txt: '',
-        font: 'Ariel',
+        font: 'Impact',
         isBold: false,
         isShadow: false,
         stroke: { isStroke: false, color: '#ffffff' },

@@ -22,9 +22,10 @@
           color: #e9b2cc;
       }
       
-      @media (min-width: 680px) {
+      @media (max-width: 680px) {
           .tags-container {
-              overflow: hidden;
+              /* overflow: hidden; */
+              justify-content: flex-start;
               /* display: block; */
               /* position: absolute; */
           }

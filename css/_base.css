@@ -9,19 +9,10 @@ body {
 }
 
 body {
+    position: relative;
     background: linear-gradient(to left, #e0eafc, #cfdef3);
     min-height: 100%;
-    position: relative;
-    margin: 0;
-    /* padding-bottom: 20px */
-}
-
-footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50px
+    margin: 0 auto;
 }
 
 li {

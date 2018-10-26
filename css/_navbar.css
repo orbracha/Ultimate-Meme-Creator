@@ -50,7 +50,7 @@
 
 /* Website Mode */
 
-@media (min-width: 680px) {
+@media (min-width: 765px) {
     .main-header {
         display: flex;
         justify-content: space-between;
@@ -58,7 +58,8 @@
         height: 70px;
         align-items: center;
     }
-    .navbar-toggler, .navbar-collapse >*{
+    .navbar-toggler,
+    .navbar-collapse>* {
         display: none;
     }
     .navbar-web-container {
@@ -67,8 +68,9 @@
         flex-direction: row;
         justify-content: flex-end;
     }
-    .nav-link, .contact-click {
-        padding: 0 16px;    
+    .nav-link,
+    .contact-click {
+        padding: 0 16px;
     }
     .logo {
         grid-column: (5/6)

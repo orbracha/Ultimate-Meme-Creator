@@ -1,125 +1,179 @@
-
-footer {
-  max-height: 70px;  
-  /* display: flex; */
-}
-.footer-controls{
-    background: darkgrey;
-    display: flex;
-    justify-content: center;
-}
-.footer-controls-button{
-    border-radius: 10px;
-    outline: black;
-    border:none;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    margin: 0 20px;  
-    font-weight: bolder;
-    font-family: mali,cursive;
-    height: 70px;
-    background: transparent;
-    cursor: pointer; 
-}
-
-.main-footer-nav {
-    display: flex;
-}
-
-.footer-controls-button:hover{
-    background: rgb(82, 81, 81);
-}
-.footer-controls > *{
-    /* overflow-x:scroll; */
-}
-
-
-#input-color-stroke {
-    height: 40px;
-    border: unset;
-    margin: 10px;
-    width: 30%;
-}
-#input-color-text[type="color"]{
-    background: unset;
-    height: 40px;
-    border: unset;
-}
-
-#input-color-text{
-    margin: 10px;
-    width: 30%;
-
-}
-
-#size-font-text[type="number"]{
-    width: 30%;
-}
-
-.fonts-types{
-    width: 120px;
-}
-
-.font-color-container{
-    max-height: 60px;
-    display: flex;
-    padding: 5px;
-    margin: 5px;
-
-}
-.font-color-container >button:first-child {
-    background: transparent;
-    height: 60px;
-    width: 80px;     
-}
-
-.stroke-btn::after {
-width: 100px;
-}
-.stroke-btns {
-    display: flex;
-    background: transparent;
-    height: 40px;
-    margin: 10px;
-    width: 100%;
-}
-.font-size-btn{
-    font-size: 20px;
- 
-}
-
-#textInput {
-    width: 100px;
-}
-
-#size-font-text{
-    font-size: 25px;
-}
-.publish-btn {
-background: none;
-border: none;
-}
-
-.add-line-btn {
-    background: transparent;
-    border:none;
-    border-left:1px solid black;
-    border-right:1px solid black;
-}
-.social-media-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-@media ()
-.text-line-edit {
-    display: flex;
-}
-
-.save-meme:hover {
-       text-decoration: none;
-    }
-.outline-container {
-    display: flex;
-    flex-direction: row
-}
+        footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background: linear-gradient(to right, #808080, #3fada8);
+            position: absolute;
+            padding: 1;
+            margin: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .footer-controls {
+            display: flex;
+            justify-content: center;
+            max-height: 70px;
+        }
+        
+        .footer-controls-button {
+            border-radius: 10px;
+            outline: black;
+            border: none;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+            margin: 0 20px;
+            font-weight: bolder;
+            font-family: mali, cursive;
+            height: 60px;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        .main-footer-nav {
+            display: flex;
+        }
+        
+        .footer-controls-button:hover {
+            background: rgb(82, 81, 81);
+        }
+        
+        .text-line-edit {
+            display: flex;
+            max-height: 60px;
+            padding: 3px;
+            margin: 10px;
+        }
+        
+        .text-line-edit>button:first-child {
+            height: 50px;
+            width: 60px;
+        }
+        
+        .text-line-edit select,
+        input {
+            border-radius: 10%
+        }
+        
+        #input-color-stroke {
+            height: 40px;
+            border: unset;
+            margin: 10px;
+            width: 30%;
+        }
+        
+        #input-color-text[type="color"] {
+            background: unset;
+            height: 40px;
+            border: unset;
+        }
+        
+        #input-color-text {
+            margin: 10px;
+            width: 30%;
+        }
+        
+        #size-font-text[type="number"] {
+            width: 30%;
+        }
+        
+        .fonts-types {
+            width: 120px;
+            background: linear-gradient(to right, #ece9e6, #ffffff)
+        }
+        
+        .font-color-container {
+            max-height: 60px;
+            display: flex;
+            padding: 5px;
+        }
+        
+        .font-color-container>button:first-child {
+            background: transparent;
+            height: 50px;
+            width: 80px;
+        }
+        
+        .stroke-btn,
+        .bold-btn,
+        .shadow-btn {
+            width: 40px;
+            border: none;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+        }
+        
+        .stroke-btns {
+            display: flex;
+            background: transparent;
+            height: 40px;
+            margin: 10px;
+            width: 100%;
+        }
+        
+        .font-size-btn {
+            background: linear-gradient(to right, #334d50, #cbcaa5) font-size: 20px;
+            margin: 10px;
+        }
+        
+        #textInput {
+            width: 100px;
+            background: linear-gradient(to right, #ece9e6, #ffffff)
+        }
+        
+        #size-font-text {
+            font-size: 25px;
+        }
+        
+        .publish-btn {
+            background: none;
+            border: none;
+        }
+        
+        .add-line-btn {
+            margin: 3px;
+            background: transparent;
+            border: none;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
+        
+        .social-media-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .save-meme:hover {
+            text-decoration: none;
+        }
+        
+        .outline-container {
+            display: flex;
+            flex-direction: row
+        }
+        
+        @media (max-width:660px) {
+            footer {
+                overflow: scroll;
+                overflow-y: hidden;
+                justify-content: flex-start;
+                width: 100%;
+            }
+            .text-line-edit {
+                padding: 3px;
+                margin: 10px;
+            }
+            .text-line-edit:first-child button {
+                position: relative;
+                margin: 0 auto;
+            }
+            #edit-line-list,
+            #textInput,
+            .add-line-btnת .font-size-btn {
+                margin-left: 15px;
+            }
+        }

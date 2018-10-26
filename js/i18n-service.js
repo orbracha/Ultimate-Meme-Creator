@@ -46,7 +46,7 @@ var gTrans = {
     },
     aboutp2: {
         en: `A millennial way of communicating emotions visually`,
-        he: 'זאת הדרך של הכי אפקטיבית לתקשר רגשות בצורה ויזואלית',
+        he: 'זאת הדרך הכי אפקטיבית לתקשר רגשות בצורה ויזואלית',
     },
     contact: {
         en: `Contact Us`,
@@ -109,7 +109,8 @@ function doTrans() {
         } else {
             el.innerText = txt;
         }
-    }$('.navbar-collapse').collapse('hide')
+    }
+    $('.navbar-collapse').collapse('hide')
 }
 
 function getTrans(transKey) {

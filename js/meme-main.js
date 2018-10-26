@@ -103,7 +103,6 @@ function uploadImgToCanvas(id) {
 function uploadImage() {
     $('#uploadInupt').trigger('click')
     $('.navbar-collapse').collapse('hide');
-
 }
 
 function downloadImg(elLink) {
@@ -243,6 +242,7 @@ function dragElementByMouse(elInputTxt, ev) {
         memeLine.align.x = elInputTxt.offsetLeft;
         rederText();
     }
+
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
@@ -259,9 +259,10 @@ function dragElementByFinger(elInputTxt, ev) {
     var lineId = (elInputTxt.id.split('-'))[1];
     changeCurrTxt(lineId);
     var memeLine = getLineById(getNumLineEdit(lineId))
-    // var touch = ev.touches[0];
+        // var touch = ev.touches[0];
     ev.preventDefault();
     elInputTxt.ontouchstart = dragFingerDown;
+
     function dragFingerDown(e) {
         e.preventDefault();
         var touch = e.touches[0];
@@ -271,6 +272,7 @@ function dragElementByFinger(elInputTxt, ev) {
         // call a function whenever the cursor moves:
         document.ontouchmove = elementDrag;
     }
+
     function elementDrag(e) {
         var touch = e.touches[0];
         // calculate the new cursor position:
@@ -342,7 +344,7 @@ function rederText() {
         //bold
         if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
         else ctx.font = `${meme.size}px ${meme.font}`
-        //color
+            //color
         ctx.fillStyle = meme.color;
         //shadow
         if (meme.isShadow) makeShadow();
@@ -406,11 +408,11 @@ function onClickShadow(elShadow) {
 }
 
 function onClickStroke(elStroke) {
-    if (elStroke.innerText === 's') {
-        elStroke.innerText = 'S';
+    if (elStroke.innerText === 'On') {
+        elStroke.innerText = 'Off';
         isStroke(false, getNumLineEdit());
     } else {
-        elStroke.innerText = 's';
+        elStroke.innerText = 'On';
         isStroke(true, getNumLineEdit());
     }
     rederText()
@@ -476,6 +478,3 @@ function onAddLineText() {
     clearAllInputs();
     document.querySelector('#edit-line-list').value = memeLines.length;
 }
-
-
-
