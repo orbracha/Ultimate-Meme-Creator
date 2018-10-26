@@ -145,7 +145,6 @@ function setFooter(val) {
 
 function isFooterOn(isGallery) {
     if (isGallery) {
-        console.log(isGallery);
         $('footer').show()
         $('.footer-controls').show()
         $('.main-footer-nav').show()
@@ -195,7 +194,7 @@ function createNewInput(width, height) {
     var canvas = getCanvas();
     var elContainer = document.querySelector('.container-input-text')
     $('.container-input-text').append(`<span id="line-${getNumLineEdit()}" type="text" 
-    onclick="onTextChose(this,event)" ontouchstart="dragElementByFinger(this,event)" ></span>`);
+    onmousedown="dragElementByMouse(this,event)" ontouchmove="dragElementByFinger(this,event)" ></span>`);
     elContainer.style.width = canvas.width;
     elContainer.style.height = canvas.height;
     var elChoseInput = document.querySelector(`#line-${getNumLineEdit()}`)
@@ -207,6 +206,7 @@ function createNewInput(width, height) {
 
 function dragElementByMouse(elInputTxt, ev) {
     var lineId = (elInputTxt.id.split('-'))[1];
+    changeCurrTxt(lineId);
     var memeLine = getLineById(getNumLineEdit(lineId))
     var currPositionX = 0,
         currPositionY = 0,
@@ -215,7 +215,6 @@ function dragElementByMouse(elInputTxt, ev) {
     elInputTxt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
-        console.log(e)
         e = e || window.event;
         e.preventDefault();
         // get the mouse cursor position at startup:
@@ -253,32 +252,33 @@ function dragElementByMouse(elInputTxt, ev) {
 
 
 function dragElementByFinger(elInputTxt, ev) {
+    var currPositionX = 0,
+        currPositionY = 0,
+        prevPositionX = 0,
+        prevPositionY = 0;
     var lineId = (elInputTxt.id.split('-'))[1];
+    changeCurrTxt(lineId);
     var memeLine = getLineById(getNumLineEdit(lineId))
-    var currPositionX = 0, currPositionY = 0, prevPositionX = 0, prevPositionY = 0;
-    elInputTxt.ontouchmove = dragMouseDown(ev);
-    function dragMouseDown(e) {
-        console.log(e)
-        e = e || window.event;
+    // var touch = ev.touches[0];
+    ev.preventDefault();
+    elInputTxt.ontouchstart = dragFingerDown;
+    function dragFingerDown(e) {
         e.preventDefault();
-        // get the mouse cursor position at startup:
-        prevPositionX = e.targetTouches[0].clientX;
-        prevPositionY = e.targetTouches[0].clientY;
-        document.touchend = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.touchmove = elementDrag;
-    }
+        var touch = e.touches[0];
+        prevPositionX = touch.clientX;
+        prevPositionY = touch.clientY;
 
+        // call a function whenever the cursor moves:
+        document.ontouchmove = elementDrag;
+    }
     function elementDrag(e) {
-        debugger
-        e = e || window.event;
-        e.preventDefault();
+        var touch = e.touches[0];
         // calculate the new cursor position:
-        //touch
-        currPositionX = prevPositionX - e.targetTouches[0].clientX;
-        currPositionY = prevPositionY - e.targetTouches[0].clientY;
-        prevPositionX = e.targetTouches[0].clientX;
-        prevPositionY = e.targetTouches[0].clientY;
+        //mouse
+        currPositionX = prevPositionX - touch.clientX;
+        currPositionY = prevPositionY - touch.clientY;
+        prevPositionX = touch.clientX;
+        prevPositionY = touch.clientY;
         // set the element's new position:
         elInputTxt.style.top = (elInputTxt.offsetTop - currPositionY) + "px";
         elInputTxt.style.left = (elInputTxt.offsetLeft - currPositionX) + "px";
@@ -286,24 +286,11 @@ function dragElementByFinger(elInputTxt, ev) {
         memeLine.align.x = elInputTxt.offsetLeft;
         rederText();
     }
-
-
-    function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-        document.touchend = null;
-        document.touchmove = null;
-    }
 }
 
-function onTextChose(elText, ev) {
 
-    // debugger
-    dragElementByMouse(elText, ev);
-    var lineId = (elText.id.split('-'))[1];
-    changeCurrTxt(lineId);
 
-}
+
 
 function showTextAdd() {
     $('.all-controls').show()
@@ -355,7 +342,7 @@ function rederText() {
         //bold
         if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
         else ctx.font = `${meme.size}px ${meme.font}`
-            //color
+        //color
         ctx.fillStyle = meme.color;
         //shadow
         if (meme.isShadow) makeShadow();
@@ -440,6 +427,7 @@ function makeShadow() {
 
 
 function changeCurrTxt(lineId) {
+
     var elListLines = document.querySelector('#edit-line-list')
     var elColorInput = document.querySelector('#input-color-text');
     var elTextInput = document.querySelector('#textInput')
