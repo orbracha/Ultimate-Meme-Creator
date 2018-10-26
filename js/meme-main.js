@@ -206,7 +206,6 @@ function createNewInput(width, height) {
 
 function dragElementByMouse(elInputTxt, ev) {
     var lineId = (elInputTxt.id.split('-'))[1];
-    changeCurrTxt(lineId);
     var memeLine = getLineById(getNumLineEdit(lineId))
     var currPositionX = 0,
         currPositionY = 0,
@@ -215,6 +214,7 @@ function dragElementByMouse(elInputTxt, ev) {
     elInputTxt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
+        changeCurrTxt(lineId);
         e = e || window.event;
         e.preventDefault();
         // get the mouse cursor position at startup:
@@ -427,7 +427,6 @@ function makeShadow() {
 
 
 function changeCurrTxt(lineId) {
-
     var elListLines = document.querySelector('#edit-line-list')
     var elColorInput = document.querySelector('#input-color-text');
     var elTextInput = document.querySelector('#textInput')
