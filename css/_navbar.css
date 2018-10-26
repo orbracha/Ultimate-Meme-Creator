@@ -12,10 +12,12 @@
 }
 
 .logo:hover {
+    transition: all .3s;
     filter: blur(1px);
 }
 
 .nav-link {
+    transition: all .5s;
     color: rgba(255, 255, 255, 0.7);
 }
 

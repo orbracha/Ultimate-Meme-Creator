@@ -39,6 +39,7 @@
         }
         
         .footer-controls-button:hover {
+            transition: all .5s;
             background: rgb(82, 81, 81);
         }
         
@@ -131,6 +132,11 @@
         .publish-btn {
             background: none;
             border: none;
+        }
+        
+        .add-line-btn:hover {
+            transition: all .5s;
+            opacity: 0.5
         }
         
         .add-line-btn {
