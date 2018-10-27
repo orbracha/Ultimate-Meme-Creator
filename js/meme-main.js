@@ -102,10 +102,7 @@ function uploadImgToCanvas(id) {
     saveCurrImg(id)
 }
 
-function uploadImage() {
-    $('#uploadInupt').trigger('click')
-    $('.navbar-collapse').collapse('hide');
-}
+
 
 function downloadImg(elLink) {
     var canvas = getCanvas();

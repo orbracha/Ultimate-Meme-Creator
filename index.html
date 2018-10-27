@@ -75,6 +75,7 @@
         <input class="search-bar" data-trans="search" type="text" placeholder="" aria-label="Search" data-trans="placeholder" onkeyup="onSearchInput(this.value,event)">
     </div>
 
+
     <!-- Gallery  -->
     <section class="gallery">
         <ul class="gallery-list">
@@ -109,7 +110,6 @@
             <p class="about-text" data-trans="aboutp2"> </p>
         </div>
     </section>
-
 
     <!-- Tag Line -->
     <section class="tags-container">
@@ -154,11 +154,11 @@
                 <div class="font-color-container">
                     <button class="footer-controls-button" onclick="showMainControls()" data-trans="back"></button>
                     <p data-trans="textcolor"></p>
-                    <input type="color-picker" onchange="onChangeTextColor(this.value)" id="input-color-text">
+                    <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
 
                     <!-- Text Stroke and Bold -->
                     <p data-trans="textoutline"></p>
-                    <input type="color-picker" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
+                    <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
                     <div class="stroke-btns">
                         <button class="stroke-btn" onclick="onClickStroke(this)">S</button>
                         <button class="bold-btn" onclick="onClickBold(this)">𝐁</button>
