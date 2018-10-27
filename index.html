@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quantico&effect=canvas-print" rel="stylesheet">
-    <link rel="stylesheet" href="lib/bs4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/flags/css/flag-icon.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="img/LOGO_DOG.png">
+    <link rel="stylesheet" href="/Ultimate-Meme-Creator/lib/bs4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Ultimate-Meme-Creator/lib/flags/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Ultimate-Meme-Creator/css/main.css">
+    <link rel="icon" href="/Ultimate-Meme-Creator/img/LOGO_DOG.png">
     <title>Ultimate Meme</title>
 
 </head>
@@ -130,11 +130,11 @@
                 <div class="text-line-edit">
                     <button class="footer-controls-button" onclick="showMainControls()" data-trans="back"></button>
                     <select id="edit-line-list" onchange="changeCurrTxt(this.value)">
-                        <option value="1">line 1</option>
+                        <option value="1">Text 1</option>
                     </select>
                     <!-- Text SIze Select -->
                     <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
-                    <button class="add-line-btn" onclick="onAddLineText()" data-trans="add-line">Add Line</button>
+                    <button class="add-line-btn" onclick="onAddLineText()" data-trans="add-line">Add Text</button>
                     <button type="button" class="font-size-btn plus btn btn-secondary" onclick="onInceaseText()">🗛</button>
                     <span id="size-font-text">40</span>
                     <button type="button" class="font-size-btn minous btn btn-secondary" onclick="onDeceaseText()"> 🗚</button>
@@ -157,13 +157,11 @@
                     <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
 
                     <!-- Text Stroke and Bold -->
-                    <!-- <div class="outline-container"> -->
                     <p data-trans="textoutline"></p>
                     <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
-                    <!-- </div> -->
                     <div class="stroke-btns">
                         <button class="stroke-btn" onclick="onClickStroke(this)">S</button>
-                        <button class="bold-btn" onclick="onClickBold(this)">B</button>
+                        <button class="bold-btn" onclick="onClickBold(this)">𝐁</button>
                         <button class="shadow-btn" onclick="onClickShadow(this)">❏</button>
                     </div>
                 </div>

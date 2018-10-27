@@ -3,8 +3,9 @@
 function init() {
     setFooter('false')
     clearMemeLines()
-    createMemeLines()
+    createMemeLines();
     clearAllInputs();
+    removeAllSpansCanvas();
     showGallery()
     createCanvas()
     createImgs()
@@ -90,6 +91,7 @@ function renderStyleImgs(imgs) {
 
 function uploadImgToCanvas(id) {
     renderCanvas()
+    createCanvasContainer();
     var ctx = getCtx()
     var canvas = getCanvas()
     var img = new Image
@@ -190,17 +192,20 @@ function onSearchInput(val, key) {
 
 
 function createNewInput(width, height) {
-    var canvas = getCanvas();
-    var elContainer = document.querySelector('.container-input-text')
-    $('.container-input-text').append(`<span id="line-${getNumLineEdit()}" type="text" 
-    onmousedown="dragElementByMouse(this,event)" ontouchmove="dragElementByFinger(this,event)" ></span>`);
-    elContainer.style.width = canvas.width;
-    elContainer.style.height = canvas.height;
     var elChoseInput = document.querySelector(`#line-${getNumLineEdit()}`)
-    elChoseInput.style.width = width + 'px';
-    elChoseInput.style.height = height + 'px';
-    elChoseInput.style.left = '50px';
-    elChoseInput.style.top = height * 2 + 'px';
+    var memeLine = getLineById(getNumLineEdit())
+
+    if (elChoseInput) {
+        console.log('exists')
+        // debugger
+        elChoseInput.style.width = width + 'px';
+        elChoseInput.style.height = height + 'px';
+        elChoseInput.style.left = memeLine.align.x + 'px';
+        elChoseInput.style.top = memeLine.align.y + memeLine.size -10 + 'px';
+    } else {
+        $('.container-input-text').append(`<span id="line-${getNumLineEdit()}"
+        onmousedown="dragElementByMouse(this,event)" ontouchmove="dragElementByFinger(this,event)" ></span>`);
+    }
 }
 
 function dragElementByMouse(elInputTxt, ev) {
@@ -259,24 +264,25 @@ function dragElementByFinger(elInputTxt, ev) {
     var lineId = (elInputTxt.id.split('-'))[1];
     changeCurrTxt(lineId);
     var memeLine = getLineById(getNumLineEdit(lineId))
-        // var touch = ev.touches[0];
     ev.preventDefault();
     elInputTxt.ontouchstart = dragFingerDown;
 
     function dragFingerDown(e) {
+        changeCurrTxt(lineId);
         e.preventDefault();
         var touch = e.touches[0];
         prevPositionX = touch.clientX;
         prevPositionY = touch.clientY;
+        document.ontouchend = closeDragElement;
 
         // call a function whenever the cursor moves:
         document.ontouchmove = elementDrag;
     }
 
     function elementDrag(e) {
+        changeCurrTxt(lineId);
         var touch = e.touches[0];
         // calculate the new cursor position:
-        //mouse
         currPositionX = prevPositionX - touch.clientX;
         currPositionY = prevPositionY - touch.clientY;
         prevPositionX = touch.clientX;
@@ -288,6 +294,11 @@ function dragElementByFinger(elInputTxt, ev) {
         memeLine.align.x = elInputTxt.offsetLeft;
         rederText();
     }
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.ontouchmove = null;
+    }
+
 }
 
 
@@ -316,10 +327,13 @@ function clearAllInputs() {
     elTextInput.value = '';
     var elColorInput = document.querySelector('#input-color-text');
     elColorInput.value = '#000000';
+    var elStrokeColor = document.querySelector('#input-color-stroke');
+    elStrokeColor.value = '#000000';
     var elSizeInput = document.querySelector('#size-font-text');
     elSizeInput.value = 20;
     document.querySelector('.bold-btn').innerText = '𝐁';
-    document.querySelector('.shadow-btn').innerText = '	❏';
+    document.querySelector('.shadow-btn').innerText = '❏';
+    document.querySelector('.stroke-btn').innerText = 'S';
 }
 
 
@@ -327,10 +341,14 @@ function clearAllInputs() {
 function onTextChange(txt) {
     var memeLine = getLineById(getNumLineEdit());
     var ctx = getCtx();
+    var canvas = getCanvas();
     var textWidth = ctx.measureText(memeLine.txt).width;
     if (textWidth + memeLine.size < 320) {
         changeTxtLine(txt, getNumLineEdit());
+        console.log(textWidth + memeLine.size - 10)
+
         createNewInput(textWidth + memeLine.size - 10, 30);
+
     }
     rederText();
 }
@@ -344,7 +362,7 @@ function rederText() {
         //bold
         if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
         else ctx.font = `${meme.size}px ${meme.font}`
-            //color
+        //color
         ctx.fillStyle = meme.color;
         //shadow
         if (meme.isShadow) makeShadow();
@@ -408,11 +426,11 @@ function onClickShadow(elShadow) {
 }
 
 function onClickStroke(elStroke) {
-    if (elStroke.innerText === 'On') {
-        elStroke.innerText = 'Off';
+    if (elStroke.innerText === 's') {
+        elStroke.innerText = 'S';
         isStroke(false, getNumLineEdit());
     } else {
-        elStroke.innerText = 'On';
+        elStroke.innerText = 's';
         isStroke(true, getNumLineEdit());
     }
     rederText()
@@ -435,16 +453,21 @@ function changeCurrTxt(lineId) {
     var elSizeInput = document.querySelector('#size-font-text');
     var elBoldBtn = document.querySelector('.bold-btn')
     var elShadowBtn = document.querySelector('.shadow-btn')
+    var elStrokeBtn = document.querySelector('.stroke-btn')
+    var elStrokeColor = document.querySelector('#input-color-stroke')
 
     elListLines.value = lineId;
     var memeLine = getLineById(+lineId);
     elTextInput.value = memeLine.txt;
     elColorInput.value = memeLine.color;
+    elStrokeColor.value = memeLine.stroke.color;
     elSizeInput.innerText = memeLine.size;
-    if (memeLine.isBold) elBoldBtn.innerText = 'bold-off';
-    else elBoldBtn.innerText = 'bold-on';
-    if (memeLine.isShadow) elShadowBtn.innerText = '❏';
-    else elShadowBtn.innerText = '□';
+    if (memeLine.isBold) elBoldBtn.innerText = 'B';
+    else elBoldBtn.innerText = '𝐁';
+    if (memeLine.isShadow) elShadowBtn.innerText = '□';
+    else elShadowBtn.innerText = '❏';
+    if (memeLine.isStroke) elStrokeBtn.innerText = 's';
+    else elStrokeBtn.innerText = 'S';
 }
 
 
@@ -472,9 +495,26 @@ function onAddLineText() {
     memeLines.push(createMemeLine());
     var elLine = document.querySelector('#edit-line-list');
     var strHtmls = memeLines.map(line => {
-        return `<option value="${line.lineId}">line ${line.lineId}</option>`
+        return `<option value="${line.lineId}">Text ${line.lineId}</option>`
     })
     elLine.innerHTML = strHtmls.join('');
     clearAllInputs();
     document.querySelector('#edit-line-list').value = memeLines.length;
+}
+
+
+function removeAllSpansCanvas() {
+    var memeLines = getMemeLines();
+    memeLines.forEach(line => {
+        $(`#line-${line.lineId}`).remove();
+    })
+    memeLines = [];
+
+}
+
+function createCanvasContainer() {
+    var canvas = getCanvas();
+    var elContainer = document.querySelector('.container-input-text')
+    elContainer.style.width = canvas.width;
+    elContainer.style.height = canvas.height;
 }

@@ -13,7 +13,7 @@ var gCtx = gCanvas.getContext('2d');
 
 function createCanvas() {
     gCtx.canvas.width = 380;
-    gCtx.canvas.height = gCtx.canvas.width;
+    gCtx.canvas.height = gCtx.canvas.width - 10;
 }
 
 function getCanvas() {
@@ -96,7 +96,7 @@ function getImgs() {
 
 
 function getImgById(idx) {
-    var img = gImgs.find(function(img) {
+    var img = gImgs.find(function (img) {
         return img.id === idx;
     });
     return img;

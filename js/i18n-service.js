@@ -25,8 +25,8 @@ var gTrans = {
         he: 'דברו איתנו',
     },
     'add-line': {
-        en: 'Add Line',
-        he: 'הוסף שורה',
+        en: 'Add Text',
+        he: 'הוסף טקסט',
     },
     search: {
         en: 'Find Image',
@@ -46,7 +46,7 @@ var gTrans = {
     },
     aboutp2: {
         en: `A millennial way of communicating emotions visually`,
-        he: 'זאת הדרך הכי אפקטיבית לתקשר רגשות בצורה ויזואלית',
+        he: 'זאת הדרך הכי אפקטיבית לקשר רגשות בצורה ויזואלית',
     },
     contact: {
         en: `Contact Us`,
@@ -78,7 +78,7 @@ var gTrans = {
     },
     textcolor: {
         en: `Text Color`,
-        he: `שנה צבע`,
+        he: `צבע הטקסט`,
     },
     save: {
         en: `Save and Publish`,
