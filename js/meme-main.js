@@ -197,11 +197,11 @@ function createNewInput(width, height) {
 
     if (elChoseInput) {
         console.log('exists')
-        // debugger
+            // debugger
         elChoseInput.style.width = width + 'px';
         elChoseInput.style.height = height + 'px';
         elChoseInput.style.left = memeLine.align.x + 'px';
-        elChoseInput.style.top = memeLine.align.y + memeLine.size -10 + 'px';
+        elChoseInput.style.top = memeLine.align.y + memeLine.size - 10 + 'px';
     } else {
         $('.container-input-text').append(`<span id="line-${getNumLineEdit()}"
         onmousedown="dragElementByMouse(this,event)" ontouchmove="dragElementByFinger(this,event)" ></span>`);
@@ -294,16 +294,13 @@ function dragElementByFinger(elInputTxt, ev) {
         memeLine.align.x = elInputTxt.offsetLeft;
         rederText();
     }
+
     function closeDragElement() {
         document.onmouseup = null;
         document.ontouchmove = null;
     }
 
 }
-
-
-
-
 
 function showTextAdd() {
     $('.all-controls').show()
@@ -345,8 +342,6 @@ function onTextChange(txt) {
     var textWidth = ctx.measureText(memeLine.txt).width;
     if (textWidth + memeLine.size < 320) {
         changeTxtLine(txt, getNumLineEdit());
-        console.log(textWidth + memeLine.size - 10)
-
         createNewInput(textWidth + memeLine.size - 10, 30);
 
     }
@@ -362,7 +357,7 @@ function rederText() {
         //bold
         if (meme.isBold) ctx.font = `bold ${meme.size}px ${meme.font}`
         else ctx.font = `${meme.size}px ${meme.font}`
-        //color
+            //color
         ctx.fillStyle = meme.color;
         //shadow
         if (meme.isShadow) makeShadow();
@@ -385,6 +380,7 @@ function onChangeFont(font) {
 }
 
 function onChangeTextColor(colorTxt) {
+    $('#color-picker').iris();
     changeColorTxt(colorTxt, getNumLineEdit())
     rederText()
 }
@@ -403,6 +399,7 @@ function getNumLineEdit() {
 
 
 function onClickBold(elBold) {
+    $('.bold-btn').toggleClass('darken-btn')
     if (elBold.innerText === 'B') {
         elBold.innerText = '𝐁';
         isBold(false, getNumLineEdit());
@@ -415,6 +412,7 @@ function onClickBold(elBold) {
 
 
 function onClickShadow(elShadow) {
+    $('.shadow-btn').toggleClass('darken-btn')
     if (elShadow.innerText === '□') {
         elShadow.innerText = '❏';
         isShadow(false, getNumLineEdit());
@@ -426,6 +424,7 @@ function onClickShadow(elShadow) {
 }
 
 function onClickStroke(elStroke) {
+    $('.stroke-btn').toggleClass('darken-btn')
     if (elStroke.innerText === 's') {
         elStroke.innerText = 'S';
         isStroke(false, getNumLineEdit());
@@ -470,25 +469,15 @@ function changeCurrTxt(lineId) {
     else elStrokeBtn.innerText = 'S';
 }
 
-
-function onDeceaseText() {
+function onTextSizeChange(val) {
     var elFontSize = document.getElementById('size-font-text');
     var memeLine = getLineById(getNumLineEdit());
     var fontSize = +elFontSize.innerText;
-    if (fontSize < 60) elFontSize.innerText = fontSize + 1;
+    if (val === 'minus' && fontSize > 10) elFontSize.innerText = fontSize - 1;
+    else if (val === 'plus' && fontSize < 60) elFontSize.innerText = fontSize + 1;
     memeLine.size = fontSize;
     rederText();
 }
-
-function onInceaseText() {
-    var elFontSize = document.getElementById('size-font-text');
-    var memeLine = getLineById(getNumLineEdit());
-    var fontSize = +elFontSize.innerText;
-    if (fontSize > 10) elFontSize.innerText = fontSize - 1;
-    memeLine.size = fontSize;
-    rederText();
-}
-
 
 function onAddLineText() {
     var memeLines = getMemeLines();

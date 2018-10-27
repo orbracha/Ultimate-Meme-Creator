@@ -1,7 +1,8 @@
-.flex{
+.flex {
     display: flex;
 }
-.space-between{
+
+.space-between {
     justify-content: space-between;
 }
 
@@ -9,9 +10,10 @@
     position: relative;
 }
 
-.grid{
+.grid {
     display: grid;
 }
+
 .display-none {
     display: none;
 }
@@ -22,4 +24,24 @@
 
 .rtl {
     direction: rtl
+}
+
+.serif {
+    font-family: serif
+}
+
+.verdena {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.courier {
+    font-family: 'Courier New', Courier, monospace
+}
+
+.times {
+    font-family: 'Times New Roman', Times, serif
+}
+
+.impact {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }

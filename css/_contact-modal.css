@@ -1,10 +1,23 @@
 .modal-title {
-    
-   display: block;
-
+    display: block;
 }
 
 .contact-click {
     background-color: transparent;
     border: none;
+}
+
+.contact-click::after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    background: transparent;
+    transition: all .4s ease;
+}
+
+.contact-click:hover::after {
+    width: 100%;
+    background: whitesmoke;
 }

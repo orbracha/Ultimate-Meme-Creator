@@ -135,18 +135,18 @@
                     <!-- Text SIze Select -->
                     <input id="textInput" type="text" class="block" placeholder="Enter text" onkeyup="onTextChange(this.value)" />
                     <button class="add-line-btn" onclick="onAddLineText()" data-trans="add-line">Add Text</button>
-                    <button type="button" class="font-size-btn plus btn btn-secondary" onclick="onInceaseText()">🗛</button>
+                    <button type="button" class="font-size-btn plus btn btn-secondary" value="minus" onclick="onTextSizeChange(this.value)">🗛</button>
                     <span id="size-font-text">40</span>
-                    <button type="button" class="font-size-btn minous btn btn-secondary" onclick="onDeceaseText()"> 🗚</button>
+                    <button type="button" class="font-size-btn minous btn btn-secondary" value="plus" onclick="onTextSizeChange(this.value)"> 🗚</button>
                     <!-- Change Font -->
 
-                    <select class="fonts-types" onchange="onChangeFont(this.value)">
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="serif">serif</option>
+                    <select class="fonts-list" onchange="onChangeFont(this.value)">
+                        <option class="font-type impact" value="Impact">Impact</option>
+                        <option class="font-type arial" value="Arial">Arial</option>
+                        <option class="font-type times" value="Times New Roman">Times New Roman</option>
+                        <option class="font-type courier" value="Courier New">Courier New</option>
+                        <option class="font-type verdena" value="Verdana">Verdana</option>
+                        <option class="font-type serif" value="serif">Serif</option>
                     </select>
 
                 </div>
@@ -154,11 +154,11 @@
                 <div class="font-color-container">
                     <button class="footer-controls-button" onclick="showMainControls()" data-trans="back"></button>
                     <p data-trans="textcolor"></p>
-                    <input type="color" onchange="onChangeTextColor(this.value)" id="input-color-text">
+                    <input type="color-picker" onchange="onChangeTextColor(this.value)" id="input-color-text">
 
                     <!-- Text Stroke and Bold -->
                     <p data-trans="textoutline"></p>
-                    <input type="color" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
+                    <input type="color-picker" onchange="onChangeStrokeColor(this.value)" id="input-color-stroke" value="#ffffff">
                     <div class="stroke-btns">
                         <button class="stroke-btn" onclick="onClickStroke(this)">S</button>
                         <button class="bold-btn" onclick="onClickBold(this)">𝐁</button>
