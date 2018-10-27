@@ -96,7 +96,7 @@ function getImgs() {
 
 
 function getImgById(idx) {
-    var img = gImgs.find(function (img) {
+    var img = gImgs.find(function(img) {
         return img.id === idx;
     });
     return img;
@@ -142,10 +142,6 @@ function clearMemeLines() {
 function randomTextSize() {
     return Math.floor(Math.random() * (35 - 15 + 1)) + 15;
 }
-
-
-
-
 
 //////////////////////////////////////Language//////////////////////////////////////////////////
 function setLanguage(lang) {

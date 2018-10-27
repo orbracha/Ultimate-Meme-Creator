@@ -41,10 +41,10 @@
         width: auto;
         height: 100%;
         margin: 0 auto;
+        transition: border 1s;
     }
     
     .image-item:hover {
-        transition: all .5s;
         border: solid 100px transparent;
     }
     

@@ -1,5 +1,5 @@
       .tags-container {
-          overflow: scroll;
+          overflow: auto;
           display: flex;
           flex-direction: row;
           justify-content: center;
@@ -18,7 +18,8 @@
       }
       
       .tags-list li:hover {
-          color: #e9b2cc;
+          transition: all 0.3s ease;
+          color: #d82b7c;
       }
       
       @media (max-width: 680px) {

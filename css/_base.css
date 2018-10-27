@@ -34,3 +34,7 @@ input[placeholder] {
 button:hover {
     cursor: pointer;
 }
+
+input[type="color"] {
+    margin: .4rem;
+}
