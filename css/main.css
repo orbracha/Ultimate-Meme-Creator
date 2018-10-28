@@ -1,3 +1,7 @@
+.css-work {
+    background-color: transparent;
+}
+
 @import '_base.css';
 @import '_helpers.css';
 @import '_navbar.css';
