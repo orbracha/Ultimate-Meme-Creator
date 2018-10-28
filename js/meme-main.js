@@ -25,8 +25,6 @@ function hideControls() {
     $('.search-bar').hide()
 }
 
-
-
 function aboutPage() {
     $('footer').hide()
     $('.gallery').hide()
