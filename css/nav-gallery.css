@@ -11,6 +11,7 @@
         position: relative;
         visibility: hidden;
         outline: 1px solid transparent;
+        transition: all 0.5s;
     }
     
     .hex::after {
@@ -41,11 +42,12 @@
         width: auto;
         height: 100%;
         margin: 0 auto;
-        transition: border 1s;
+        
     }
     
-    .image-item:hover {
-        border: solid 100px transparent;
+    .hex:hover {
+transform: scale(1.04);
+transition: all 0.4s;
     }
     
     @media (min-width:1201px) {
@@ -54,6 +56,7 @@
         }
         .hex {
             width: 20%;
+            transition: all 0.5s;
         }
         .hex:nth-child(9n+6) {
             margin-left: 10%;
@@ -78,13 +81,10 @@
         }
         .hex {
             width: 33.333%;
+            transition: all 0.5s;
         }
         .hex:nth-child(5n+4) {
             margin-left: 16%;
-        }
-        .image-item:hover {
-            transition: all .5s;
-            border: solid 65px transparent;
         }
     }
     
@@ -94,6 +94,7 @@
         }
         .hex {
             width: 50%;
+            transition: all 0.5s;
         }
         .hex:nth-child(3n+3) {
             margin-left: 25%;

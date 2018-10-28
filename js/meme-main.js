@@ -14,11 +14,6 @@ function init() {
     setLanguage()
 }
 
-
-function loadingDog() {
-    $('.loading').fadeTo('slow', 1, () => { $('.loading').hide() })
-}
-
 function hideControls() {
     $('footer').show()
     $('.tags-container').hide()
